@@ -4,6 +4,15 @@ var router = express.Router();
 var User = require('../models/Users.js');
 
 
+router.get('/',function(req,res){
+    if(!req.session.user){
+        return res.render('LoginPage');
+    }else {
+        return res.render('MainPage');
+    }
+});
+
+
 router.post('/login',function(req,res){
     var username = req.body.username;
     var password = req.body.password;
@@ -25,11 +34,8 @@ router.post('/login',function(req,res){
 });
 
 router.delete('/logout', function(req,res){
-    //req.session
-    
-    
-    
-    
+    req.session.destroy();
+    return res.status(200).render('LogoutPage',req.session);   
 });
 
 
