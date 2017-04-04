@@ -1,0 +1,66 @@
+const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var ATRecordSchema = new Schema({
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
+      type: String,
+      required: true
+    },
+    date: {
+        type: Date,
+        required: true
+    },
+    SSN: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    doctor: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number,
+        default: 0
+    },
+    weight: {
+        type: Number
+    },
+    height: {
+        type: Number
+    },
+    bloodPressure: {
+        type: [Number]
+    },
+    reasonForVisit: {
+        type: String
+    },
+    billingAmount: {
+        type: Number
+    },
+    reference: {
+        type: String
+    },
+    invoice: {
+      type: String  
+    },
+    treatmentInfo: {
+        type: String
+    },
+    status: {
+        type: String,
+        required: true
+    },
+    payOnline: {
+        type: Boolean,
+        default: false
+    }   
+});
+
+var ATRecords = mongoose.model('atrecords',ATRecordSchema);
+
+module.exports = ATRecords;
