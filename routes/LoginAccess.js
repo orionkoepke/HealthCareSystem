@@ -6,12 +6,19 @@ var User = require('../models/Users.js');
 
 router.get('/',function(req,res){
     if(!req.session.user){
-        return res.render('LoginPage');
+        return res.render('LoginPage',{ loginerror: "" });
     }else {
         return res.render('MainPage');
     }
 });
 
+router.get('/home',function(req,res){
+    if(!req.session.user){
+        return res.render('LoginPage',{ loginerror: "" });
+    }else {
+        return res.render('MainPage');
+    }
+});
 
 router.post('/login',function(req,res){
     var username = req.body.username;
@@ -24,18 +31,18 @@ router.post('/login',function(req,res){
         }
         
         if(!user) {
-            return res.status(404).send();
+            console.log("Invalid login...");
+            return res.status(400).render('LoginPage',{ loginerror: "Invalid username or password" });
         }else {
             req.session.user = user;
-            console.log(req.session);
             return res.status(200).render('MainPage');
         }
     });
 });
 
-router.delete('/logout', function(req,res){
+router.get('/logout', function(req,res){
     req.session.destroy();
-    return res.status(200).render('LogoutPage',req.session);   
+    return res.status(200).render('LogoutPage');   
 });
 
 
