@@ -23,13 +23,13 @@ router.get('/home',function(req,res){
 router.post('/login',function(req,res){
     var username = req.body.username;
     var password = req.body.password;
-    
+
     User.findOne({ username:username, password: password },function(err, user){
         if(err){
             console.log(err);
             res.status(500).send();
         }
-        
+
         if(!user) {
             console.log("Invalid login...");
             return res.status(400).render('LoginPage',{ loginerror: "Invalid username or password" });
@@ -42,7 +42,7 @@ router.post('/login',function(req,res){
 
 router.get('/logout', function(req,res){
     req.session.destroy();
-    return res.status(200).render('LogoutPage');   
+    return res.status(200).render('LogoutPage');
 });
 
 
