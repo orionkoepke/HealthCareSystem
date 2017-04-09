@@ -16,8 +16,7 @@ var ATRecordSchema = new Schema({
     },
     SSN: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     doctor: {
         type: String,
@@ -46,7 +45,8 @@ var ATRecordSchema = new Schema({
         type: String
     },
     invoice: {
-      type: String  
+      type: Number ,
+        unique: true 
     },
     treatmentInfo: {
         type: String
