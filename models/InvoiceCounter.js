@@ -5,6 +5,10 @@ var InvoiceCounter = new Schema({
     counter: {
         type: Number,
         required: true
+    },
+    ident: {
+        type: String,
+        default: "finder"
     }
 });
 
