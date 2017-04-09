@@ -5,12 +5,14 @@ var User = require('../models/Users.js');
 
 router.get('/',function(req,res){
   User.find({userType: "doctor"}).then(function(ans){
-    var doctorNames = [];
+    var doctors = [];
     for(var i = 0; i < ans.length; i++){
-      doctorNames[i] = "Dr. " +  ans[i].firstname + " " + ans[i].lastname;
+      var doctor = {name: "", doctorId: ""};
+      doctor.name = "Dr. " +  ans[i].firstname + " " + ans[i].lastname;
+      doctor.doctorId = ans[i].doctor;
+      doctors[i] = doctor;
     }
-    console.log(doctorNames);
-    return res.render('SelectDoctor', { docNames: doctorNames });
+    return res.render('SelectDoctor', { doctors: doctors });
   });
 });
 
