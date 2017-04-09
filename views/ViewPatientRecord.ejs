@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <link href="/public/styles.css" rel="stylesheet" type="text/css">
+
+        <title>View Patient Record</title>
+
+    </head>
+    <body>
+      <% include ./resources/navHeader.ejs %>
+        <form action="http://localhost:3003/users/login" method="post">
+            First Name: <input type="text" name="firstName" required/><br>
+            Last Name: <input type="text" name="lastName" required/><br>
+            Date: <input type="date" name="date" required/><br>
+            SSN: <input type="text" name="SSN" required/><br>
+        <br>
+            <button type="button">Submit</button>
+        </form>
+        <br/>
+        <p id="ErrorBoard"><%=loginerror%></p>
+
+    <script>
+
+    </script>
+
+<!--o	First Name
+o	Last Name
+o	Date
+o	SSN
+o	Doctor/Nurse
+o	Billing Information (view only)
+o	Billing Amount (view only)
+o	Reference number (view number)
+o	Invoice number (view only)
+o	Age
+o	Weight
+o	Height
+o	Blood Pressure
+o	Reason for visit
+o	Treatment information
+o	Status
+-->
+
+
+
+    </body>
+</html>
