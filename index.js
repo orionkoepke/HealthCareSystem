@@ -12,6 +12,20 @@ mongoose.connection.once('open',function(){
 	});
 mongoose.Promise = global.Promise;
 
+// ensure invoice counter is setup
+var InvoiceNumberCounter = require('./models/InvoiceCounter');
+InvoiceNumberCounter.find({},function(err,counter){
+    if(counter.length === 0){
+        var Counter = new InvoiceNumberCounter();
+        Counter.counter = 10000;
+        Counter.save();
+    }else if (counter.length > 1) {
+        console.log("Too many records in InvoiceNumberCounter.");
+    }else {
+        console.log("InvoiceNumberCounter set up correctly.");
+    }
+});
+
 /*var User = require('./models/Users.js');
 var newUser = new User();
 newUser.firstname = "Dave";
