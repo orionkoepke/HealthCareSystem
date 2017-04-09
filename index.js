@@ -96,7 +96,7 @@ app.use(session({secret:"lwqfhaodhgkskj173iegkj_",resave:false, saveUninitialize
 // initialize routes here
 
 var loginAccess = require('./routes/LoginAccess.js');
-var viewPatientRecord = require('./routes/ViewPatientRecord');
+var viewPatientRecord = require('./routes/ViewPatientRecord.js');
 
 
 
