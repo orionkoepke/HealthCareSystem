@@ -4,7 +4,11 @@ var router = express.Router();
 var User = require('../models/Users.js');
 
 router.get('/',function(req,res){
-  return res.render('ViewPatientRecord',{ loginerror: "" });
+  return res.render('ViewPatientRecord');
+});
+
+router.post('/', function(req, res){
+
 });
 
 module.exports = router;

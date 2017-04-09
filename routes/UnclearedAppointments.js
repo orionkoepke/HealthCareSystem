@@ -4,7 +4,7 @@ var router = express.Router();
 var User = require('../models/Users.js');
 
 router.get('/',function(req,res){
-  return res.render('UnclearedAppointments', { loginerror: "" });
+  return res.render('UnclearedAppointments');
 });
 
 module.exports = router;
