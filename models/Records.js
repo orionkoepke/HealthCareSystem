@@ -46,7 +46,7 @@ var ATRecordSchema = new Schema({
     },
     invoice: {
       type: Number ,
-        unique: true 
+        unique: true
     },
     treatmentInfo: {
         type: String
@@ -58,7 +58,7 @@ var ATRecordSchema = new Schema({
     payOnline: {
         type: Boolean,
         default: false
-    }   
+    }
 });
 
 var ATRecords = mongoose.model('atrecords',ATRecordSchema);

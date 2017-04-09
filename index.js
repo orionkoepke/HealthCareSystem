@@ -61,7 +61,7 @@ newATRecord.date = new Date(2017,5,4,16,0,0);
 newATRecord.SSN = "172490912";
 newATRecord.doctor = "WatsonDM";
 newATRecord.age = 47;
-newATRecord.weight = 153; 
+newATRecord.weight = 153;
 newATRecord.height = 66;
 newATRecord.bloodPressure = [130,85];
 newATRecord.reasonForVisit = "";
@@ -97,11 +97,12 @@ app.use(session({secret:"lwqfhaodhgkskj173iegkj_",resave:false, saveUninitialize
 
 var loginAccess = require('./routes/LoginAccess.js');
 
+var viewDReports = require('./routes/ViewDailyReports.js');
 
 
 
-
-app.use('/users',loginAccess);
+app.use('/users', loginAccess);
+app.use('/dailyreports', viewDReports);
 
 // call scheduled task functions here
 
@@ -115,4 +116,3 @@ app.use('/users',loginAccess);
 app.listen(port,function(req,res){
     console.log("Listening on localhost:" + port);
 });
-
