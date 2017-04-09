@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var autoIncrement = require('mongoose-auto-increment');
+
 
 var ATRecordSchema = new Schema({
     firstname: {
@@ -45,8 +47,8 @@ var ATRecordSchema = new Schema({
         type: String
     },
     invoice: {
-      type: Number ,
-        unique: true 
+      type: Number,
+      unique: true 
     },
     treatmentInfo: {
         type: String

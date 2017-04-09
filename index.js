@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
 
 // connect to mongodb
+var connection = mongoose.createConnection('mongodb://localhost:27017/hospitaldb1');
 mongoose.connect('mongodb://localhost:27017/hospitaldb1');
 mongoose.connection.once('open',function(){
 		console.log('Connection achieved. Begin operations...');
@@ -11,6 +13,7 @@ mongoose.connection.once('open',function(){
 		console.log('Connection error:',error);
 	});
 mongoose.Promise = global.Promise;
+autoIncrement.initialize(mongoose.connection);
 
 // ensure invoice counter is setup
 var InvoiceNumberCounter = require('./models/InvoiceCounter');

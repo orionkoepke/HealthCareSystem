@@ -107,7 +107,7 @@ var dummyRecords = [
     {
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : getInvoiceNumber(),
+    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 80,
     "reasonForVisit" : "",    
@@ -117,11 +117,11 @@ var dummyRecords = [
     "lastname" : "Crocker",
     "firstname" : "Betty",
     "payOnline" : false
-},
-   {
+}
+   /*,{
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : getInvoiceNumber(),
+    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 90,
     "reasonForVisit" : "",    
@@ -135,7 +135,7 @@ var dummyRecords = [
   {
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : getInvoiceNumber(),
+    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 110,
     "reasonForVisit" : "",    
@@ -149,7 +149,7 @@ var dummyRecords = [
     {
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : getInvoiceNumber(),
+    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 120,
     "reasonForVisit" : "",    
@@ -163,7 +163,7 @@ var dummyRecords = [
    {
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : getInvoiceNumber(),
+    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 130,
     "reasonForVisit" : "",    
@@ -173,7 +173,7 @@ var dummyRecords = [
     "lastname" : "Milosevich",
     "firstname" : "Kary",
     "payOnline" : false
-}
+}*/
 ];
 
 dummyRecords.forEach(function(eachRecord){
@@ -187,21 +187,24 @@ dummyRecords.forEach(function(eachRecord){
     newRecord.reasonForVisit = eachRecord.reasonForVisit;
     newRecord.billingAmount = eachRecord.billingAmount;
     newRecord.reference = eachRecord.reference;
-    newRecord.invoice = eachRecord.invoice;
     newRecord.treatmentInfo = eachRecord.treatmentInfo;
-    newRecord.status = eachRecord.status;
+    newRecord.status = eachRecord.status; 
+    newRecord.invoice = getInvoiceNumber();
+    newRecord.save();
 });
 
 function getInvoiceNumber(){
     var invoice;
     var updateInvoice;
-    var counter = InvoiceCounter.findOne({ ident: "finder" }).then(function(counter){
+    InvoiceCounter.findOne({ ident: "finder" }).then(function(counter){
+        invoice = counter.counter;
+        console.log(invoice);
         console.log(counter);
-    }); 
-    invoice = counter.counter;
-    updateInvoice = invoice + 1;
-    InvoiceCounter.findOneAndUpdate({_id: counter._id},{counter: updateInvoice}).then(function(updated){
-        console.log(updated);
+        updateInvoice = invoice + 1;
+    }).then(function(){
+        InvoiceCounter.findOneAndUpdate({ident: "finder"},{counter: updateInvoice}).then(function(updated){
+            console.log(updated);
+        });    
     });
     return invoice;
 };
