@@ -16,7 +16,7 @@ var ATRecordSchema = new Schema({
         type: Date,
         required: true
     },
-    SSN: {
+    PatientSSN: {
         type: String,
         required: true
     },
@@ -46,10 +46,6 @@ var ATRecordSchema = new Schema({
     reference: {
         type: String
     },
-    invoice: {
-      type: Number,
-      unique: true 
-    },
     treatmentInfo: {
         type: String
     },
@@ -64,5 +60,8 @@ var ATRecordSchema = new Schema({
 });
 
 var ATRecords = mongoose.model('atrecords',ATRecordSchema);
+ATRecords.collection.dropIndexes(function (err, results) {
+    // Handle errors
+});
 
 module.exports = ATRecords;

@@ -12,7 +12,6 @@ mongoose.Promise = global.Promise;
 var User = require('./models/Users.js');
 var Patient = require('./models/Patients.js');
 var ATRecord = require('./models/Records.js');
-var InvoiceCounter = require('./models/InvoiceCounter.js');
 
 /*
 
@@ -107,26 +106,24 @@ var dummyRecords = [
     {
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 80,
     "reasonForVisit" : "",    
     "doctor" : "WatsonR",
-    "SSN" : "987678234",
+    "PatientSSN" : "987678234",
     "date" : new Date(Year,Month,Day,9,0,0,0),
     "lastname" : "Crocker",
     "firstname" : "Betty",
     "payOnline" : false
 }
-   /*,{
+   ,{
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 90,
     "reasonForVisit" : "",    
     "doctor" : "LopezN",
-    "SSN" : "987678235",
+    "PatientSSN" : "987678235",
     "date" : new Date(Year,Month,Day,10,0,0,0),
     "lastname" : "Smith",
     "firstname" : "Joe",
@@ -135,12 +132,11 @@ var dummyRecords = [
   {
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 110,
     "reasonForVisit" : "",    
     "doctor" : "GelfondM",
-    "SSN" : "987678236",
+    "PatientSSN" : "987678236",
     "date" : new Date(Year,Month,Day,11,0,0,0),
     "lastname" : "Jones",
     "firstname" : "Mike",
@@ -149,12 +145,11 @@ var dummyRecords = [
     {
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 120,
     "reasonForVisit" : "",    
     "doctor" : "ShinM",
-    "SSN" : "987678237",
+    "PatientSSN" : "987678237",
     "date" : new Date(Year,Month,Day,12,0,0,0),
     "lastname" : "Rogers",
     "firstname" : "Jessica",
@@ -163,17 +158,16 @@ var dummyRecords = [
    {
     "status" : "Scheduled",
     "treatmentInfo" : "",
-    "invoice" : 0,
     "reference" : "",
     "billingAmount" : 130,
     "reasonForVisit" : "",    
     "doctor" : "ShinM",
-    "SSN" : "987678237",
+    "PatientSSN" : "987678238",
     "date" : new Date(Year,Month,Day,13,0,0,0),
     "lastname" : "Milosevich",
     "firstname" : "Kary",
     "payOnline" : false
-}*/
+}
 ];
 
 dummyRecords.forEach(function(eachRecord){
@@ -182,32 +176,17 @@ dummyRecords.forEach(function(eachRecord){
     newRecord.firstname = eachRecord.firstname;
     newRecord.lastname = eachRecord.lastname;
     newRecord.date = eachRecord.date;
-    newRecord.SSN = eachRecord.SSN;
+    newRecord.PatientSSN = eachRecord.PatientSSN;
     newRecord.doctor = eachRecord.doctor;
     newRecord.reasonForVisit = eachRecord.reasonForVisit;
     newRecord.billingAmount = eachRecord.billingAmount;
     newRecord.reference = eachRecord.reference;
     newRecord.treatmentInfo = eachRecord.treatmentInfo;
-    newRecord.status = eachRecord.status; 
-    newRecord.invoice = getInvoiceNumber();
+    newRecord.status = eachRecord.status;
     newRecord.save();
 });
 
-function getInvoiceNumber(){
-    var invoice;
-    var updateInvoice;
-    InvoiceCounter.findOne({ ident: "finder" }).then(function(counter){
-        invoice = counter.counter;
-        console.log(invoice);
-        console.log(counter);
-        updateInvoice = invoice + 1;
-    }).then(function(){
-        InvoiceCounter.findOneAndUpdate({ident: "finder"},{counter: updateInvoice}).then(function(updated){
-            console.log(updated);
-        });    
-    });
-    return invoice;
-};
+
 
 
 
