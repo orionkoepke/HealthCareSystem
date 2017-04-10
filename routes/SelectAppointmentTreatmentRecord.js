@@ -8,14 +8,15 @@ router.get('/',function(req,res){
 });
 
 router.post('/', function(req, res){
-  Patient.find({PatientSSN: req.body.ssn}).then(function(ans){
+  Records.find({PatientSSN: req.body.ssn}).then(function(ans){
     var records = [];
     for(var i = 0; i < ans.length; i++){
       var record = {date: "", doctor: ""};
-      record.date = "DATE: " ans[i].date;
+      record.date = "DATE: " + ans[i].date;
       record.ssn = ans[i].PatientSSN;
       records[i] = record;
     }
+    console.log(records);
     return res.render('SelectAppointmentTreatmentRecord', { records: records });
   });
 });
