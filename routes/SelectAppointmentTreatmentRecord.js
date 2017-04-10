@@ -16,7 +16,6 @@ router.post('/', function(req, res){
       record.ssn = ans[i].PatientSSN;
       records[i] = record;
     }
-    console.log(records);
     return res.render('SelectAppointmentTreatmentRecord', { records: records });
   });
 });
