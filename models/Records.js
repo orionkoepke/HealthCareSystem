@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var autoIncrement = require('mongoose-auto-increment');
+
 
 var ATRecordSchema = new Schema({
     firstname: {
@@ -14,7 +16,7 @@ var ATRecordSchema = new Schema({
         type: Date,
         required: true
     },
-    SSN: {
+    PatientSSN: {
         type: String,
         required: true
     },
@@ -44,10 +46,6 @@ var ATRecordSchema = new Schema({
     reference: {
         type: String
     },
-    invoice: {
-      type: Number ,
-        unique: true 
-    },
     treatmentInfo: {
         type: String
     },
@@ -58,9 +56,12 @@ var ATRecordSchema = new Schema({
     payOnline: {
         type: Boolean,
         default: false
-    }   
+    }
 });
 
 var ATRecords = mongoose.model('atrecords',ATRecordSchema);
+ATRecords.collection.dropIndexes(function (err, results) {
+    // Handle errors
+});
 
 module.exports = ATRecords;

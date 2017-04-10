@@ -62,7 +62,7 @@ var Userdata = [
     username : "RWatson",
     lastname : "Watson",
     firstname : "Richard"
-},  
+},
     {
     doctor : "LopezN",
     userType : "doctor",
@@ -71,7 +71,7 @@ var Userdata = [
     username : "NLopez",
     lastname : "Lopez-Benitez",
     firstname : "Noe"
-},  
+},
     {
     doctor : "GelfondM",
     userType : "doctor",
@@ -80,7 +80,7 @@ var Userdata = [
     username : "MGelfond",
     lastname : "Gelfond",
     firstname : "Michael"
-},  
+},
     {
     doctor : "ShinM",
     userType : "doctor",
@@ -89,7 +89,7 @@ var Userdata = [
     username : "MShin",
     lastname : "Shin",
     firstname : "Michael"
-},  
+},
     {
     doctor : "MengelS",
     userType : "doctor",
@@ -98,7 +98,7 @@ var Userdata = [
     username : "SMengel",
     lastname : "Mengel",
     firstname : "Susan"
-},  
+},
     //Nurses //////////////////////////////////////////////////////////////////////////
     {
     doctor : "WatsonR",
@@ -108,7 +108,7 @@ var Userdata = [
     username : "CBurnett",
     lastname : "Burnett",
     firstname : "Carol"
-},  
+},
     {
     doctor : "LopezN",
     userType : "nurse",
@@ -117,7 +117,7 @@ var Userdata = [
     username : "DeGeneresE",
     lastname : "DeGeneres",
     firstname : "Ellen"
-},  
+},
     {
     doctor : "GelfondM",
     userType : "nurse",
@@ -126,7 +126,7 @@ var Userdata = [
     username : "LBall",
     lastname : "Lucille",
     firstname : "Ball"
-},  
+},
     {
     doctor : "ShinM",
     userType : "nurse",
@@ -135,7 +135,7 @@ var Userdata = [
     username : "WGoldberg",
     lastname : "Goldberg",
     firstname : "Whoopi"
-},  
+},
     {
     doctor : "MengelS",
     userType : "nurse",
@@ -144,7 +144,7 @@ var Userdata = [
     username : "KGriffin",
     lastname : "Griffin",
     firstname : "Kathy"
-}      
+}
 ];
 
 
