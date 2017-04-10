@@ -13,9 +13,7 @@
         <form action="http://localhost:3003/select_patient" method="post">
 
           <% doctors.forEach(function (ans) { %>
-            <li>
               <input type="radio"  name="doctors" id="doctors" value= <%=ans.doctorId%>> <%=ans.name%></br>
-            </li>
           <% }); %>
 
         <br>
