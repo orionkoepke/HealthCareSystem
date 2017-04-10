@@ -8,9 +8,19 @@ router.get('/',function(req,res){
 });
 
 router.post('/', function(req, res){
-  return res.render('SelectPatient');
   console.log(req.body);
   Patient.find({doctor: req.body.doctors}).then(function(ans){
+    console.log(req.body);
+    var patients = [];
+    for(var i = 0; i < ans.length; i++){
+      var patient = {name: "", ssn: ""};
+      patient.name = ans[i].firstname + " " + ans[i].lastname;
+      patient.ssn = ans[i].SSN;
+      patients[i] = patient;
+    }
+    console.log(patients);
+    return res.render('SelectPatient', { patients: patients });
+  });
 });
 
 module.exports = router;
