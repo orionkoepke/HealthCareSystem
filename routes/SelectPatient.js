@@ -9,6 +9,8 @@ router.get('/',function(req,res){
 
 router.post('/', function(req, res){
   return res.render('SelectPatient');
+  console.log(req.body);
+  Patient.find({doctor: req.body.doctors}).then(function(ans){
 });
 
 module.exports = router;
