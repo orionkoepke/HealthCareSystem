@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <link href="../public/styles.css" rel="stylesheet" type="text/css">
+
+        <title>View Patient Record</title>
+
+    </head>
+    <body>
+      <% include ./resources/navHeader.ejs %>
+        <form action="http://localhost:3003/select_patient" method="post">
+
+          <% doctors.forEach(function (ans) { %>
+              <input type="radio"  name="doctors" id="doctors" value= <%=ans.doctorId%>> <%=ans.name%></br>
+          <% }); %>
+
+        <br>
+            <button type="submit">Submit</button>
+        </form>
+        <br/>
+    <script>
+
+    </script>
+
+    </body>
+</html>
