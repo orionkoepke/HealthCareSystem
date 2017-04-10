@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-
-        <link href="/public/styles.css" rel="stylesheet" type="text/css">
+        <% include ./resources/Head.ejs %>
 
         <title>Main Page</title>
 
     </head>
     <body>
-        
+
         <% include ./resources/navHeader.ejs %>
 
         <div>
             <h3>Welcome to the Main Page.</h3>
+        </div>
+
+        <div>
+          <a href="http://localhost:3003/dailyreports/date">
+            <button type="button">View Daily Report</button>
+          </a>
         </div>
 
     </body>

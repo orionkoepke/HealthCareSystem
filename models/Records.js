@@ -56,7 +56,7 @@ var ATRecordSchema = new Schema({
     payOnline: {
         type: Boolean,
         default: false
-    }   
+    }
 });
 
 var ATRecords = mongoose.model('atrecords',ATRecordSchema);

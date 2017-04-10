@@ -18,7 +18,6 @@ mongoose.Promise = global.Promise;
 
 
 
-
 const app = express();
 var port = 3003;
 
@@ -39,11 +38,12 @@ app.use(session({secret:"lwqfhaodhgkskj173iegkj_",resave:false, saveUninitialize
 
 var loginAccess = require('./routes/LoginAccess.js');
 
+var viewDReports = require('./routes/ViewDailyReports.js');
 
 
 
-
-app.use('/users',loginAccess);
+app.use('/users', loginAccess);
+app.use('/dailyreports', viewDReports);
 
 // call scheduled task functions here
 
@@ -57,4 +57,3 @@ app.use('/users',loginAccess);
 app.listen(port,function(req,res){
     console.log("Listening on localhost:" + port);
 });
-
