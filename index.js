@@ -12,12 +12,6 @@ mongoose.connection.once('open',function(){
 	});
 mongoose.Promise = global.Promise;
 
-
-
-
-
-
-
 const app = express();
 var port = 3003;
 
@@ -36,14 +30,27 @@ app.use(session({secret:"lwqfhaodhgkskj173iegkj_",resave:false, saveUninitialize
 
 // initialize routes here
 
+var loginAccess = require('./routes/LoginAccess');
+var viewPatientRecord = require('./routes/ViewPatientRecord');
+var selectPatient = require('./routes/SelectPatient');
+var selectDoctor = require('./routes/SelectDoctor');
+var selectAppointmentTreatmentRecord = require('./routes/SelectAppointmentTreatmentRecord');
+var unclearedAppointments = require('./routes/UnclearedAppointments');
+var viewAppointmentTreatmentRecord = require('./routes/ViewAppointmentTreatmentRecord');
+var viewSchedule = require('./routes/ViewSchedule');
 var loginAccess = require('./routes/LoginAccess.js');
-
 var viewDReports = require('./routes/ViewDailyReports.js');
-
 var viewMReports = require('./routes/ViewMonthlyReports.js');
 
 
-
+app.use('/users',loginAccess);
+app.use('/view_patient_record', viewPatientRecord);
+app.use('/select_patient', selectPatient);
+app.use('/select_doctor', selectDoctor);
+app.use('/select_appointment_treatment_record', selectAppointmentTreatmentRecord);
+app.use('/uncleared_appointments', unclearedAppointments);
+app.use('/view_appointment_treatment_record', viewAppointmentTreatmentRecord);
+app.use('/view_schedule', viewSchedule);
 app.use('/users', loginAccess);
 app.use('/dailyreports', viewDReports);
 app.use('/monthlyreports', viewMReports);

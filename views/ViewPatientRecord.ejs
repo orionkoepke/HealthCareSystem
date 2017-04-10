@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <link href="../public/styles.css" rel="stylesheet" type="text/css">
+
+        <title>View Patient Record</title>
+
+    </head>
+    <body>
+      <% include ./resources/navHeader.ejs %>
+        <form action="http://localhost:3003/view_patient_record" method="post">
+            First Name: <input type="text" name="firstName" required/><br>
+            Last Name: <input type="text" name="lastName" required/><br>
+            Address: <input type="text" name="address"/><br>
+            Phone: <input type="text" name="phone"/><br>
+            Email: <input type="email" name="email"/><br>
+            SSN: <input type="text" name="SSN" required/><br>
+            Insurance: <input type="text" name="insurance"/><br>
+            On File Payment Info: <input type="text" name="onFilePaymentInfo"/><br>
+            Doctor: <input type="text" name="doctor" required/><br>
+            Medical Notes: <input type="text" name="medicalNotes"/><br>
+
+        <br>
+            <button type="button">Submit</button>
+        </form>
+        <br/>
+    <script>
+
+    </script>
+
+    </body>
+</html>
