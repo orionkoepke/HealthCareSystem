@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 var router = express.Router();
-var Report = require('../models/DailyReports.js');
+var Report = require('../models/MonthlyReports.js');
 
-/*http://localhost:3003/dailyreports/date*/
+/*http://localhost:3003/monthlyreports/date*/
 router.get('/date',function(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
@@ -12,7 +12,7 @@ router.get('/date',function(req, res){
     return res.render('MainPage');
   }*/
   else{
-    return res.render('ViewDailyReports_PickDate');
+    return res.render('ViewMonthlyReports_PickDate');
   }
 });
 
