@@ -40,10 +40,13 @@ var loginAccess = require('./routes/LoginAccess.js');
 
 var viewDReports = require('./routes/ViewDailyReports.js');
 
+var viewMReports = require('./routes/ViewMonthlyReports.js');
+
 
 
 app.use('/users', loginAccess);
 app.use('/dailyreports', viewDReports);
+app.use('/monthlyreports', viewMReports);
 
 // call scheduled task functions here
 
