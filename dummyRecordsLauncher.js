@@ -13,7 +13,6 @@ var User = require('./models/Users.js');
 var Patient = require('./models/Patients.js');
 var ATRecord = require('./models/Records.js');
 
-/*
 
 var dummyPatients = [
     {
@@ -39,7 +38,7 @@ var dummyPatients = [
     "address" : "4719 101st St. Milwaukee, MN 88448",
     "lastname" : "Smith",
     "firstname" : "Joe"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "GelfondM",
@@ -51,7 +50,7 @@ var dummyPatients = [
     "address" : "",
     "lastname" : "Jones",
     "firstname" : "Mike"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "ShinM",
@@ -63,7 +62,7 @@ var dummyPatients = [
     "address" : "",
     "lastname" : "Rogers",
     "firstname" : "Jessica"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "MengelS",
@@ -75,7 +74,7 @@ var dummyPatients = [
     "address" : "",
     "lastname" : "Milosevich",
     "firstname" : "Kary"
-}   
+}
 ];
 
 dummyPatients.forEach(function(patientRec){
@@ -93,7 +92,6 @@ dummyPatients.forEach(function(patientRec){
     newPatient.save();
 });
 
-*/
 
 
 
@@ -108,7 +106,7 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 80,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "WatsonR",
     "PatientSSN" : "987678234",
     "date" : new Date(Year,Month,Day,9,0,0,0),
@@ -121,7 +119,7 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 90,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "LopezN",
     "PatientSSN" : "987678235",
     "date" : new Date(Year,Month,Day,10,0,0,0),
@@ -134,33 +132,33 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 110,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "GelfondM",
     "PatientSSN" : "987678236",
     "date" : new Date(Year,Month,Day,11,0,0,0),
     "lastname" : "Jones",
     "firstname" : "Mike",
     "payOnline" : false
-},  
+},
     {
     "status" : "Scheduled",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 120,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "ShinM",
     "PatientSSN" : "987678237",
     "date" : new Date(Year,Month,Day,12,0,0,0),
     "lastname" : "Rogers",
     "firstname" : "Jessica",
     "payOnline" : false
-},  
+},
    {
     "status" : "Scheduled",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 130,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "ShinM",
     "PatientSSN" : "987678238",
     "date" : new Date(Year,Month,Day,13,0,0,0),
@@ -169,7 +167,7 @@ var dummyRecords = [
     "payOnline" : false
 }
 ];
-
+/*
 dummyRecords.forEach(function(eachRecord){
     var newRecord = new ATRecord();
     newRecord.payOnline = eachRecord.payOnline;
@@ -185,13 +183,13 @@ dummyRecords.forEach(function(eachRecord){
     newRecord.status = eachRecord.status;
     newRecord.save();
 });
+*/
 
 
 
 
 
 
- 
 
 
 
