@@ -61,9 +61,9 @@ var ClearAppointmentsDaily = require('./schedules/ClearAppointmentsDaily');
 var MakeDailyReport = require('./schedules/MakeDailyReport');
 var MakeMonthlyReport = require('./schedules/MakeMonthlyReport');
 
-ClearAppointmentsDaily(9,18);
-//MakeDailyReport(21,18);
-//MakeMonthlyReport(true,10,21,18);
+//ClearAppointmentsDaily(14,15);
+//MakeDailyReport(16,31);
+MakeMonthlyReport(true,11,16,51);
 
 
 app.listen(port,function(req,res){

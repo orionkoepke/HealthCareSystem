@@ -15,7 +15,6 @@ module.exports = function(hour, minute){
     var Year = today.getFullYear();
     var Month = today.getMonth();
     var Day = today.getDate();
-    var Hour = today.getHours();
     
     var j = schedule.scheduleJob(rule,function(){
         console.log("ClearAppointmentsDaily firing...");
@@ -25,19 +24,15 @@ module.exports = function(hour, minute){
                     console.log("Run No Show Charge...");
                     ChargeNoShow(eachRecord);
                 }else if(eachRecord.status === "InProgress" && eachRecord.payOnline === true){
-                    /*console.log(eachRecord);
-                    console.log("Send PayOnline Charge Email...");*/
-                }else if(eachRecord.status === "InProgress" && eachRecord.payOnline === false){
-                    /*console.log(eachRecord);
-                    console.log("Do nothing for this record...");*/
-                }else if(eachRecord.status === "Finalized"){
-                    /*console.log(eachRecord);
-                     console.log("Finalized: do nothing...");*/
+                    console.log("Send PayOnline Charge Email...");
+                    SendPayOnlineEmail(eachRecord);                
                 }else {
                     /*console.log(eachRecord);
                     console.log("Do nothing...");*/
                 }
             });
+        }).catch(function(e){
+            console.log("Caught a promise: " + e);
         });
     });
 };
