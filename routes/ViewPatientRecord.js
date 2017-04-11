@@ -9,7 +9,6 @@ router.get('/',function(req,res){
 
 router.post('/', function(req, res){
   Patient.find({SSN: req.body.ssn}).then(function(ans){
-    console.log(ans);
     return res.render('SelectAppointmentTreatmentRecord', { patient: ans });
   });
 });
