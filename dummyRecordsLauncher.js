@@ -13,7 +13,7 @@ var User = require('./models/Users.js');
 var Patient = require('./models/Patients.js');
 var ATRecord = require('./models/Records.js');
 
-/*
+
 
 var dummyPatients = [
     {
@@ -77,7 +77,7 @@ var dummyPatients = [
     "firstname" : "Kary"
 }   
 ];
-
+/*
 dummyPatients.forEach(function(patientRec){
     var newPatient = new Patient();
     newPatient.firstname = patientRec.firstname;
@@ -100,7 +100,8 @@ dummyPatients.forEach(function(patientRec){
 var CurrentDate = new Date();
 var Year = CurrentDate.getFullYear();
 var Month = CurrentDate.getMonth();
-var Day = CurrentDate.getDay();
+var Day = CurrentDate.getDate();
+
 
 var dummyRecords = [
     {
