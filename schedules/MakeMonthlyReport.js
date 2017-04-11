@@ -64,7 +64,8 @@ module.exports = function(testing, date, hour, minute){
         console.log("MakeMonthlyReport firing...");
         
         DailyReport.find({}).then(function(reportList){
-            console.log(reportList);            
+            console.log(reportList);
+            /* Stopped here.  The reports have been extracted from the database. */
         }).catch(function(e){
             console.log("Couldn't get the list of reports.");
             console.log(e);
