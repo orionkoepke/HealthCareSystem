@@ -57,11 +57,13 @@ app.use('/monthlyreports', viewMReports);
 
 // call scheduled task functions here
 
+var ClearAppointmentsDaily = require('./schedules/ClearAppointmentsDaily');
+var MakeDailyReport = require('./schedules/MakeDailyReport');
+var MakeMonthlyReport = require('./schedules/MakeMonthlyReport');
 
-
-
-
-
+//ClearAppointmentsDaily(14,15);
+//MakeDailyReport(16,31);
+MakeMonthlyReport(true,11,16,51);
 
 
 app.listen(port,function(req,res){

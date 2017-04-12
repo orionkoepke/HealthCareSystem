@@ -21,8 +21,7 @@ var patientSchema = new Schema({
     },
     SSN: {
       type: String,
-      required: true,
-      unique: true
+      required: true
     },
     insurance: {
       type: String  
@@ -40,5 +39,8 @@ var patientSchema = new Schema({
 });
 
 const Patients = mongoose.model('patients',patientSchema);
+Patients.collection.dropIndexes(function (err, results) {
+    // Handle errors
+});
 
 module.exports = Patients;

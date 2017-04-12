@@ -13,7 +13,7 @@ var User = require('./models/Users.js');
 var Patient = require('./models/Patients.js');
 var ATRecord = require('./models/Records.js');
 
-/*
+
 
 var dummyPatients = [
     {
@@ -22,7 +22,7 @@ var dummyPatients = [
     "onFilePaymentInfo" : "8900988900",
     "insurance" : "Borden Insurance",
     "SSN" : "987678234",
-    "email" : "Bcrocker@gmail.com",
+    "email" : "seprojectreceiver@gmail.com",
     "phone" : "5671239543",
     "address" : "4719 101st St. Milwaukee, MN 88448",
     "lastname" : "Crocker",
@@ -34,7 +34,7 @@ var dummyPatients = [
     "onFilePaymentInfo" : "8900988900",
     "insurance" : "Borden Insurance",
     "SSN" : "987678235",
-    "email" : "Bcrocker@gmail.com",
+    "email" : "seprojectreceiver@gmail.com",
     "phone" : "5671239543",
     "address" : "4719 101st St. Milwaukee, MN 88448",
     "lastname" : "Smith",
@@ -46,7 +46,7 @@ var dummyPatients = [
     "onFilePaymentInfo" : "8900988900",
     "insurance" : "Borden Insurance",
     "SSN" : "987678236",
-    "email" : "Bcrocker@gmail.com",
+    "email" : "seprojectreceiver@gmail.com",
     "phone" : "",
     "address" : "",
     "lastname" : "Jones",
@@ -58,7 +58,7 @@ var dummyPatients = [
     "onFilePaymentInfo" : "8900988900",
     "insurance" : "Borden Insurance",
     "SSN" : "987678237",
-    "email" : "Bcrocker@gmail.com",
+    "email" : "seprojectreceiver@gmail.com",
     "phone" : "",
     "address" : "",
     "lastname" : "Rogers",
@@ -70,14 +70,13 @@ var dummyPatients = [
     "onFilePaymentInfo" : "8900988900",
     "insurance" : "Borden Insurance",
     "SSN" : "987678238",
-    "email" : "Bcrocker@gmail.com",
+    "email" : "seprojectreceiver@gmail.com",
     "phone" : "",
     "address" : "",
     "lastname" : "Milosevich",
     "firstname" : "Kary"
 }   
 ];
-
 dummyPatients.forEach(function(patientRec){
     var newPatient = new Patient();
     newPatient.firstname = patientRec.firstname;
@@ -93,14 +92,14 @@ dummyPatients.forEach(function(patientRec){
     newPatient.save();
 });
 
-*/
 
 
 
 var CurrentDate = new Date();
 var Year = CurrentDate.getFullYear();
 var Month = CurrentDate.getMonth();
-var Day = CurrentDate.getDay();
+var Day = CurrentDate.getDate();
+
 
 var dummyRecords = [
     {
@@ -117,7 +116,7 @@ var dummyRecords = [
     "payOnline" : false
 }
    ,{
-    "status" : "Scheduled",
+    "status" : "Finalized",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 90,
@@ -130,7 +129,7 @@ var dummyRecords = [
     "payOnline" : false
 },
   {
-    "status" : "Scheduled",
+    "status" : "InProgress",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 110,
@@ -140,10 +139,10 @@ var dummyRecords = [
     "date" : new Date(Year,Month,Day,11,0,0,0),
     "lastname" : "Jones",
     "firstname" : "Mike",
-    "payOnline" : false
+    "payOnline" : true
 },  
     {
-    "status" : "Scheduled",
+    "status" : "InProgress",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 120,
@@ -156,7 +155,7 @@ var dummyRecords = [
     "payOnline" : false
 },  
    {
-    "status" : "Scheduled",
+    "status" : "NoShow",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 130,
