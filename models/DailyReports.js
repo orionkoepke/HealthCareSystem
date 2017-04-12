@@ -2,22 +2,18 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var DReportSchema = new Schema({
-  doctor:{
-      type: String,
-      required: true
+  dailyTotal: {
+    type: Number,
+      default: 0
   },
-  /*Count the number of patient records for that day0
-  Not Fully Finished*/
-  patients:{
-      type: Number,
-      required: true
-  },
-
-  income:{
-      type: Number,
-      required: true
-  }
-
+    dateOfReport: {
+        type: Date
+    },
+    doctorStats: [{
+        doctorName: String,
+        numPatientsToday: Number,
+        totalIncome: Number
+    }]
 });
 
 var DReport = mongoose.model('dreport', DReportSchema);
