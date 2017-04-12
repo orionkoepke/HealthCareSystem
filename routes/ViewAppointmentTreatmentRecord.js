@@ -7,4 +7,10 @@ router.get('/',function(req,res){
   return res.render('SelectPatient');
 });
 
+router.post('/', function(req, res){
+  Records.find({PatientSSN: req.body.records.SSN, date: rew.body.records.date}).then(function(ans){
+    return res.render('ViewAppointmentTreatmentRecord', { record: ans });
+  });
+});
+
 module.exports = router;
