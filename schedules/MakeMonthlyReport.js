@@ -63,9 +63,28 @@ module.exports = function(testing, date, hour, minute){
     var j = schedule.scheduleJob(rule,function(){
         console.log("MakeMonthlyReport firing...");
         
-        DailyReport.find({}).then(function(reportList){
+        DailyReport.find({ dateOfReport: { $gte: new Date(Year,Month) }}).then(function(reportList){
             console.log(reportList);
-            /* Stopped here.  The reports have been extracted from the database. */
+            console.log(new Date(Year,Month));
+            
+            if(reportList.length === 0){
+                console.log("There were no daily reports to collate.");
+            }else {
+                console.log("There were daily reports to collate");
+                
+                var newMRep = new MonthlyReport();
+                
+                
+                
+                
+            }
+            
+            
+            
+            
+            
+            
+            
         }).catch(function(e){
             console.log("Couldn't get the list of reports.");
             console.log(e);
