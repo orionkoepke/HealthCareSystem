@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 var router = express.Router();
-var User = require('../models/Users.js');
+var Records = require('../models/Records.js');
 
 router.get('/',function(req,res){
-  return res.render('SelectPatient');
+  return res.render('ViewAppointmentTreatmentRecords');
 });
 
 router.post('/', function(req, res){
