@@ -16,7 +16,6 @@ router.post('/', function(req, res){
       patient.SSN = ans[i].SSN;
       patients[i] = patient;
     }
-    console.log(patients)
     return res.render('SelectPatient', { patients: patients });
   });
 });

@@ -8,8 +8,9 @@ router.get('/',function(req,res){
 });
 
 router.post('/', function(req, res){
-  Patient.find({SSN: req.body.ssn}).then(function(ans){
-    return res.render('ViewPatientRecord', { patient: ans });
+  Patient.find({SSN: req.body.patients}).then(function(ans){
+    console.log(ans)
+    return res.render('ViewPatientRecord', { patient: ans[0] });
   });
 });
 
