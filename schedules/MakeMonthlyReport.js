@@ -68,7 +68,6 @@ module.exports = function(testing, date, hour, minute){
         console.log("MakeMonthlyReport firing...");
         
         DailyReport.find({ dateOfReport: { $gte: new Date(Year,Month,0,0,0,0,0) }}).then(function(reportList){
-            console.log(reportList);
             
             if(reportList.length === 0){
                 console.log("There were no daily reports to collate.");
@@ -79,25 +78,23 @@ module.exports = function(testing, date, hour, minute){
                 newMRep.dateOfReport = new Date(Year,Month,Day,Hour-5,0,0,0);
                 
                 reportList[0].doctorStats.forEach(function(eachDoctor){
-                    newMRep.doctorStats.push({doctor: eachDoctor.doctorName});
+                    newMRep.doctorStats.push({ doctorName: eachDoctor.doctorName, numPatientsThisMonth: 0, totalIncome: 0 });
                 });
-                
                 
                 
                 reportList.forEach(function(eachReport){
-                    
+                    eachReport.doctorStats.forEach(function(eachDoctor){
+                        newMRep.doctorStats.forEach(function(eachDoctorInReport){
+                            if(eachDoctorInReport.doctorName === eachDoctor.doctorName){
+                                eachDoctorInReport.numPatientsThisMonth += eachDoctor.numPatientsToday;
+                                eachDoctorInReport.totalIncome += eachDoctor.totalIncome;
+                                newMRep.monthlyTotal += eachDoctor.totalIncome;
+                            }
+                        });
+                    });
                 });
-                
-                
-                
+                newMRep.save();
             }
-            
-            
-            
-            
-            
-            
-            
         }).catch(function(e){
             console.log("Couldn't get the list of reports.");
             console.log(e);
