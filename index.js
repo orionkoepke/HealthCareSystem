@@ -51,7 +51,6 @@ app.use('/select_appointment_treatment_record', selectAppointmentTreatmentRecord
 app.use('/uncleared_appointments', unclearedAppointments);
 app.use('/view_appointment_treatment_record', viewAppointmentTreatmentRecord);
 app.use('/view_schedule', viewSchedule);
-app.use('/users', loginAccess);
 app.use('/dailyreports', viewDReports);
 app.use('/monthlyreports', viewMReports);
 

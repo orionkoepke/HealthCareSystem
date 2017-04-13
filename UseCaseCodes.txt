@@ -1,0 +1,12 @@
+Make Appointment = MA
+Change Appointment = CA
+Cancel Appointment = XA
+Create New Patient Record = CNPR
+Clear Appointments = ClrA
+Process Payment = PP
+View Daily Reports = VDR
+View Monthly Reports = VMR
+View Patient Treatment Record = VPTR
+Update Patient Treatment Record = UPTR
+View Patient Information = VPI
+Update Patient Information = UPI
