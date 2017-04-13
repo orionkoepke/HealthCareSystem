@@ -3,6 +3,8 @@ module.exports = function(testing, date, hour, minute){
   var schedule = require('node-schedule');
     var DailyReport = require('../models/DailyReports');    
     var MonthlyReport = require('../models/MonthlyReports');
+    const moment = require('moment');
+    moment().format();
     
     var rule = new schedule.RecurrenceRule();
     var currentDate = new Date();
@@ -54,18 +56,19 @@ module.exports = function(testing, date, hour, minute){
     rule.hour = hour;
     rule.minute = minute;
     
-    var today = new Date();
-    var Year = today.getFullYear();
-    var Month = today.getMonth();
-    var Day = today.getDate();
-    var Hour = today.getHours();
+    var Year = moment().year();
+    var Month = moment().month();
+    var Day = moment().date();
+    var Hour = moment().hour();
+    var Minutes = moment().minute();
+    var Seconds = moment().second();
+    var Milliseconds = moment().millisecond();
     
     var j = schedule.scheduleJob(rule,function(){
         console.log("MakeMonthlyReport firing...");
         
-        DailyReport.find({ dateOfReport: { $gte: new Date(Year,Month) }}).then(function(reportList){
+        DailyReport.find({ dateOfReport: { $gte: new Date(Year,Month,0,0,0,0,0) }}).then(function(reportList){
             console.log(reportList);
-            console.log(new Date(Year,Month));
             
             if(reportList.length === 0){
                 console.log("There were no daily reports to collate.");
@@ -73,7 +76,17 @@ module.exports = function(testing, date, hour, minute){
                 console.log("There were daily reports to collate");
                 
                 var newMRep = new MonthlyReport();
+                newMRep.dateOfReport = new Date(Year,Month,Day,Hour-5,0,0,0);
                 
+                reportList[0].doctorStats.forEach(function(eachDoctor){
+                    newMRep.doctorStats.push({doctor: eachDoctor.doctorName});
+                });
+                
+                
+                
+                reportList.forEach(function(eachReport){
+                    
+                });
                 
                 
                 
