@@ -23,6 +23,12 @@
             <button type="button">View Monthly Report</button>
           </a>
         </div>
-
+        
+        <% if(typeof permissionError === 'undefined'){ %>
+            <p id="PermissionErrorBoard"></p> 
+        <% }else { %>
+            <p id="PermissionErrorBoard"> <%=permissionError%> </p> 
+        <% } %>
+            
     </body>
 </html>
