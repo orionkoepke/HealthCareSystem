@@ -8,7 +8,9 @@ router.get('/',function(req,res){
 });
 
 router.post('/', function(req, res){
+  console.log("SelectPatient.js post /");
   Patient.find({doctor: req.body.doctors}).then(function(ans){
+    console.log("\tans :: " + ans);
     var patients = [];
     for(var i = 0; i < ans.length; i++){
       var patient = {name: "", ssn: ""};
@@ -16,6 +18,7 @@ router.post('/', function(req, res){
       patient.SSN = ans[i].SSN;
       patients[i] = patient;
     }
+    console.log("\tpatients :: " + patients);
     return res.render('SelectPatient', { patients: patients });
   });
 });

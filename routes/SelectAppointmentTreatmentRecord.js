@@ -8,6 +8,7 @@ router.get('/',function(req,res){
 });
 
 router.post('/', function(req, res){
+  console.log("SelectAppointmentTreatmentRecord.js post /");
   Records.find({PatientSSN: req.body.patients}).then(function(ans){
     var records = [];
     for(var i = 0; i < ans.length; i++){
@@ -16,6 +17,7 @@ router.post('/', function(req, res){
       record.SSN = ans[i].PatientSSN;
       records[i] = record;
     }
+    console.log("\trecords :: " + records);
     return res.render('SelectAppointmentTreatmentRecord', { records: records });
   });
 });
