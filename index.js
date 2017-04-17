@@ -38,10 +38,9 @@ var selectAppointmentTreatmentRecord = require('./routes/SelectAppointmentTreatm
 var unclearedAppointments = require('./routes/UnclearedAppointments');
 var viewAppointmentTreatmentRecord = require('./routes/ViewAppointmentTreatmentRecord');
 var viewSchedule = require('./routes/ViewSchedule');
-var loginAccess = require('./routes/LoginAccess.js');
 var viewDReports = require('./routes/ViewDailyReports.js');
 var viewMReports = require('./routes/ViewMonthlyReports.js');
-
+var payOn = require('./routes/PayOnline.js');
 
 app.use('/users',loginAccess);
 app.use('/view_patient_record', viewPatientRecord);
@@ -53,12 +52,14 @@ app.use('/view_appointment_treatment_record', viewAppointmentTreatmentRecord);
 app.use('/view_schedule', viewSchedule);
 app.use('/dailyreports', viewDReports);
 app.use('/monthlyreports', viewMReports);
+app.use('/payMyBill', payOn);
 
 // call scheduled task functions here
 
 var ClearAppointmentsDaily = require('./schedules/ClearAppointmentsDaily');
 var MakeDailyReport = require('./schedules/MakeDailyReport');
 var MakeMonthlyReport = require('./schedules/MakeMonthlyReport');
+
 
 //ClearAppointmentsDaily(15,3);
 //MakeDailyReport(19,32);
