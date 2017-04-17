@@ -12,7 +12,7 @@ var MReportSchema = new Schema({
     },
     doctorStats: [{
         doctorName: String,
-        numPatientsToday: Number,
+        numPatientsThisMonth: Number,
         totalIncome: Number
     }]
 });

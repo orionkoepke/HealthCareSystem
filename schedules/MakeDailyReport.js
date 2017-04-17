@@ -4,17 +4,21 @@ module.exports = function(hour, minute){
     var Records = require('../models/Records');
     var Users = require('../models/Users');
     var DailyReport = require('../models/DailyReports');
+    const moment = require('moment');
+    moment().format();
     
     var rule = new schedule.RecurrenceRule();
     rule.dayOfWeek = [new schedule.Range(1,5)];
     rule.hour = hour;
     rule.minute = minute;
     
-    var today = new Date();
-    var Year = today.getFullYear();
-    var Month = today.getMonth();
-    var Day = today.getDate();
-    var Hour = today.getHours();
+    var Year = moment().year();
+    var Month = moment().month();
+    var Day = moment().date();
+    var Hour = moment().hour();
+    var Minutes = moment().minute();
+    var Seconds = moment().second();
+    var Milliseconds = moment().millisecond();
     
     var listOfDoctors = [];        
     
@@ -30,7 +34,7 @@ module.exports = function(hour, minute){
             // Get today's list of records
             Records.find({date: { $gte: new Date(Year,Month,Day,0,0,0,0)}},function(err,recordsList){
                 var newDRep = new DailyReport();
-                newDRep.dateOfReport = new Date(Year,Month,Day,Hour,0,0,0);
+                newDRep.dateOfReport = new Date(Year,Month,Day,Hour-5,0,0,0);
                 // Initialize each entry under doctorStats
                 listOfDoctors.forEach(function(eachDoctor){
                     newDRep.doctorStats.push({ doctorName: eachDoctor, numPatientsToday: 0, totalIncome: 0 });

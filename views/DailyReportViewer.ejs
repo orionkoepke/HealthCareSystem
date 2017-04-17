@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ./resources/Head.ejs %>
+
+        <title>Daily Report Viewer</title>
+
+    </head>
+    <body>
+
+        <% include ./resources/navHeader.ejs %>
+
+        <div>
+            <h3>Welcome to the Daily Report Viewer Page.</h3>
+        </div>
+
+        <div>
+          <form action="http://localhost:3003/dailyreports/getReport" method="post">
+              Record Date: <input type="date" name="rdate" required>
+              <input type="submit">
+            </form>         
+        </div>
+        
+        <div id="ReportDisplay">
+        
+            <% if(Report === null){ %>
+                <p>No report exists for the date you entered.</p>
+            <%}else {%>
+                <p>The report you requested was located.</p>                
+                <p>Total Daily Income: <%=Report.dailyTotal%> </p>
+                <p>Date of Report: <%=ReportDate%></p>
+                <br/>
+            
+                <% Report.doctorStats.forEach(function(eachDoctor){%>
+                    <p>Doctor Name: <%=eachDoctor.doctorName%> </p>
+                    <p>Number of Patients Seen Today: <%=eachDoctor.numPatientsToday%> </p>
+                    <p>Total Income Today: <%=eachDoctor.totalIncome%></p>
+                    <br/>
+                <%});%>
+            <%} %>
+        
+        </div>
+        
+    </body>
+</html>
