@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>HealthCare Online Payment</title>
-
+        <title>Process Payment</title>
     </head>
     <body>
         <% if (onlineError === 'You have already paid your bill.'){ %>
           <p><%= onlineError %></p>
         <% } else{ %>
 
-        <%= onlineError %>
+        <% include ./resources/navHeader.ejs %>
         <div>
             <h3>Treatment Information</h3>
         </div>
 
-            Client Name: <%= firstname %> <%= lastname %>
+            Patient Name: <%= firstname %> <%= lastname %>
             <br>
-            Date of Treatment: <%= date %>
+            Appointment Date: <%= date %>
             <br>
             Bill Amount Due: <%= billingAmount %>
             <br>
+
         <div>
             <h3>Payment Information</h3>
         </div>
 
-        <form action = "http://localhost:3003/payMyBill/Query" method="post">
+        <form action = "http://localhost:3003/users/pay_receipt" method="post">
             Cardholders Name:<input type ="text" name="cardHolder" required><br>
             Credit Card Number:<input type ="text" name= "cardNumber" required><br>
             CVN:<input type="text" name= "cardSecurityCode" required><br>
             <input type="hidden" value="<%= _id %>" name= "ObjectId">
             <input type="submit" value="Finish Payment">
         </form>
+
         <% } %>
     </body>
 </html>
