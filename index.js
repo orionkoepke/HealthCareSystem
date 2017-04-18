@@ -41,6 +41,8 @@ var viewSchedule = require('./routes/ViewSchedule');
 var viewDReports = require('./routes/ViewDailyReports.js');
 var viewMReports = require('./routes/ViewMonthlyReports.js');
 var payOn = require('./routes/PayOnline.js');
+var ProcessPayment = require('./routes/ProcessPayment');
+                             
 
 app.use('/users',loginAccess);
 app.use('/view_patient_record', viewPatientRecord);
@@ -53,6 +55,7 @@ app.use('/view_schedule', viewSchedule);
 app.use('/dailyreports', viewDReports);
 app.use('/monthlyreports', viewMReports);
 app.use('/payMyBill', payOn);
+app.use('/pay',ProcessPayment);
 
 // call scheduled task functions here
 
