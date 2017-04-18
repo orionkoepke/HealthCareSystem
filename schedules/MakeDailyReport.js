@@ -35,6 +35,7 @@ module.exports = function(hour, minute){
             Records.find({date: { $gte: new Date(Year,Month,Day,0,0,0,0)}},function(err,recordsList){
                 var newDRep = new DailyReport();
                 newDRep.dateOfReport = new Date(Year,Month,Day,Hour-5,0,0,0);
+                newDRep.totalPatientsToday = 0;
                 // Initialize each entry under doctorStats
                 listOfDoctors.forEach(function(eachDoctor){
                     newDRep.doctorStats.push({ doctorName: eachDoctor, numPatientsToday: 0, totalIncome: 0 });
@@ -48,6 +49,7 @@ module.exports = function(hour, minute){
                         }
                     });
                     newDRep.dailyTotal = newDRep.dailyTotal + eachRecord.billingAmount;
+                    newDRep.totalPatientsToday = newDRep.totalPatientsToday + 1;
                 });
                 newDRep.save();
                 console.log(newDRep);

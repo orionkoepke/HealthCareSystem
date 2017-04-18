@@ -38,7 +38,6 @@ router.post('/getReport',function(req,res){
             return res.status(200).render('DailyReportViewer',{Report: DReport, ReportDate: null });
         }else {
             var dateOfReport = moment(DReport.dateOfReport.toISOString()).format('ddd, MMMM, Do, YYYY');
-            console.log(dateOfReport);        
             return res.status(200).render('DailyReportViewer',{Report: DReport, ReportDate: dateOfReport });
         }
         

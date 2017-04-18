@@ -324,6 +324,7 @@ var dummyReports = [
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,3,15,0,0,0),
+    totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
         numPatientsToday: 0,
@@ -350,6 +351,7 @@ var dummyReports = [
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,4,15,0,0,0),
+    totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
         numPatientsToday: 0,
@@ -376,6 +378,7 @@ var dummyReports = [
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,5,15,0,0,0),
+    totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
         numPatientsToday: 0,
@@ -402,6 +405,7 @@ var dummyReports = [
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,6,15,0,0,0),
+    totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
         numPatientsToday: 0,
@@ -428,6 +432,7 @@ var dummyReports = [
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,7,15,0,0,0),
+    totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
         numPatientsToday: 0,
@@ -450,7 +455,7 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-}    
+}  
 ];
 
 dummyReports.forEach(function(eachReport){
@@ -458,11 +463,13 @@ dummyReports.forEach(function(eachReport){
     newDReport.dateOfReport = eachReport.dateOfReport;
     newDReport.doctorStats = [];
     newDReport.dailyTotal = 0;
+    newDReport.totalPatientsToday = 0;
     eachReport.doctorStats.forEach(function(eachDoctorStat){
         eachDoctorStat.numPatientsToday = Math.round(Math.random()*16);
         eachDoctorStat.totalIncome = Math.round(Math.random()*2000);
         newDReport.doctorStats.push(eachDoctorStat);
         newDReport.dailyTotal += eachDoctorStat.totalIncome;
+        newDReport.totalPatientsToday += eachDoctorStat.numPatientsToday;
     });
     newDReport.save();
 });
@@ -471,7 +478,8 @@ dummyReports.forEach(function(eachReport){
 var dummyMReports = [
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-3,31,0,0,0,0),
+    dateOfReport: new Date(Year,Month-1,31,0,0,0,0),
+    totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
         numPatientsThisMonth: 0,
@@ -498,6 +506,7 @@ var dummyMReports = [
     {
   monthlyTotal: 0,
     dateOfReport: new Date(Year,Month-2,28,0,0,0,0),
+    totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
         numPatientsThisMonth: 0,
@@ -523,7 +532,8 @@ var dummyMReports = [
 },
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-1,31,0,0,0,0),
+    dateOfReport: new Date(Year,Month-3,31,0,0,0,0),
+    totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
         numPatientsThisMonth: 0,
@@ -546,7 +556,7 @@ var dummyMReports = [
         numPatientsThisMonth: 0,
         totalIncome: 0
     }]
-}    
+}   
 ];
 
 dummyMReports.forEach(function(eachReport){
@@ -554,11 +564,13 @@ dummyMReports.forEach(function(eachReport){
     newMReport.dateOfReport = eachReport.dateOfReport;
     newMReport.doctorStats = [];
     newMReport.monthlyTotal = 0;
+    newMReport.totalPatientsThisMonth = 0;
     eachReport.doctorStats.forEach(function(eachDoctorStat){
         eachDoctorStat.numPatientsThisMonth = Math.round(Math.random()*320);
         eachDoctorStat.totalIncome = Math.round(Math.random()*40000);
         newMReport.doctorStats.push(eachDoctorStat);
         newMReport.monthlyTotal += eachDoctorStat.totalIncome;
+        newMReport.totalPatientsThisMonth += eachDoctorStat.numPatientsThisMonth;
     });
     newMReport.save();
 });

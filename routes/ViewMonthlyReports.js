@@ -36,7 +36,6 @@ router.post('/getReport',function(req,res){
             return res.status(200).render('MonthlyReportViewer',{Report: MReport, ReportDate: null });
         }else {
             var dateOfReport = moment(MReport.dateOfReport.toISOString()).format(' MMMM, YYYY');
-            console.log(dateOfReport);        
             return res.status(200).render('MonthlyReportViewer',{Report: MReport, ReportDate: dateOfReport });
         }
     }).catch(function(e){

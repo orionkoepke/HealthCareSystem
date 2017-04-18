@@ -7,6 +7,10 @@ var MReportSchema = new Schema({
     type: Number,
       default: 0
   },
+    totalPatientsThisMonth: {
+        type: Number,
+        default: 0
+    },
     dateOfReport: {
         type: Date
     },

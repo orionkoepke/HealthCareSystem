@@ -76,6 +76,7 @@ module.exports = function(testing, date, hour, minute){
                 
                 var newMRep = new MonthlyReport();
                 newMRep.dateOfReport = new Date(Year,Month,Day,Hour-5,0,0,0);
+                newMRep.totalPatientsThisMonth = 0;
                 
                 reportList[0].doctorStats.forEach(function(eachDoctor){
                     newMRep.doctorStats.push({ doctorName: eachDoctor.doctorName, numPatientsThisMonth: 0, totalIncome: 0 });
@@ -89,6 +90,7 @@ module.exports = function(testing, date, hour, minute){
                                 eachDoctorInReport.numPatientsThisMonth += eachDoctor.numPatientsToday;
                                 eachDoctorInReport.totalIncome += eachDoctor.totalIncome;
                                 newMRep.monthlyTotal += eachDoctor.totalIncome;
+                                newMRep.totalPatientsThisMonth += eachDoctor.numPatientsToday;
                             }
                         });
                     });
