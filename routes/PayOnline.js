@@ -18,7 +18,7 @@ router.get("/:id", function(req,res){
                   return res.render('OnlinePayment', {
                       firstname: '',
                       lastname: '',
-                      billingAmount: '',
+                      patientCopay: '',
                       date: '',
                       _id: Oid,
                       onlineError: "Invoice information can not be accessed."
@@ -31,7 +31,7 @@ router.get("/:id", function(req,res){
                       return res.render('OnlinePayment', {
                           firstname: patientRecord.firstname,
                           lastname: patientRecord.lastname,
-                          billingAmount: 0,
+                          patientCopay: patientRecord.patientCopay,
                           date: patientRecord.date,
                           _id: Oid,
                           onlineError: "You have already paid your bill."
@@ -41,7 +41,7 @@ router.get("/:id", function(req,res){
                       return res.render('OnlinePayment', {
                           firstname: patientRecord.firstname,
                           lastname: patientRecord.lastname,
-                          billingAmount: patientRecord.billingAmount,
+                          patientCopay: patientRecord.patientCopay,
                           date: patientRecord.date,
                           _id: Oid,
                           onlineError: " "
@@ -74,7 +74,7 @@ router.post("/Query", function(req, res){
               return res.render('OnlinePayment', {
                   firstname: '',
                   lastname: '',
-                  billingAmount: '',
+                  patientCopay: '',
                   date: '',
                   _id: Oid,
                   onlineError: "Patient information can't be accessed"
@@ -93,7 +93,7 @@ router.post("/Query", function(req, res){
                   return res.render('OnlinePayment', {
                     firstname: patientRecord.firstname,
                     lastname: patientRecord.lastname,
-                    billingAmount: patientRecord.billingAmount,
+                    patientCopay: patientRecord.patientCopay,
                     date: patientRecord.date,
                     _id: Oid,
                     onlineError: "Payment not accepted. Please try again."
@@ -108,7 +108,7 @@ router.post("/Query", function(req, res){
                       return res.render('OnlinePayment_Receipt', {
                           firstname: patientRecord.firstname,
                           lastname: patientRecord.lastname,
-                          billingAmount: patientRecord.billingAmount,
+                          patientCopay: patientRecord.patientCopay,
                           timeStamp: moment().format('h:mma, ddd, MMM, Do, YYYY'),
                           creditReference: creditReference,
                           _id:Oid,

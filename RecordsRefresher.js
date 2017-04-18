@@ -20,7 +20,7 @@ var CurrentDate = moment();
 var Year = CurrentDate.year();
 var Month = CurrentDate.month();
 var Day = CurrentDate.date();
-var offset = CurrentDate.getTimezoneOffset();
+var offset = 300;
 
 // Add new patients.
 var dummyPatients = [
@@ -147,6 +147,7 @@ var dummyPatients = [
 ];
 
 
+/*
 dummyPatients.forEach(function(patientRec){
     var newPatient = new Patient();
     newPatient.firstname = patientRec.firstname;
@@ -161,6 +162,7 @@ dummyPatients.forEach(function(patientRec){
     newPatient.medicalNotes = patientRec.medicalNotes;
     newPatient.save();
 });
+*/
 
 
 // Add new ATRecords
@@ -320,6 +322,7 @@ dummyRecords.forEach(function(eachRecord){
     newRecord.save();
 });
 
+/*
 
 // Add new daily reports.  Note: There will not be corresponding atrecords for these reports.
 var dummyReports = [
@@ -576,6 +579,7 @@ dummyMReports.forEach(function(eachReport){
     });
     newMReport.save();
 });
+*/
 
 console.log("Program running...");
 mongoose.connection.close();

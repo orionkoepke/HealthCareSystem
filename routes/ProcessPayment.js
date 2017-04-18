@@ -23,12 +23,13 @@ router.post('/',function(req,res){
                 var Day = theRecord.date.getDate();
                 var Hour = theRecord.date.getHours();
                 var Minutes = theRecord.date.getMinutes();
+                var offset = theRecord.date.getTimezoneOffset();
                 
-                var returnDate = new Date(Year,Month,Day,Hour+5,Minutes,0,0);
+                var returnDate = new Date(Year,Month,Day,Hour,Minutes-offset,0,0);
                 
                 return res.status(200).render('ProcessPayment',{ firstname: theRecord.firstname, 
                                                                 lastname: theRecord.lastname,
-                                                                billingAmount: theRecord.billingAmount,
+                                                                patientCopay: theRecord.patientCopay,
                                                                 _id: theRecord._id,
                                                                 date: moment(returnDate.toISOString()).format('h:mma, ddd, MMM, Do, YYYY'),
                                                                 onlineError: ""});
@@ -49,19 +50,24 @@ router.post('/pay_attempt',function(req,res){
         var Oid = req.body.ObjectId;
         var ref = CCCInteraction({cardNumber: req.body.cardNumber,cvn: req.body.cardSecurityCode},true);
         if(ref === "0000000000"){
-            return res.render('ProcessPayment',{ firstname: req.body.firstname, 
-                                                 lastname: req.body.lastname,
-                                                 billingAmount: req.body.billingAmount,
-                                                 _id: req.body.ObjectId,
-                                                 date: req.body.date,
+            Records.findById(Oid).then(function(theRecord){                
+                return res.render('ProcessPayment',{ firstname: theRecord.firstname, 
+                                                 lastname: theRecord.lastname,
+                                                 patientCopay: theRecord.patientCopay,
+                                                 _id: theRecord._id,
+                                                 date: theRecord.date,
                                                  onlineError: "Payment rejected. Please try again."});
+            }).catch(function(e){
+                console.log("On failed payment attempt: ");
+                console.log(e);
+            });
         }else{
             
             Records.findByIdAndUpdate(Oid,{ status:"Finalized", reference: ref }).then(function(theRecord){
-                return res.status(200).render('ProcessPayment_Receipt',{ firstname: req.body.firstname, 
-                                                 lastname: req.body.lastname,
-                                                 billingAmount: req.body.billingAmount,
-                                                 _id: req.body.ObjectId,
+                return res.status(200).render('ProcessPayment_Receipt',{ firstname: theRecord.firstname, 
+                                                 lastname: theRecord.lastname,
+                                                 patientCopay: theRecord.patientCopay,
+                                                 _id: theRecord._id,
                                                  creditReference: ref,
                                                  timeStamp: moment().format('h:mma, ddd, MMM, Do, YYYY'),
                                                  staff_firstname: req.session.user.firstname,
