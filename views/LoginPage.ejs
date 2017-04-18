@@ -22,8 +22,11 @@
             <button type="submit">Login</button> 
         </form>
         <br/>
-        <p id="ErrorBoard"><%=loginerror%></p>
-        
+        <% if(typeof loginerror === 'undefined'){ %>
+            <p id="ErrorBoard"></p>
+        <% }else { %>
+            <p id="ErrorBoard"><%=loginerror%></p>
+        <% } %>
     <script>
         
     </script>
