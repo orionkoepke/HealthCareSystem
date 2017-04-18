@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const moment = require('moment');
 var router = express.Router();
 var Records = require('../models/Records.js');
-
+const creditCompany = require('../modules/CCCInteraction.js');
 
 router.get("/:id", function(req,res){
       var Oid = req.params.id
@@ -26,18 +27,29 @@ router.get("/:id", function(req,res){
               }
 
               else{
-                  return res.render('OnlinePayment', {
-                      firstname: patientRecord.firstname,
-                      lastname: patientRecord.lastname,
-                      billingAmount: patientRecord.billingAmount,
-                      date: patientRecord.date,
-                      _id: Oid,
-                      onlineError: " "
-                  });
+                  if(patientRecord.status === 'Finalized'){
+                      return res.render('OnlinePayment', {
+                          firstname: patientRecord.firstname,
+                          lastname: patientRecord.lastname,
+                          billingAmount: 0,
+                          date: patientRecord.date,
+                          _id: Oid,
+                          onlineError: "You have already paid your bill."
+                      });
+                  }
+                  else{
+                      return res.render('OnlinePayment', {
+                          firstname: patientRecord.firstname,
+                          lastname: patientRecord.lastname,
+                          billingAmount: patientRecord.billingAmount,
+                          date: patientRecord.date,
+                          _id: Oid,
+                          onlineError: " "
+                      });
 
-              }
+                  }
 
-          })
+          }})
 
         .catch(function(e){
             console.log("PayOnline Router issues: ");
@@ -52,7 +64,8 @@ router.post("/Query", function(req, res){
     var cardHolder = req.body.cardHolder;
     var cvn = req.body.cardSecurityCode;
     console.log("Oh baby!");
-    //TO DO --- Credit Card Checing by 'Credit Card Company'
+    var creditReference;
+    var timeStamp;
 
     Records.findById(Oid)
         .then(function(patientRecord){
@@ -64,8 +77,6 @@ router.post("/Query", function(req, res){
                   billingAmount: '',
                   date: '',
                   _id: Oid,
-                  //TO DO --- Time Stamp for when the receipt was processed
-                  //TO DO --- Reference number given by 'Credit Card Company'
                   onlineError: "Patient information can't be accessed"
               });
 
@@ -73,16 +84,38 @@ router.post("/Query", function(req, res){
 
           else{
 
-              return res.render('OnlinePayment_Receipt', {
-                  firstname: patientRecord.firstname,
-                  lastname: patientRecord.lastname,
-                  billingAmount: patientRecord.billingAmount,
-                  //TO DO --- Time Stamp for when the receipt was processed
-                  //TO DO --- Reference number given by 'Credit Card Company'
-                  _id:Oid,
-                  onlineError: " "
-              });
+              creditReference = creditCompany({
+                  cardNumber: cardNumber,
+                  cvn: cvn
+              }, true);
+              if(creditReference === '0000000000'){
 
+                  return res.render('OnlinePayment', {
+                    firstname: patientRecord.firstname,
+                    lastname: patientRecord.lastname,
+                    billingAmount: patientRecord.billingAmount,
+                    date: patientRecord.date,
+                    _id: Oid,
+                    onlineError: "Payment not accepted. Please try again."
+                  });
+              }
+              else{
+
+                  Records.findByIdAndUpdate(Oid, {
+                      status: 'Finalized',
+                      reference: creditReference
+                  }).then(function(patient){
+                      return res.render('OnlinePayment_Receipt', {
+                          firstname: patientRecord.firstname,
+                          lastname: patientRecord.lastname,
+                          billingAmount: patientRecord.billingAmount,
+                          timeStamp: moment().format('h:mma, ddd, MMM, Do, YYYY'),
+                          creditReference: creditReference,
+                          _id:Oid,
+                          onlineError: " "
+                      });
+                  });
+              }
           }
 
         })
