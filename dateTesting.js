@@ -24,8 +24,9 @@ var milliseconds = Now.getMilliseconds();
 var offset = Now.getTimezoneOffset();
 
 var thisMoment = new Date(year,month,day,hour,minutes-offset,seconds,milliseconds);
+var offset = new Date().getTimezoneOffset();
 
-console.log(thisMoment);
+console.log(offset);
 
 
 

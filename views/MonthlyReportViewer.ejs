@@ -21,25 +21,33 @@
             </form>       
         </div>
         
-        <div id="ReportDisplay">
         
+        <div id="ReportTable">
             <% if(Report === null){ %>
                 <p>No report exists for the date you entered.</p>
             <%}else {%>
-                <p>The report you requested was located.</p>                
-                <p>Total Monthly Income: <%=Report.monthlyTotal%> </p>
-                <p>Date of Report: <%=ReportDate%></p>
-                <p>Total Patients Seen This Month: <%=Report.totalPatientsThisMonth%></p>
-                <br/>
-            
-                <% Report.doctorStats.forEach(function(eachDoctor){%>
-                    <p>Doctor Name: <%=eachDoctor.doctorName%> </p>
-                    <p>Number of Patients Seen This Month: <%=eachDoctor.numPatientsThisMonth%> </p>
-                    <p>Total Income This Month: <%=eachDoctor.totalIncome%></p>
-                    <br/>
-                <%});%>
-            <%} %>
-        
+            <p>The report you requested was located.</p>
+            <p>Date of Report: <%=ReportDate%></p>
+            <table style="width:100%">
+              <tr>
+                <th>Doctor</th>
+                <th>Patients</th> 
+                <th>Income</th>
+              </tr>
+              <% Report.doctorStats.forEach(function(eachDoctor){ %>
+                    <tr>
+                        <td><%=eachDoctor.doctorName%></td>
+                        <td><%=eachDoctor.numPatientsThisMonth%></td> 
+                        <td><%=eachDoctor.totalIncome%></td>
+                    </tr>
+               <% }); %>
+                    <tr>
+                        <td>Totals</td>
+                        <td><%=Report.totalPatientsThisMonth%></td> 
+                        <td><%=Report.monthlyTotal%></td>
+                    </tr>
+            </table>
+            <%}%>
         </div>
         
     </body>

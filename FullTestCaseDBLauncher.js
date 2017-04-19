@@ -20,7 +20,8 @@ var CurrentDate = moment();
 var Year = CurrentDate.year();
 var Month = CurrentDate.month();
 var Day = CurrentDate.date();
-var offset = CurrentDate.getTimezoneOffset();
+var offset = new Date().getTimezoneOffset();
+
 
 // Add new patients.
 var dummyPatients = [
@@ -213,7 +214,7 @@ var dummyRecords = [
     "billingAmount" : 90,
     "reasonForVisit" : "",    
     "doctor" : "LopezN",
-    "PatientSSN" : "5671239543",
+    "PatientSSN" : "987678243",
     "date" : new Date(Year,Month,Day,11,0-offset,0,0),
     "lastname" : "de la Vega",
     "firstname" : "Maria de la Santa Cruz Rosalina Agnelia Rodriguez Cuellar Alejandra",
@@ -295,7 +296,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "MengelS",
     "PatientSSN" : "987678239",
-    "date" : new Date(Year,Month,Day,13,0-offset,0,0),
+    "date" : new Date(Year,Month,Day,13,30-offset,0,0),
     "lastname" : "Corvin",
     "firstname" : "KYle",
     "payOnline" : false
@@ -325,7 +326,7 @@ dummyRecords.forEach(function(eachRecord){
 var dummyReports = [
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,3,15,0,0,0),
+    dateOfReport: new Date(Year,Month,3,21,0-offset,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -352,7 +353,7 @@ var dummyReports = [
 },
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,4,15,0,0,0),
+    dateOfReport: new Date(Year,Month,4,21,0-offset,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -379,7 +380,7 @@ var dummyReports = [
 },
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,5,15,0,0,0),
+    dateOfReport: new Date(Year,Month,5,21,0-offset,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -406,7 +407,7 @@ var dummyReports = [
 },
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,6,15,0,0,0),
+    dateOfReport: new Date(Year,Month,6,21,0-offset,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -433,7 +434,7 @@ var dummyReports = [
 },
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,7,15,0,0,0),
+    dateOfReport: new Date(Year,Month,7,21,0-offset,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",

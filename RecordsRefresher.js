@@ -215,7 +215,7 @@ var dummyRecords = [
     "billingAmount" : 90,
     "reasonForVisit" : "",    
     "doctor" : "LopezN",
-    "PatientSSN" : "5671239543",
+    "PatientSSN" : "987678243",
     "date" : new Date(Year,Month,Day,11,0-offset,0,0),
     "lastname" : "de la Vega",
     "firstname" : "Maria de la Santa Cruz Rosalina Agnelia Rodriguez Cuellar Alejandra",
