@@ -9,20 +9,21 @@
     <body>
       <% include ./resources/navHeader.ejs %>
       <form action="http://localhost:3003/create_new_patient" method="post">
-        <input type="text" name="firstname" required/><br>
-        <input type="text" name="lastname" required/><br>
-        <input type="text" name="address"/><br>
-        <input type="text" name="phone" /><br>
-        <input type="text" name="email" /><br>
-        <input type="text" name="SSN" required/><br>
-        <input type="text" name="insurance" /><br>
-        <input type="text" name="onFilePaymentInfo" /><br>
-        <input type="text" name="doctor" required/><br>
-        <input type="text" name="medicalNotes" /><br>
+        First Name: <input type="text" name="firstname" required/><br>
+        Last Name: <input type="text" name="lastname" required/><br>
+        Address: <input type="text" name="address"/><br>
+        Phone: <input type="text" name="phone" /><br>
+        Email: <input type="text" name="email" /><br>
+        SSN: <input type="text" name="SSN" required/><br>
+        Insurance: <input type="text" name="insurance" /><br>
+        On File Payment Info: <input type="text" name="onFilePaymentInfo" /><br>
 
-        <% doctors.forEach(function (ans) { %>
-            <input type="select"  name="doctor" id="doctors" value= <%=ans.doctorId%>> <%=ans.name%></br>
+        Doctor: <% doctors.forEach(function (ans) { %>
+            <input type="radio"  name="doctor" id="doctor" value= <%=ans.doctorID%>> <%=ans.name%></br>
         <% }); %>
+
+        Medical Notes: <input type="text" name="medicalNotes" /><br>
+
 
         <button type="submit">Submit</button>
 
