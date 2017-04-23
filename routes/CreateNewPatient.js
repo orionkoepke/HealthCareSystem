@@ -9,7 +9,7 @@ router.get('/', function(req, res){
     var doctors = [];
     for(var i = 0; i < ans.length; i++)
     {
-      var name = "Dr. " + ans.lastname;
+      var name = "Dr. " + ans[i].lastname;
       var doctorID = ans.doctor;
       doctors[i] = {name: name, doctorID: doctorID};
     }
