@@ -6,6 +6,10 @@ var DReportSchema = new Schema({
     type: Number,
       default: 0
   },
+    totalPatientsToday: {
+        type: Number,
+        default: 0
+    },
     dateOfReport: {
         type: Date
     },

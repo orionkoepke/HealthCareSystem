@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>HealthCare Online Payment Receipt</title>
+
+    </head>
+    <body>
+        <div>
+            <h3>Thank you! Here is your receipt:<h3>
+        </div>
+
+        <%= timeStamp %>
+        <br>
+        Invoice Number: <%= _id %>
+        <br>
+        Reference Number: <%= creditReference %>
+        <br>
+        Client Name: <%= firstname %> <%= lastname %>
+        <br>
+        Amount Paid: <%= billingAmount %>
+        <br>
+
+
+    </body>
+</html>

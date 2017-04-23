@@ -38,10 +38,11 @@ var selectAppointmentTreatmentRecord = require('./routes/SelectAppointmentTreatm
 var unclearedAppointments = require('./routes/UnclearedAppointments');
 var viewAppointmentTreatmentRecord = require('./routes/ViewAppointmentTreatmentRecord');
 var viewSchedule = require('./routes/ViewSchedule');
-var loginAccess = require('./routes/LoginAccess.js');
 var viewDReports = require('./routes/ViewDailyReports.js');
 var viewMReports = require('./routes/ViewMonthlyReports.js');
-
+var payOn = require('./routes/PayOnline.js');
+var ProcessPayment = require('./routes/ProcessPayment');
+                             
 
 app.use('/users',loginAccess);
 app.use('/view_patient_record', viewPatientRecord);
@@ -51,9 +52,10 @@ app.use('/select_appointment_treatment_record', selectAppointmentTreatmentRecord
 app.use('/uncleared_appointments', unclearedAppointments);
 app.use('/view_appointment_treatment_record', viewAppointmentTreatmentRecord);
 app.use('/view_schedule', viewSchedule);
-app.use('/users', loginAccess);
 app.use('/dailyreports', viewDReports);
 app.use('/monthlyreports', viewMReports);
+app.use('/payMyBill', payOn);
+app.use('/pay',ProcessPayment);
 
 // call scheduled task functions here
 
@@ -61,9 +63,10 @@ var ClearAppointmentsDaily = require('./schedules/ClearAppointmentsDaily');
 var MakeDailyReport = require('./schedules/MakeDailyReport');
 var MakeMonthlyReport = require('./schedules/MakeMonthlyReport');
 
-//ClearAppointmentsDaily(14,15);
-//MakeDailyReport(16,31);
-MakeMonthlyReport(true,11,16,51);
+
+//ClearAppointmentsDaily(15,3);
+//MakeDailyReport(14,30);
+//MakeMonthlyReport(true,18,14,38);
 
 
 app.listen(port,function(req,res){
