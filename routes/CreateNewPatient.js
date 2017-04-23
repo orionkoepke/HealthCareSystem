@@ -10,7 +10,7 @@ router.get('/', function(req, res){
     for(var i = 0; i < ans.length; i++)
     {
       var name = "Dr. " + ans[i].lastname;
-      var doctorID = ans.doctor;
+      var doctorID = ans[i].doctor;
       doctors[i] = {name: name, doctorID: doctorID};
     }
     return res.render('CreateNewPatient', {doctors: doctors});
@@ -18,6 +18,7 @@ router.get('/', function(req, res){
 });
 
 router.post('/', function(req, res){
+  console.log(req.body.doctor);
   newPatient = new Patient();
   newPatient.firstname = req.body.firstname;
   newPatient.lastname = req.body.lastname;

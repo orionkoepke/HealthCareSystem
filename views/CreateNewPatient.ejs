@@ -9,7 +9,7 @@
     <body>
       <% include ./resources/navHeader.ejs %>
       <form action="http://localhost:3003/create_new_patient" method="post">
-        First Name: <input type="text" name="firstname" required/><br>
+        First Name: <input type="text" name="firstname" id="firstname" required/><br>
         Last Name: <input type="text" name="lastname" required/><br>
         Address: <input type="text" name="address"/><br>
         Phone: <input type="text" name="phone" /><br>
@@ -26,7 +26,7 @@
 
 
         <button type="submit">Submit</button>
-
+      </form>
 
     </body>
 </html>
