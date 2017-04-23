@@ -77,6 +77,8 @@ var dummyPatients = [
     "firstname" : "Kary"
 }   
 ];
+/*
+
 dummyPatients.forEach(function(patientRec){
     var newPatient = new Patient();
     newPatient.firstname = patientRec.firstname;
@@ -91,6 +93,7 @@ dummyPatients.forEach(function(patientRec){
     newPatient.medicalNotes = patientRec.medicalNotes;
     newPatient.save();
 });
+*/
 
 
 
