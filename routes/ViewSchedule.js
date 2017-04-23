@@ -19,7 +19,7 @@ router.post('/', function(req, res){
   });
 
   router.post('/add_appointment', function(req, res){
-    return res.render('ViewSchedule', {appointments: []]});
+    return res.render('ViewSchedule', {appointments: []});
   });
 
 });
