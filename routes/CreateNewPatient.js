@@ -18,7 +18,6 @@ router.get('/', function(req, res){
 });
 
 router.post('/', function(req, res){
-  console.log(req.body.doctor);
   newPatient = new Patient();
   newPatient.firstname = req.body.firstname;
   newPatient.lastname = req.body.lastname;
