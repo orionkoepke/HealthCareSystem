@@ -9,7 +9,6 @@ router.get('/',function(req,res){
 
 router.post('/', function(req, res){
   Patient.find({doctor: req.body.doctors}).then(function(ans){
-    console.log("\tans :: " + ans);
     var patients = [];
     for(var i = 0; i < ans.length; i++){
       var patient = {name: "", ssn: ""};
