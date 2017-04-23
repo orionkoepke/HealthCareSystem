@@ -19,7 +19,7 @@
         On File Payment Info: <input type="text" name="onFilePaymentInfo" /><br>
 
         Doctor: <% doctors.forEach(function (ans) { %>
-            <input type="radio"  name="doctor" id="doctor" value= <%=ans.doctorID%>> <%=ans.name%></br>
+            <input type="radio"  name="doctor" id="doctor" value= <%=ans.doctorID%> required> <%=ans.name%></br>
         <% }); %>
 
         Medical Notes: <input type="text" name="medicalNotes" /><br>
