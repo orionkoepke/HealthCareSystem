@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 var router = express.Router();
-var User = require('../models/Users.js');
+var Record = require('../models/Records.js');
 
 router.get('/',function(req,res){
-  return res.render('UnclearedAppointments');
+  Record.find({status: "Scheduled"}).then(function(ans){
+    return res.render('UnclearedAppointments', {unclearedAppointments: ans});
+  });
 });
 
 module.exports = router;

@@ -13,10 +13,11 @@
         <form action="http://localhost:3003/view_appointment_treatment_record" method="post">
 
           <% unclearedAppointments.forEach(function (ans) { %>
-              <input type="radio"  name="records" id="records" value= <%=JSON.stringify({SSN: ans.SSN , date: ans.date})>> <%=ans.firstname + ans.lastname + ans.date%></br>
+              <% var record = {SSN: ans.PatientSSN, date: ans.date}; %>
+              <input type="radio"  name="records" id="records" value= <%=JSON.stringify(record)%>> <%=ans.firstname + ans.lastname + ans.date%></br>
           <% }); %>
 
-            <button type="button">Submit</button>
+            <button type="submit">Submit</button>
         </form>
         <br/>
     <script>
