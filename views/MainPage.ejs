@@ -22,13 +22,18 @@
           <a href="http://localhost:3003/monthlyreports/date">
             <button type="button">View Monthly Report</button>
           </a>
+
+          <a href="http://localhost:3003/create_new_patient">
+            <button type="button">Create New Patient</button>
+          </a>
+
         </div>
-        
+
         <% if(typeof permissionError === 'undefined'){ %>
-            <p id="PermissionErrorBoard"></p> 
+            <p id="PermissionErrorBoard"></p>
         <% }else { %>
-            <p id="PermissionErrorBoard"> <%=permissionError%> </p> 
+            <p id="PermissionErrorBoard"> <%=permissionError%> </p>
         <% } %>
-            
+
     </body>
 </html>
