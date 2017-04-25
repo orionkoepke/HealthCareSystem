@@ -36,6 +36,7 @@ module.exports = function(thisRecord){
                 return console.log(error);
             }
             console.log('Message %s sent: %s', info.messageId, info.response);
+            console.log(clientName);
             console.log(info.pending);
         });        
     }).catch(function(e){
@@ -43,6 +44,7 @@ module.exports = function(thisRecord){
     });
     var recordUpdate = new Records(thisRecord);
     recordUpdate.billingAmount = 25;
+    recordUpdate.patientCopay = 25;    
     recordUpdate.status = "NoShow";
     Records.findOneAndUpdate({_id: thisRecord._id},recordUpdate).catch(function(e){
         console.log(e);

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var autoIncrement = require('mongoose-auto-increment');
 
 
 var ATRecordSchema = new Schema({
@@ -42,6 +41,10 @@ var ATRecordSchema = new Schema({
     },
     billingAmount: {
         type: Number
+    },
+    patientCopay: {
+        type: Number,
+        default: 0
     },
     reference: {
         type: String

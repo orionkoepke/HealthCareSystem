@@ -36,6 +36,7 @@ module.exports = function(thisRecord){
                 return console.log(error);
             }
             console.log('Message %s sent: %s', info.messageId, info.response);
+            console.log(clientName);
             console.log(info.pending);
         });        
     }).catch(function(e){
