@@ -10,20 +10,18 @@
     </head>
     <body>
       <% include ./resources/navHeader.ejs %>
-        <form action="http://localhost:3003/view_patient_record" method="post">
-            First Name: <input type="text" name="firstName" required/><br>
-            Last Name: <input type="text" name="lastName" required/><br>
-            Address: <input type="text" name="address"/><br>
-            Phone: <input type="text" name="phone"/><br>
-            Email: <input type="email" name="email"/><br>
-            SSN: <input type="text" name="SSN" required/><br>
-            Insurance: <input type="text" name="insurance"/><br>
-            On File Payment Info: <input type="text" name="onFilePaymentInfo"/><br>
-            Doctor: <input type="text" name="doctor" required/><br>
-            Medical Notes: <input type="text" name="medicalNotes"/><br>
-
+        <form>
+            First Name: <%=patient.firstname%></br>
+            Last Name: <%=patient.lastname%></br>
+            Address: <%=patient.address%></br>
+            Phone: <%=patient.phone%></br>
+            Email: <%=patient.email%></br>
+            SSN: <%=patient.SSN%></br>
+            Insurance: <%=patient.insurance%></br>
+            On File Payment Info: <%=patient.onFilePaymentInfo%></br>
+            Doctor: <%=patient.doctor%></br>
+            Medical Notes: <%=patient.medicalNotes%></br>
         <br>
-            <button type="button">Submit</button>
         </form>
         <br/>
         

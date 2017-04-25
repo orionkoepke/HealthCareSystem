@@ -13,7 +13,7 @@ router.post('/', function(req, res){
     for(var i = 0; i < ans.length; i++){
       var patient = {name: "", ssn: ""};
       patient.name = ans[i].firstname + " " + ans[i].lastname;
-      patient.ssn = ans[i].SSN;
+      patient.SSN = ans[i].SSN;
       patients[i] = patient;
     }
     return res.render('SelectPatient', { patients: patients });
