@@ -20,8 +20,7 @@ var CurrentDate = moment();
 var Year = CurrentDate.year();
 var Month = CurrentDate.month();
 var Day = CurrentDate.date();
-var offset = new Date().getTimezoneOffset();
-
+var offset = 300;
 
 // Add new patients.
 var dummyPatients = [
@@ -148,6 +147,7 @@ var dummyPatients = [
 ];
 
 
+/*
 dummyPatients.forEach(function(patientRec){
     var newPatient = new Patient();
     newPatient.firstname = patientRec.firstname;
@@ -162,6 +162,7 @@ dummyPatients.forEach(function(patientRec){
     newPatient.medicalNotes = patientRec.medicalNotes;
     newPatient.save();
 });
+*/
 
 
 // Add new ATRecords
@@ -296,7 +297,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "MengelS",
     "PatientSSN" : "987678239",
-    "date" : new Date(Year,Month,Day,13,30-offset,0,0),
+    "date" : new Date(Year,Month,Day,13,0-offset,0,0),
     "lastname" : "Corvin",
     "firstname" : "KYle",
     "payOnline" : false
@@ -321,12 +322,13 @@ dummyRecords.forEach(function(eachRecord){
     newRecord.save();
 });
 
+/*
 
 // Add new daily reports.  Note: There will not be corresponding atrecords for these reports.
 var dummyReports = [
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,3,21,0-offset,0,0),
+    dateOfReport: new Date(Year,Month,3,15,0,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -353,7 +355,7 @@ var dummyReports = [
 },
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,4,21,0-offset,0,0),
+    dateOfReport: new Date(Year,Month,4,15,0,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -380,7 +382,7 @@ var dummyReports = [
 },
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,5,21,0-offset,0,0),
+    dateOfReport: new Date(Year,Month,5,15,0,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -407,7 +409,7 @@ var dummyReports = [
 },
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,6,21,0-offset,0,0),
+    dateOfReport: new Date(Year,Month,6,15,0,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -434,7 +436,7 @@ var dummyReports = [
 },
     {
   dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,7,21,0-offset,0,0),
+    dateOfReport: new Date(Year,Month,7,15,0,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -577,6 +579,7 @@ dummyMReports.forEach(function(eachReport){
     });
     newMReport.save();
 });
+*/
 
 console.log("Program running...");
 mongoose.connection.close();
