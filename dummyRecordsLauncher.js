@@ -102,6 +102,7 @@ var CurrentDate = new Date();
 var Year = CurrentDate.getFullYear();
 var Month = CurrentDate.getMonth();
 var Day = CurrentDate.getDate();
+var offset = CurrentDate.getTimezoneOffset();
 
 
 var dummyRecords = [
@@ -113,7 +114,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "WatsonR",
     "PatientSSN" : "987678234",
-    "date" : new Date(Year,Month,Day,9,0,0,0),
+    "date" : new Date(Year,Month,Day,9,0-offset,0,0),
     "lastname" : "Crocker",
     "firstname" : "Betty",
     "payOnline" : false
@@ -126,7 +127,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "LopezN",
     "PatientSSN" : "987678235",
-    "date" : new Date(Year,Month,Day,10,0,0,0),
+    "date" : new Date(Year,Month,Day,10,0-offset,0,0),
     "lastname" : "Smith",
     "firstname" : "Joe",
     "payOnline" : false
@@ -139,7 +140,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "GelfondM",
     "PatientSSN" : "987678236",
-    "date" : new Date(Year,Month,Day,11,0,0,0),
+    "date" : new Date(Year,Month,Day,11,0-offset,0,0),
     "lastname" : "Jones",
     "firstname" : "Mike",
     "payOnline" : true
@@ -152,7 +153,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "ShinM",
     "PatientSSN" : "987678237",
-    "date" : new Date(Year,Month,Day,12,0,0,0),
+    "date" : new Date(Year,Month,Day,12,0-offset,0,0),
     "lastname" : "Rogers",
     "firstname" : "Jessica",
     "payOnline" : false
@@ -165,7 +166,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "ShinM",
     "PatientSSN" : "987678238",
-    "date" : new Date(Year,Month,Day,13,0,0,0),
+    "date" : new Date(Year,Month,Day,13,0-offset,0,0),
     "lastname" : "Milosevich",
     "firstname" : "Kary",
     "payOnline" : false

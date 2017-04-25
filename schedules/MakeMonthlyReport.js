@@ -63,6 +63,7 @@ module.exports = function(testing, date, hour, minute){
     var Minutes = moment().minute();
     var Seconds = moment().second();
     var Milliseconds = moment().millisecond();
+    var offset = new Date().getTimezoneOffset();
     
     var j = schedule.scheduleJob(rule,function(){
         console.log("MakeMonthlyReport firing...");
@@ -75,7 +76,7 @@ module.exports = function(testing, date, hour, minute){
                 console.log("There were daily reports to collate");
                 
                 var newMRep = new MonthlyReport();
-                newMRep.dateOfReport = new Date(Year,Month,Day,Hour-5,0,0,0);
+                newMRep.dateOfReport = new Date(Year,Month,Day,Hour,0-offset,0,0);
                 newMRep.totalPatientsThisMonth = 0;
                 
                 reportList[0].doctorStats.forEach(function(eachDoctor){

@@ -23,7 +23,7 @@ module.exports = function(hour, minute){
                 if(eachRecord.status === "Scheduled"){
                     console.log("Run No Show Charge...");
                     ChargeNoShow(eachRecord);
-                }else if(eachRecord.status === "InProgress" && eachRecord.payOnline === true){
+                }else if(eachRecord.status === "InProgress" && eachRecord.payOnline === true && eachRecord.patientCopay > 0){
                     console.log("Send PayOnline Charge Email...");
                     SendPayOnlineEmail(eachRecord);                
                 }else {

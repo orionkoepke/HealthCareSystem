@@ -19,6 +19,7 @@ module.exports = function(hour, minute){
     var Minutes = moment().minute();
     var Seconds = moment().second();
     var Milliseconds = moment().millisecond();
+    var offset = new Date().getTimezoneOffset();
     
     var listOfDoctors = [];        
     
@@ -34,7 +35,7 @@ module.exports = function(hour, minute){
             // Get today's list of records
             Records.find({date: { $gte: new Date(Year,Month,Day,0,0,0,0)}},function(err,recordsList){
                 var newDRep = new DailyReport();
-                newDRep.dateOfReport = new Date(Year,Month,Day,Hour-5,0,0,0);
+                newDRep.dateOfReport = new Date(Year,Month,Day,Hour,0-offset,0,0);
                 newDRep.totalPatientsToday = 0;
                 // Initialize each entry under doctorStats
                 listOfDoctors.forEach(function(eachDoctor){
