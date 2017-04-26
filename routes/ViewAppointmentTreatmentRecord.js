@@ -17,10 +17,13 @@ router.post('/', function(req, res){
   });
 });
 
-router.post('/update_appointment_treatment_record', function(req, res){
+router.post('/update', function(req, res){
+
   patientRecord.firstname = req.body.firstname;
   patientRecord.lastname = req.body.lastname;
-  patientRecord.date = req.body.date;
+  if(req.body.date != ""){
+    patientRecord.date = req.body.date;
+  }
   patientRecord.PatientSSN = req.body.PatientSSN;
   patientRecord.doctor = req.body.doctor;
   patientRecord.age = req.body.age;
@@ -34,8 +37,11 @@ router.post('/update_appointment_treatment_record', function(req, res){
   patientRecord.treatmentInfo = req.body.treatmentInfo;
   patientRecord.status = req.body.status;
   patientRecord.payOnline = req.body.payOnline;
+
+  Records.findByIdAndUpdate(patientRecord._id, { $set: patientRecord}, function(err, numAffected){});
+
   patientRecord = null;
-  return res.redirect('MainPage');
+  return res.redirect('/users');
 });
 
 module.exports = router;
