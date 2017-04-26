@@ -31,33 +31,21 @@ app.use(session({secret:"lwqfhaodhgkskj173iegkj_",resave:false, saveUninitialize
 // initialize routes here
 
 var loginAccess = require('./routes/LoginAccess');
-var viewPatientRecord = require('./routes/ViewPatientRecord');
-var selectPatient = require('./routes/SelectPatient');
-var selectDoctor = require('./routes/SelectDoctor');
-var selectAppointmentTreatmentRecord = require('./routes/SelectAppointmentTreatmentRecord');
-var unclearedAppointments = require('./routes/UnclearedAppointments');
-var viewAppointmentTreatmentRecord = require('./routes/ViewAppointmentTreatmentRecord');
-var viewSchedule = require('./routes/ViewSchedule');
 var viewDReports = require('./routes/ViewDailyReports.js');
 var viewMReports = require('./routes/ViewMonthlyReports.js');
 var payOn = require('./routes/PayOnline.js');
 var ProcessPayment = require('./routes/ProcessPayment');
-var createNewPatient = require('./routes/createNewPatient');
+
+var makeAppointment = require('./routes/MakeAppointment');
 
 
 app.use('/users',loginAccess);
-app.use('/view_patient_record', viewPatientRecord);
-app.use('/select_patient', selectPatient);
-app.use('/select_doctor', selectDoctor);
-app.use('/select_appointment_treatment_record', selectAppointmentTreatmentRecord);
-app.use('/uncleared_appointments', unclearedAppointments);
-app.use('/view_appointment_treatment_record', viewAppointmentTreatmentRecord);
-app.use('/view_schedule', viewSchedule);
 app.use('/dailyreports', viewDReports);
 app.use('/monthlyreports', viewMReports);
 app.use('/payMyBill', payOn);
 app.use('/pay',ProcessPayment);
-app.use('/create_new_patient', createNewPatient);
+
+app.use('/make_appointment', makeAppointment);
 
 // call scheduled task functions here
 
