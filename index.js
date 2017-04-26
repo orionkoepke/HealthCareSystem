@@ -37,6 +37,9 @@ var payOn = require('./routes/PayOnline.js');
 var ProcessPayment = require('./routes/ProcessPayment');
 
 var makeAppointment = require('./routes/MakeAppointment');
+var changeAppointment = require('./routes/ChangeAppointment');
+var cancelAppointment = require('./routes/CancelAppointment');
+var CreateNewPatient = require('./routes/CreateNewPatient');
 
 
 app.use('/users',loginAccess);
@@ -46,6 +49,9 @@ app.use('/payMyBill', payOn);
 app.use('/pay',ProcessPayment);
 
 app.use('/make_appointment', makeAppointment);
+app.use('/change_appointment', changeAppointment);
+app.use('/cancel_appointment', cancelAppointment);
+app.use('/create_new_patient', createNewPatient);
 
 // call scheduled task functions here
 
