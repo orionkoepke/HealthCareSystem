@@ -10,7 +10,7 @@
     </head>
     <body>
       <% include ./resources/navHeader.ejs %>
-        <form action="http://localhost:3003/select_patient" method="post">
+        <form action=<%=goTo%> method="post">
 
           <% doctors.forEach(function (ans) { %>
               <input type="radio"  name="doctors" id="doctors" value= <%=ans.doctorId%>> <%=ans.name%></br>
