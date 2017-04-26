@@ -10,7 +10,7 @@
     </head>
     <body>
       <% include ./resources/navHeader.ejs %>
-        <form action="http://localhost:3003/view_patient_record/update" method="post">
+        <form action=<%=goTo%> method="post">
 
             First Name: <input type="text"  name="firstName" id="firstName" value= <%=patient.firstname%>> <br>
             Last Name: <input type="text"  name="lastName" id="lastName" value= <%=patient.lastname%>> <br>
