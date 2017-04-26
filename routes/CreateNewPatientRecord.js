@@ -24,7 +24,7 @@ router.get('/', function(req, res){
         var doctorID = ans[i].doctor;
         doctors[i] = {name: name, doctorID: doctorID};
       }
-      return res.render('CreateNewPatient', {doctors: doctors, goTo: URL + /create_new_patient});
+      return res.render('CreateNewPatient', {doctors: doctors, goTo: URL + "/create_new_patient"});
     });
   }
 });
