@@ -11,11 +11,11 @@
       <% include ./resources/navHeader.ejs %>
         <form action="http://localhost:3003/view_appointment_treatment_record/update" method="post">
 
-          First Name: <input type="text"  name="firstName" id="firstName" value= <%=record.firstname%>> <br>
-          Last Name: <input type="text"  name="lastName" id="lastName" value= <%=record.lastname%>> <br>
-          Date: <input type="text"  name="date1" id="date1" value= '<%=record.date%>'style="width: 400px;"> <br>
-          Change Date To: <input type="datetime-local"  name="date2" id="date2" value= <%=record.date%>> <br>
-          SSN: <input type="text"  name="PatientSSN" id="PatientSSN" value= <%=record.PatientSSN%>> <br>
+          First Name: <input type="text"  name="firstname" id="firstname" value= <%=record.firstname%>> <br>
+          Last Name: <input type="text"  name="lastname" id="lastname" value= <%=record.lastname%>> <br>
+          Date: <%=record.date%> <br>
+          Change Date To: <input type="datetime-local"  name="date" id="date" value= <%=record.date%>> <br>
+          SSN: <input type="text"  name="SSN" id="SSN" value= <%=record.PatientSSN%>> <br>
           Doctor: <input type="text"  name="doctor" id="doctor" value= <%=record.doctor%>> <br>
           Billing Information: <input type="text"  name="billingInfo" id="billingInfo" value= <%=record.billingInfo%>> <br>
           Billing Amount: <input type="text"  name="billingAmount" id="billingAmount" value= <%=record.billingAmount%>> <br>
