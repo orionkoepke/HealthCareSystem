@@ -12,7 +12,7 @@ router.get('/', function(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
-  else if(!CheckUserAuthorization(req.session.user.userType,"CA")){
+  else if(!CheckUserAuthorization(req.session.user.userType,"UPI")){
     return res.render('MainPage',{ permissionError: "You do not have permission to do this."});
   }
   else{
