@@ -42,6 +42,8 @@ router.post('/select_patient', function(req, res){
   });
 });
 
+var patientRecord;
+
 router.post('/view_patient_information', function(req, res){
   Patient.find({SSN: req.body.patients}).then(function(ans){
     patientRecord = ans[0];
