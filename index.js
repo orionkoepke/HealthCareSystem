@@ -35,13 +35,15 @@ var viewDReports = require('./routes/ViewDailyReports.js');
 var viewMReports = require('./routes/ViewMonthlyReports.js');
 var payOn = require('./routes/PayOnline.js');
 var ProcessPayment = require('./routes/ProcessPayment');
-
 var makeAppointment = require('./routes/MakeAppointment');
 var changeAppointment = require('./routes/ChangeAppointment');
 var cancelAppointment = require('./routes/CancelAppointment');
 var createNewPatientRecord = require('./routes/CreateNewPatientRecord');
 var clearAppointment = require('./routes/ClearAppointment');
 var viewPatientTreatmentRecords = require('./routes/ViewPatientTreatmentRecords');
+var updatePatientTreatmentRecord = require('./routes/UpdatePatientTreatmentRecord');
+var viewPatientInformation = require('./routes/ViewPatientInformation');
+var updatePatientInformation = require('./routes/UpdatePatientInformation');
 
 
 app.use('/users',loginAccess);
@@ -49,13 +51,15 @@ app.use('/dailyreports', viewDReports);
 app.use('/monthlyreports', viewMReports);
 app.use('/payMyBill', payOn);
 app.use('/pay',ProcessPayment);
-
 app.use('/make_appointment', makeAppointment);
 app.use('/change_appointment', changeAppointment);
 app.use('/cancel_appointment', cancelAppointment);
 app.use('/create_new_patient_record', createNewPatientRecord);
 app.use('/clear_appointment', clearAppointment);
 app.use('/view_patient_treatment_records', viewPatientTreatmentRecords);
+app.use('/update_patient_treatment_record', updatePatientTreatmentRecord);
+app.use('/view_patient_information', viewPatientInformation);
+app.use('/update_patient_information', updatePatientInformation);
 
 // call scheduled task functions here
 
