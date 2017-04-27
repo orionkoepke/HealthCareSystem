@@ -16,30 +16,17 @@ router.get('/', function(req, res){
     return res.render('MainPage',{ permissionError: "You do not have permission to do this."});
   }
   else{
-    User.find({userType: "doctor"}).then(function(ans){
-      var doctors = [];
+    Patient.find({doctor: req.session.user.doctor}).then(function(ans){
+      var patients = [];
       for(var i = 0; i < ans.length; i++){
-        var doctor = {name: "", doctorId: ""};
-        doctor.name = "Dr. " +  ans[i].firstname + " " + ans[i].lastname;
-        doctor.doctorId = ans[i].doctor;
-        doctors[i] = doctor;
+        var patient = {name: "", ssn: ""};
+        patient.name = ans[i].firstname + " " + ans[i].lastname;
+        patient.SSN = ans[i].SSN;
+        patients[i] = patient;
       }
-      return res.render('SelectDoctor', {doctors: doctors, goTo: URL + "/select_patient"});
+      return res.render('SelectPatient', { patients: patients, goTo: URL + "/view_patient_information" });
     });
   }
-});
-
-router.post('/select_patient', function(req, res){
-  Patient.find({doctor: req.body.doctors}).then(function(ans){
-    var patients = [];
-    for(var i = 0; i < ans.length; i++){
-      var patient = {name: "", ssn: ""};
-      patient.name = ans[i].firstname + " " + ans[i].lastname;
-      patient.SSN = ans[i].SSN;
-      patients[i] = patient;
-    }
-    return res.render('SelectPatient', { patients: patients, goTo: URL + "/view_patient_information" });
-  });
 });
 
 router.post('/view_patient_information', function(req, res){
