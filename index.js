@@ -41,6 +41,7 @@ var changeAppointment = require('./routes/ChangeAppointment');
 var cancelAppointment = require('./routes/CancelAppointment');
 var createNewPatientRecord = require('./routes/CreateNewPatientRecord');
 var clearAppointment = require('./routes/ClearAppointment');
+var viewPatientTreatmentRecords = require('./routes/ViewPatientTreatmentRecords');
 
 
 app.use('/users',loginAccess);
@@ -54,6 +55,7 @@ app.use('/change_appointment', changeAppointment);
 app.use('/cancel_appointment', cancelAppointment);
 app.use('/create_new_patient_record', createNewPatientRecord);
 app.use('/clear_appointment', clearAppointment);
+app.use('/view_patient_treatment_records', viewPatientTreatmentRecords);
 
 // call scheduled task functions here
 

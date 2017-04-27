@@ -6,9 +6,9 @@ var User = require('../models/Users.js');
 var Patient = require('../models/Patients.js');
 var Record = require('../models/Records.js');
 
-var URL = "http://localhost:3003/change_appointment";
+var URL = "http://localhost:3003/view_patient_treatment_records";
 
-router.get('/select_doctor', function(req, res){
+router.get('/', function(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -55,40 +55,14 @@ router.post('/select_appointment', function(req, res){
   });
 });
 
-var patientRecord;
-
 router.post('/edit_appointment', function(req, res){
   patient = JSON.parse(req.body.records);
   Record.find({PatientSSN: patient.SSN, date: patient.date}).then(function(ans){
-    patientRecord = ans[0];
-    return res.render('ViewAppointmentTreatmentRecord', { record: ans[0], button: "Update", goTo: URL + "/update_appointment"});
+    return res.render('ViewAppointmentTreatmentRecord', { record: ans[0], button: "Go To Main Page", goTo: URL + "/change_to_main"});
   });
 });
 
 router.post('/update_appointment', function(req, res){
-
-  patientRecord.firstname = req.body.firstname;
-  patientRecord.lastname = req.body.lastname;
-  if(req.body.date != ""){
-    patientRecord.date = req.body.date;
-  }
-  patientRecord.PatientSSN = req.body.PatientSSN;
-  patientRecord.doctor = req.body.doctor;
-  patientRecord.age = req.body.age;
-  patientRecord.weight = req.body.weight;
-  patientRecord.height = req.body.height;
-  patientRecord.bloodPressure = req.body.bloodPressure;
-  patientRecord.reasonForVisit = req.body.reasonForVisit;
-  patientRecord.billingAmount = req.body.billingAmount;
-  patientRecord.patientCopay = req.body.patientCopay;
-  patientRecord.reference = req.body.reference;
-  patientRecord.treatmentInfo = req.body.treatmentInfo;
-  patientRecord.status = req.body.status;
-  patientRecord.payOnline = req.body.payOnline;
-
-  Record.findByIdAndUpdate(patientRecord._id, { $set: patientRecord}, function(err, numAffected){});
-
-  patientRecord = null;
   return res.redirect('/users');
 });
 
