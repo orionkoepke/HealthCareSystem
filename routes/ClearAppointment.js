@@ -28,7 +28,7 @@ router.post('/edit_status', function(req, res){
   patient = JSON.parse(req.body.records);
   Record.find({PatientSSN: patient.SSN, date: patient.date}).then(function(ans){
     patientRecord = ans[0];
-    return res.render('ViewAppointmentTreatmentRecord', { record: ans[0], goTo: URL + "/update_status"});
+    return res.render('ViewAppointmentTreatmentRecord', { record: ans[0], button: "Update", goTo: URL + "/update_status"});
   });
 });
 
