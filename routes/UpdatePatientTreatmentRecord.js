@@ -6,13 +6,13 @@ var User = require('../models/Users.js');
 var Patient = require('../models/Patients.js');
 var Record = require('../models/Records.js');
 
-var URL = "http://localhost:3003/change_appointment";
+var URL = "http://localhost:3003/update_patient_treatment_record";
 
 router.get('/', function(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
-  else if(!CheckUserAuthorization(req.session.user.userType,"CA")){
+  else if(!CheckUserAuthorization(req.session.user.userType,"UPTR")){
     return res.render('MainPage',{ permissionError: "You do not have permission to do this."});
   }
   else{
