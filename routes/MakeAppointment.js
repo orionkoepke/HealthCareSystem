@@ -8,7 +8,7 @@ var Record = require('../models/Records.js');
 
 var URL = "http://localhost:3003/make_appointment";
 
-router.get('/select_doctor', function(req, res){
+router.get('/', function(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
