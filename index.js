@@ -31,33 +31,35 @@ app.use(session({secret:"lwqfhaodhgkskj173iegkj_",resave:false, saveUninitialize
 // initialize routes here
 
 var loginAccess = require('./routes/LoginAccess');
-var viewPatientRecord = require('./routes/ViewPatientRecord');
-var selectPatient = require('./routes/SelectPatient');
-var selectDoctor = require('./routes/SelectDoctor');
-var selectAppointmentTreatmentRecord = require('./routes/SelectAppointmentTreatmentRecord');
-var unclearedAppointments = require('./routes/UnclearedAppointments');
-var viewAppointmentTreatmentRecord = require('./routes/ViewAppointmentTreatmentRecord');
-var viewSchedule = require('./routes/ViewSchedule');
 var viewDReports = require('./routes/ViewDailyReports.js');
 var viewMReports = require('./routes/ViewMonthlyReports.js');
 var payOn = require('./routes/PayOnline.js');
 var ProcessPayment = require('./routes/ProcessPayment');
-var createNewPatient = require('./routes/createNewPatient');
+var makeAppointment = require('./routes/MakeAppointment');
+var changeAppointment = require('./routes/ChangeAppointment');
+var cancelAppointment = require('./routes/CancelAppointment');
+var createNewPatientRecord = require('./routes/CreateNewPatientRecord');
+var clearAppointment = require('./routes/ClearAppointment');
+var viewPatientTreatmentRecords = require('./routes/ViewPatientTreatmentRecords');
+var updatePatientTreatmentRecord = require('./routes/UpdatePatientTreatmentRecord');
+var viewPatientInformation = require('./routes/ViewPatientInformation');
+var updatePatientInformation = require('./routes/UpdatePatientInformation');
 
 
 app.use('/users',loginAccess);
-app.use('/view_patient_record', viewPatientRecord);
-app.use('/select_patient', selectPatient);
-app.use('/select_doctor', selectDoctor);
-app.use('/select_appointment_treatment_record', selectAppointmentTreatmentRecord);
-app.use('/uncleared_appointments', unclearedAppointments);
-app.use('/view_appointment_treatment_record', viewAppointmentTreatmentRecord);
-app.use('/view_schedule', viewSchedule);
 app.use('/dailyreports', viewDReports);
 app.use('/monthlyreports', viewMReports);
 app.use('/payMyBill', payOn);
 app.use('/pay',ProcessPayment);
-app.use('/create_new_patient', createNewPatient);
+app.use('/make_appointment', makeAppointment);
+app.use('/change_appointment', changeAppointment);
+app.use('/cancel_appointment', cancelAppointment);
+app.use('/create_new_patient_record', createNewPatientRecord);
+app.use('/clear_appointment', clearAppointment);
+app.use('/view_patient_treatment_records', viewPatientTreatmentRecords);
+app.use('/update_patient_treatment_record', updatePatientTreatmentRecord);
+app.use('/view_patient_information', viewPatientInformation);
+app.use('/update_patient_information', updatePatientInformation);
 
 // call scheduled task functions here
 

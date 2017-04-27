@@ -10,20 +10,24 @@
     </head>
     <body>
       <% include ./resources/navHeader.ejs %>
-        <form>
-            First Name: <%=patient.firstname%></br>
-            Last Name: <%=patient.lastname%></br>
-            Address: <%=patient.address%></br>
-            Phone: <%=patient.phone%></br>
-            Email: <%=patient.email%></br>
-            SSN: <%=patient.SSN%></br>
-            Insurance: <%=patient.insurance%></br>
-            On File Payment Info: <%=patient.onFilePaymentInfo%></br>
-            Doctor: <%=patient.doctor%></br>
-            Medical Notes: <%=patient.medicalNotes%></br>
+        <form action=<%=goTo%> method="post">
+
+            First Name: <input type="text"  name="firstName" id="firstName" value= <%=patient.firstname%>> <br>
+            Last Name: <input type="text"  name="lastName" id="lastName" value= <%=patient.lastname%>> <br>
+            Address: <input type="text"  name="address" id="address" value= '<%=patient.address%>' style="width: 300px;"> <br>
+            Phone: <input type="text"  name="phone" id="phone" value= <%=patient.phone%>> <br>
+            Email: <input type="email"  name="email" id="email" value= <%=patient.email%>> <br>
+            SSN: <input type="text"  name="PatientSSN" id="PatientSSN" value= <%=patient.SSN%>> <br>
+            Insurance: <input type="text"  name="insurance" id="insurance" value= '<%=patient.insurance%>'> <br>
+            On File Payment Info: <input type="text"  name="onFilePaymentInfo" id="onFilePaymentInfo" value= <%=patient.onFilePaymentInfo%>> <br>
+            Doctor: <input type="text"  name="doctor" id="doctor" value= <%=patient.doctor%>> <br>
+            Medical Notes: <input type="text"  name="medicalNotes" id="medicalNotes" value= <%=patient.medicalNotes%>> <br>
+            <input type="submit"  value='<%=button%>'>
+
+
         <br>
         </form>
         <br/>
-        
+
     </body>
 </html>

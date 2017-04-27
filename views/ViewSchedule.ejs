@@ -23,7 +23,7 @@
           </ul>
         <%}%>
 
-        <form action="http://localhost:3003/view_schedule/add_appointment" method="post">
+        <form action=<%=goTo%> method="post">
           Select Appointment Date: <input type="datetime-local" name="appointmentTime" required><br/>
           <button type="submit">Schedule</button>
         </form>
