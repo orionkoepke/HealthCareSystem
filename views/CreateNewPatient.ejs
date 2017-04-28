@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ./resources/Head.ejs %>
+
+        <title>Create New Patient</title>
+
+    </head>
+    <body>
+      <% include ./resources/navHeader.ejs %>
+      <form action=<%=goTo%> method="post">
+        First Name: <input type="text" name="firstname" id="firstname" required/><br>
+        Last Name: <input type="text" name="lastname" required/><br>
+        Address: <input type="text" name="address"/><br>
+        Phone: <input type="text" name="phone" /><br>
+        Email: <input type="text" name="email" /><br>
+        SSN: <input type="text" name="SSN" required/><br>
+        Insurance: <input type="text" name="insurance" /><br>
+        On File Payment Info: <input type="text" name="onFilePaymentInfo" /><br>
+
+        Doctor: <% doctors.forEach(function (ans) { %>
+            <input type="radio"  name="doctor" id="doctor" value= <%=ans.doctorID%> required> <%=ans.name%></br>
+        <% }); %>
+
+        Medical Notes: <input type="text" name="medicalNotes" /><br>
+
+
+        <button type="submit">Submit</button>
+      </form>
+
+    </body>
+</html>

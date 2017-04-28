@@ -5,32 +5,19 @@
 
         <link href="../public/styles.css" rel="stylesheet" type="text/css">
 
-        <title>View Patient Record</title>
+        <title>Select Appointment Treatment Record</title>
 
     </head>
     <body>
       <% include ./resources/navHeader.ejs %>
-        <form action="http://localhost:3003/users/login" method="post">
-          <!--CHANGE ACTION-->
-            First Name: <input type="text" name="firstName" required/><br>
-            Last Name: <input type="text" name="lastName" required/><br>
-            Date: <input type="date" name="date" required/><br>
-            SSN: <input type="text" name="SSN" required/><br>
-            Doctor: <input type="text" name="doctor" required/><br>
-            Billing Information: <input type="number" name="cardNumber" readonly/><br>
-            Billing Amount: <input type="number" name="billingAmount" readonly/><br>
-            Reference Number: <input type="number" name="refNumber" readonly/><br>
-            Invoice Number: <input type="number" name="invoiceNumber" readonly/><br>
-            Age: <input type="number" name="age" required/><br>
-            Weight: <input type="number" name="weight" required/><br>
-            Height: <input type="number" name="height" required/><br>
-            Blood Pressure: <input type="number" name="bloodPressure" required/><br>
-            Reason For Visit: <input type="text" name="reasonForVisit" required/><br>
-            Treatment Info: <input type="text" name="treatmentInfo"/><br>
-            Status: <input type="text" name="status"/><br>
+        <form action=<%=goTo%> method="post">
+
+          <% records.forEach(function (ans) { %>
+              <input type="radio"  name="records" id="records" value= <%=JSON.stringify(ans)%>> <%=ans.date%></br>
+          <% }); %>
 
         <br>
-            <button type="button">Submit</button>
+            <button type="submit">Submit</button>
         </form>
         <br/>
     <script>

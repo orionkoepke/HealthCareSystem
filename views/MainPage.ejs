@@ -11,7 +11,7 @@
         <% include ./resources/navHeader.ejs %>
 
         <div>
-            <h3>Welcome to the Main Page.</h3>
+            <h3>Welcome to the Main Page</h3>
         </div>
 
         <div>
@@ -22,13 +22,51 @@
           <a href="http://localhost:3003/monthlyreports/date">
             <button type="button">View Monthly Report</button>
           </a>
+
+          <a href="http://localhost:3003/make_appointment">
+            <button type="button">Make Appointment</button>
+          </a>
+
+          <a href="http://localhost:3003/change_appointment">
+            <button type="button">Change Appointment</button>
+          </a>
+
+          <a href="http://localhost:3003/cancel_appointment">
+            <button type="button">Cancel Appointment</button>
+          </a>
+
+          <a href="http://localhost:3003/create_new_patient_record">
+            <button type="button">Create New Patient Record</button>
+          </a>
+
+          <a href="http://localhost:3003/clear_appointment">
+            <button type="button">Clear Appointment</button>
+          </a>
+
+          <a href="http://localhost:3003/view_patient_treatment_records">
+            <button type="button">View Patient Treatment Records</button>
+          </a>
+
+          <a href="http://localhost:3003/update_patient_treatment_record">
+            <button type="button">Update Patient Treatment Record</button>
+          </a>
+
+          <a href="http://localhost:3003/view_patient_information">
+            <button type="button">View Patient Information</button>
+          </a>
+
+          <a href="http://localhost:3003/update_patient_information">
+            <button type="button">Update Patient Information</button>
+          </a>
+
+
         </div>
-        
+
         <% if(typeof permissionError === 'undefined'){ %>
-            <p id="PermissionErrorBoard"></p> 
+            <p id="PermissionErrorBoard"></p>
         <% }else { %>
-            <p id="PermissionErrorBoard"> <%=permissionError%> </p> 
+            <p id="PermissionErrorBoard"> <%=permissionError%> </p>
         <% } %>
-            
+
     </body>
 </html>
