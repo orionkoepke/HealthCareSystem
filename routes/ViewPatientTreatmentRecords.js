@@ -44,7 +44,7 @@ router.get('/', function(req, res){
 });
 
 router.post('/select_patient', function(req, res){
-  Patient.find({doctor: req.session.user.doctor}).then(function(ans){
+  Patient.find({doctor: req.body.doctors}).then(function(ans){
     var patients = [];
     for(var i = 0; i < ans.length; i++){
       var patient = {name: "", ssn: ""};
@@ -56,27 +56,35 @@ router.post('/select_patient', function(req, res){
   });
 });
 
+var patient;
+
 router.post('/select_appointment', function(req, res){
-  Record.find({PatientSSN: req.body.patients}).then(function(ans){
-    var records = [];
-    for(var i = 0; i < ans.length; i++){
-      var record = {date: "", SSN: ""};
-      record.date = ans[i].date;
-      record.SSN = ans[i].PatientSSN;
-      records[i] = record;
-    }
-    return res.render('SelectAppointmentTreatmentRecord', { records: records, goTo: URL + "/edit_appointment" });
+  Patient.find({SSN: req.body.patients}).then(function(ans1){
+    patient = ans1[0];
+    Record.find({patientID: ans1[0]._id}).then(function(ans2){
+      var records = [];
+      for(var i = 0; i < ans2.length; i++){
+        var record = {date: ""};
+        record.date = ans2[i].date;
+        records[i] = record;
+      }
+      return res.render('SelectAppointmentTreatmentRecord', { records: records, goTo: URL + "/edit_appointment" });
+    });
   });
 });
 
 router.post('/edit_appointment', function(req, res){
-  patient = JSON.parse(req.body.records);
-  Record.find({PatientSSN: patient.SSN, date: patient.date}).then(function(ans){
-    return res.render('ViewAppointmentTreatmentRecord', { record: ans[0], button: "Go To Main Page", goTo: URL + "/change_to_main"});
+  console.log(req.body.records);
+  Record.find({patientID: patient._id, date: req.body.records}).then(function(ans){
+    fullRecord = {patient: patient, appointment: ans[0]};
+    console.log(ans);
+    console.log(fullRecord);
+    return res.render('ViewAppointmentTreatmentRecord', { record: fullRecord, button: "Go To Main Page", goTo: URL + "/change_to_main"});
   });
 });
 
-router.post('/update_appointment', function(req, res){
+router.post('/change_to_main', function(req, res){
+  patient = null;
   return res.redirect('/users');
 });
 
