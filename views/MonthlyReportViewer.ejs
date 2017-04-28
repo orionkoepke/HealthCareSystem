@@ -11,17 +11,17 @@
         <% include ./resources/navHeader.ejs %>
 
         <div>
-            <h3>Welcome to the Monthly Report Viewer Page.</h3>
+            <h3>Welcome to the Monthly Report Viewer Page</h3>
         </div>
 
         <div>
           <form action="http://localhost:3003/monthlyreports/getReport" method="post">
               Record Date: <input type="month" name="rdate" required>
               <input type="submit">
-            </form>       
+            </form>
         </div>
-        
-        
+
+
         <div id="ReportTable">
             <% if(Report === null){ %>
                 <p>No report exists for the date you entered.</p>
@@ -31,24 +31,24 @@
             <table style="width:100%">
               <tr>
                 <th>Doctor</th>
-                <th>Patients</th> 
+                <th>Patients</th>
                 <th>Income</th>
               </tr>
               <% Report.doctorStats.forEach(function(eachDoctor){ %>
                     <tr>
                         <td><%=eachDoctor.doctorName%></td>
-                        <td><%=eachDoctor.numPatientsThisMonth%></td> 
+                        <td><%=eachDoctor.numPatientsThisMonth%></td>
                         <td><%=eachDoctor.totalIncome%></td>
                     </tr>
                <% }); %>
                     <tr>
                         <td>Totals</td>
-                        <td><%=Report.totalPatientsThisMonth%></td> 
+                        <td><%=Report.totalPatientsThisMonth%></td>
                         <td><%=Report.monthlyTotal%></td>
                     </tr>
             </table>
             <%}%>
         </div>
-        
+
     </body>
 </html>

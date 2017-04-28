@@ -4,35 +4,34 @@
         <meta charset="utf-8">
 
         <link href="../public/styles.css" rel="stylesheet" type="text/css">
-
         <title>View Patient Record</title>
 
     </head>
     <body>
       <% include ./resources/navHeader.ejs %>
-        <form action="http://localhost:3003/users/login" method="post">
-          <!--CHANGE ACTION-->
-            First Name: <input type="text" name="firstName" required/><br>
-            Last Name: <input type="text" name="lastName" required/><br>
-            Date: <input type="date" name="date" required/><br>
-            SSN: <input type="text" name="SSN" required/><br>
-            Doctor: <input type="text" name="doctor" required/><br>
-            Billing Information: <input type="number" name="cardNumber" readonly/><br>
-            Billing Amount: <input type="number" name="billingAmount" readonly/><br>
-            Reference Number: <input type="number" name="refNumber" readonly/><br>
-            Invoice Number: <input type="number" name="invoiceNumber" readonly/><br>
-            Age: <input type="number" name="age" required/><br>
-            Weight: <input type="number" name="weight" required/><br>
-            Height: <input type="number" name="height" required/><br>
-            Blood Pressure: <input type="number" name="bloodPressure" required/><br>
-            Reason For Visit: <input type="text" name="reasonForVisit" required/><br>
-            Treatment Info: <input type="text" name="treatmentInfo"/><br>
-            Status: <input type="text" name="status"/><br>
+        <form action=<%=goTo%> method="post">
 
+          First Name: <input type="text"  name="firstname" id="firstname" value= <%=record.firstname%>> <br>
+          Last Name: <input type="text"  name="lastname" id="lastname" value= <%=record.lastname%>> <br>
+          Date: <%=record.date%> <br>
+          Change Date To: <input type="datetime-local"  name="date" id="date" value= <%=record.date%>> <br>
+          SSN: <input type="text"  name="SSN" id="SSN" value= <%=record.PatientSSN%>> <br>
+          Doctor: <input type="text"  name="doctor" id="doctor" value= <%=record.doctor%>> <br>
+          Billing Information: <input type="text"  name="billingInfo" id="billingInfo" value= <%=record.billingInfo%>> <br>
+          Billing Amount: <input type="text"  name="billingAmount" id="billingAmount" value= <%=record.billingAmount%>> <br>
+          Reference Number: <input type="text"  name="reference" id="reference" value= <%=record.reference%>> <br>
+          Invoice Number: <input type="text"  name="_id" value= <%=record._id%> style="width: 300px;"> <br>
+          Age: <input type="text"  name="age" id="age" value= <%=record.age%>> <br>
+          Weight: <input type="text"  name="weight" id="weight" value= <%=record.weight%>> <br>
+          Height: <input type="text"  name="height" id="height" value= <%=record.height%>> <br>
+          Blood Pressure: <input type="text"  name="bloodPressure" id="bloodPressure" value= <%=record.bloodPressure%>> <br>
+          Reason For Visit: <input type="text"  name="reasonForVisit" id="reasonForVisit" value= <%=record.reasonForVisit%>> <br>
+          Treatment Info: <input type="text"  name="treatmentInfo" id="treatmentInfo" value= <%=record.treatmentInfo%>> <br>
+          Status: <input type="text"  name="status" id="status" value= <%=record.status%>> <br>
+
+          <input type="submit" value='<%=button%>'>
         <br>
-            <button type="button">Submit</button>
         </form>
-        <br/>
     <script>
 
     </script>
