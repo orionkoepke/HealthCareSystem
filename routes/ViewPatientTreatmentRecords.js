@@ -74,11 +74,8 @@ router.post('/select_appointment', function(req, res){
 });
 
 router.post('/edit_appointment', function(req, res){
-  console.log(req.body.records);
   Record.find({patientID: patient._id, date: req.body.records}).then(function(ans){
     fullRecord = {patient: patient, appointment: ans[0]};
-    console.log(ans);
-    console.log(fullRecord);
     return res.render('ViewAppointmentTreatmentRecord', { record: fullRecord, button: "Go To Main Page", goTo: URL + "/change_to_main"});
   });
 });
