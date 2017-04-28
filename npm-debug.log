@@ -1,0 +1,497 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'sleep',
+1 verbose cli   '-g' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData sleep
+8 silly fetchNamedPackageData sleep
+9 silly mapToRegistry name sleep
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'sleep',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'sleep',
+12 silly mapToRegistry   name: 'sleep',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/sleep
+14 verbose request uri https://registry.npmjs.org/sleep
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 9:13:49 PM
+17 verbose request id 0f24af082ac6fcbb
+18 verbose etag W/"58f4dafe-56ea"
+19 verbose lastModified Mon, 17 Apr 2017 15:10:54 GMT
+20 http request GET https://registry.npmjs.org/sleep
+21 http 304 https://registry.npmjs.org/sleep
+22 verbose headers { date: 'Fri, 28 Apr 2017 02:13:52 GMT',
+22 verbose headers   via: '1.1 varnish',
+22 verbose headers   'cache-control': 'max-age=300',
+22 verbose headers   etag: 'W/"58f4dafe-56ea"',
+22 verbose headers   age: '0',
+22 verbose headers   connection: 'keep-alive',
+22 verbose headers   'x-served-by': 'cache-dfw1836-DFW',
+22 verbose headers   'x-cache': 'HIT',
+22 verbose headers   'x-cache-hits': '1',
+22 verbose headers   'x-timer': 'S1493345632.059711,VS0,VE36',
+22 verbose headers   vary: 'Accept-Encoding' }
+23 silly get cb [ 304,
+23 silly get   { date: 'Fri, 28 Apr 2017 02:13:52 GMT',
+23 silly get     via: '1.1 varnish',
+23 silly get     'cache-control': 'max-age=300',
+23 silly get     etag: 'W/"58f4dafe-56ea"',
+23 silly get     age: '0',
+23 silly get     connection: 'keep-alive',
+23 silly get     'x-served-by': 'cache-dfw1836-DFW',
+23 silly get     'x-cache': 'HIT',
+23 silly get     'x-cache-hits': '1',
+23 silly get     'x-timer': 'S1493345632.059711,VS0,VE36',
+23 silly get     vary: 'Accept-Encoding' } ]
+24 verbose etag https://registry.npmjs.org/sleep from cache
+25 verbose get saving sleep to C:\Users\austi\AppData\Roaming\npm-cache\registry.npmjs.org\sleep\.cache.json
+26 verbose correctMkdir C:\Users\austi\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+27 silly install normalizeTree
+28 silly loadCurrentTree Finishing
+29 silly loadIdealTree Starting
+30 silly install loadIdealTree
+31 silly cloneCurrentTree Starting
+32 silly install cloneCurrentTreeToIdealTree
+33 silly cloneCurrentTree Finishing
+34 silly loadShrinkwrap Starting
+35 silly install loadShrinkwrap
+36 silly loadShrinkwrap Finishing
+37 silly loadAllDepsIntoIdealTree Starting
+38 silly install loadAllDepsIntoIdealTree
+39 silly resolveWithNewModule sleep@5.1.1 checking installable status
+40 silly cache add args [ 'sleep', null ]
+41 verbose cache add spec sleep
+42 silly cache add parsed spec Result {
+42 silly cache add   raw: 'sleep',
+42 silly cache add   scope: null,
+42 silly cache add   escapedName: 'sleep',
+42 silly cache add   name: 'sleep',
+42 silly cache add   rawSpec: '',
+42 silly cache add   spec: 'latest',
+42 silly cache add   type: 'tag' }
+43 silly addNamed sleep@latest
+44 verbose addNamed "latest" is being treated as a dist-tag for sleep
+45 info addNameTag [ 'sleep', 'latest' ]
+46 silly mapToRegistry name sleep
+47 silly mapToRegistry using default registry
+48 silly mapToRegistry registry https://registry.npmjs.org/
+49 silly mapToRegistry data Result {
+49 silly mapToRegistry   raw: 'sleep',
+49 silly mapToRegistry   scope: null,
+49 silly mapToRegistry   escapedName: 'sleep',
+49 silly mapToRegistry   name: 'sleep',
+49 silly mapToRegistry   rawSpec: '',
+49 silly mapToRegistry   spec: 'latest',
+49 silly mapToRegistry   type: 'tag' }
+50 silly mapToRegistry uri https://registry.npmjs.org/sleep
+51 verbose addNameTag registry:https://registry.npmjs.org/sleep not in flight; fetching
+52 verbose get https://registry.npmjs.org/sleep not expired, no request
+53 silly addNameTag next cb for sleep with tag latest
+54 silly addNamed sleep@5.1.1
+55 verbose addNamed "5.1.1" is a plain semver version for sleep
+56 silly cache afterAdd sleep@5.1.1
+57 verbose afterAdd C:\Users\austi\AppData\Roaming\npm-cache\sleep\5.1.1\package\package.json not in flight; writing
+58 verbose correctMkdir C:\Users\austi\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+59 verbose afterAdd C:\Users\austi\AppData\Roaming\npm-cache\sleep\5.1.1\package\package.json written
+60 silly fetchNamedPackageData nan
+61 silly mapToRegistry name nan
+62 silly mapToRegistry using default registry
+63 silly mapToRegistry registry https://registry.npmjs.org/
+64 silly mapToRegistry data Result {
+64 silly mapToRegistry   raw: 'nan',
+64 silly mapToRegistry   scope: null,
+64 silly mapToRegistry   escapedName: 'nan',
+64 silly mapToRegistry   name: 'nan',
+64 silly mapToRegistry   rawSpec: '',
+64 silly mapToRegistry   spec: 'latest',
+64 silly mapToRegistry   type: 'tag' }
+65 silly mapToRegistry uri https://registry.npmjs.org/nan
+66 verbose request uri https://registry.npmjs.org/nan
+67 verbose request no auth needed
+68 info attempt registry request try #1 at 9:13:49 PM
+69 verbose etag W/"58ee904e-1f9bf"
+70 verbose lastModified Wed, 12 Apr 2017 20:38:38 GMT
+71 http request GET https://registry.npmjs.org/nan
+72 http 304 https://registry.npmjs.org/nan
+73 verbose headers { date: 'Fri, 28 Apr 2017 02:13:52 GMT',
+73 verbose headers   via: '1.1 varnish',
+73 verbose headers   'cache-control': 'max-age=300',
+73 verbose headers   etag: 'W/"58ee904e-1f9bf"',
+73 verbose headers   age: '268',
+73 verbose headers   connection: 'keep-alive',
+73 verbose headers   'x-served-by': 'cache-dfw1836-DFW',
+73 verbose headers   'x-cache': 'HIT',
+73 verbose headers   'x-cache-hits': '4',
+73 verbose headers   'x-timer': 'S1493345632.257839,VS0,VE0',
+73 verbose headers   vary: 'Accept-Encoding' }
+74 silly get cb [ 304,
+74 silly get   { date: 'Fri, 28 Apr 2017 02:13:52 GMT',
+74 silly get     via: '1.1 varnish',
+74 silly get     'cache-control': 'max-age=300',
+74 silly get     etag: 'W/"58ee904e-1f9bf"',
+74 silly get     age: '268',
+74 silly get     connection: 'keep-alive',
+74 silly get     'x-served-by': 'cache-dfw1836-DFW',
+74 silly get     'x-cache': 'HIT',
+74 silly get     'x-cache-hits': '4',
+74 silly get     'x-timer': 'S1493345632.257839,VS0,VE0',
+74 silly get     vary: 'Accept-Encoding' } ]
+75 verbose etag https://registry.npmjs.org/nan from cache
+76 verbose get saving nan to C:\Users\austi\AppData\Roaming\npm-cache\registry.npmjs.org\nan\.cache.json
+77 verbose correctMkdir C:\Users\austi\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+78 silly resolveWithNewModule nan@2.6.2 checking installable status
+79 silly cache add args [ 'nan@>=2.5.1', null ]
+80 verbose cache add spec nan@>=2.5.1
+81 silly cache add parsed spec Result {
+81 silly cache add   raw: 'nan@>=2.5.1',
+81 silly cache add   scope: null,
+81 silly cache add   escapedName: 'nan',
+81 silly cache add   name: 'nan',
+81 silly cache add   rawSpec: '>=2.5.1',
+81 silly cache add   spec: '>=2.5.1',
+81 silly cache add   type: 'range' }
+82 silly addNamed nan@>=2.5.1
+83 verbose addNamed ">=2.5.1" is a valid semver range for nan
+84 silly addNameRange { name: 'nan', range: '>=2.5.1', hasData: false }
+85 silly mapToRegistry name nan
+86 silly mapToRegistry using default registry
+87 silly mapToRegistry registry https://registry.npmjs.org/
+88 silly mapToRegistry data Result {
+88 silly mapToRegistry   raw: 'nan',
+88 silly mapToRegistry   scope: null,
+88 silly mapToRegistry   escapedName: 'nan',
+88 silly mapToRegistry   name: 'nan',
+88 silly mapToRegistry   rawSpec: '',
+88 silly mapToRegistry   spec: 'latest',
+88 silly mapToRegistry   type: 'tag' }
+89 silly mapToRegistry uri https://registry.npmjs.org/nan
+90 verbose addNameRange registry:https://registry.npmjs.org/nan not in flight; fetching
+91 verbose get https://registry.npmjs.org/nan not expired, no request
+92 silly addNameRange number 2 { name: 'nan', range: '>=2.5.1', hasData: true }
+93 silly addNameRange versions [ 'nan',
+93 silly addNameRange   [ '0.3.0-wip',
+93 silly addNameRange     '0.3.0-wip2',
+93 silly addNameRange     '0.3.0',
+93 silly addNameRange     '0.3.1',
+93 silly addNameRange     '0.3.2',
+93 silly addNameRange     '0.4.0',
+93 silly addNameRange     '0.4.1',
+93 silly addNameRange     '0.4.2',
+93 silly addNameRange     '0.4.3',
+93 silly addNameRange     '0.4.4',
+93 silly addNameRange     '0.5.0',
+93 silly addNameRange     '0.5.1',
+93 silly addNameRange     '0.5.2',
+93 silly addNameRange     '0.6.0',
+93 silly addNameRange     '0.7.0',
+93 silly addNameRange     '0.7.1',
+93 silly addNameRange     '0.8.0',
+93 silly addNameRange     '1.0.0',
+93 silly addNameRange     '1.1.0',
+93 silly addNameRange     '1.1.1',
+93 silly addNameRange     '1.1.2',
+93 silly addNameRange     '1.2.0',
+93 silly addNameRange     '1.3.0',
+93 silly addNameRange     '1.4.0',
+93 silly addNameRange     '1.4.1',
+93 silly addNameRange     '1.5.0',
+93 silly addNameRange     '1.4.2',
+93 silly addNameRange     '1.4.3',
+93 silly addNameRange     '1.5.1',
+93 silly addNameRange     '1.5.2',
+93 silly addNameRange     '1.6.0',
+93 silly addNameRange     '1.5.3',
+93 silly addNameRange     '1.6.1',
+93 silly addNameRange     '1.6.2',
+93 silly addNameRange     '1.7.0',
+93 silly addNameRange     '1.8.0',
+93 silly addNameRange     '1.8.1',
+93 silly addNameRange     '1.8.2',
+93 silly addNameRange     '1.8.3',
+93 silly addNameRange     '1.8.4',
+93 silly addNameRange     '1.9.0',
+93 silly addNameRange     '2.0.0',
+93 silly addNameRange     '2.0.1',
+93 silly addNameRange     '2.0.2',
+93 silly addNameRange     '2.0.3',
+93 silly addNameRange     '2.0.4',
+93 silly addNameRange     '2.0.5',
+93 silly addNameRange     '2.0.6',
+93 silly addNameRange     '2.0.7',
+93 silly addNameRange     '2.0.8',
+93 silly addNameRange     '2.0.9',
+93 silly addNameRange     '2.1.0',
+93 silly addNameRange     '2.2.0',
+93 silly addNameRange     '2.2.1',
+93 silly addNameRange     '2.3.0',
+93 silly addNameRange     '2.3.1',
+93 silly addNameRange     '2.3.2',
+93 silly addNameRange     '2.3.3',
+93 silly addNameRange     '2.3.4',
+93 silly addNameRange     '2.3.5',
+93 silly addNameRange     '2.4.0',
+93 silly addNameRange     '2.5.0',
+93 silly addNameRange     '2.5.1',
+93 silly addNameRange     '2.6.0',
+93 silly addNameRange     '2.6.1',
+93 silly addNameRange     '2.6.2' ] ]
+94 silly addNamed nan@2.6.2
+95 verbose addNamed "2.6.2" is a plain semver version for nan
+96 silly cache afterAdd nan@2.6.2
+97 verbose afterAdd C:\Users\austi\AppData\Roaming\npm-cache\nan\2.6.2\package\package.json not in flight; writing
+98 verbose correctMkdir C:\Users\austi\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+99 verbose afterAdd C:\Users\austi\AppData\Roaming\npm-cache\nan\2.6.2\package\package.json written
+100 silly loadAllDepsIntoIdealTree Finishing
+101 silly loadIdealTree Finishing
+102 silly currentTree npm
+103 silly idealTree npm
+103 silly idealTree `-- sleep@5.1.1
+103 silly idealTree   `-- nan@2.6.2
+104 silly generateActionsToTake Starting
+105 silly install generateActionsToTake
+106 silly generateActionsToTake Finishing
+107 silly diffTrees action count 2
+108 silly diffTrees add nan@2.6.2
+109 silly diffTrees add sleep@5.1.1
+110 silly decomposeActions action count 16
+111 silly decomposeActions fetch nan@2.6.2
+112 silly decomposeActions extract nan@2.6.2
+113 silly decomposeActions test nan@2.6.2
+114 silly decomposeActions preinstall nan@2.6.2
+115 silly decomposeActions build nan@2.6.2
+116 silly decomposeActions install nan@2.6.2
+117 silly decomposeActions postinstall nan@2.6.2
+118 silly decomposeActions finalize nan@2.6.2
+119 silly decomposeActions fetch sleep@5.1.1
+120 silly decomposeActions extract sleep@5.1.1
+121 silly decomposeActions test sleep@5.1.1
+122 silly decomposeActions preinstall sleep@5.1.1
+123 silly decomposeActions build sleep@5.1.1
+124 silly decomposeActions install sleep@5.1.1
+125 silly decomposeActions postinstall sleep@5.1.1
+126 silly decomposeActions finalize sleep@5.1.1
+127 silly runTopLevelLifecycles Starting
+128 silly executeActions Starting
+129 silly install executeActions
+130 silly doSerial global-install 0
+131 silly doParallel fetch 2
+132 verbose correctMkdir C:\Users\austi\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+133 verbose lock using C:\Users\austi\AppData\Roaming\npm-cache\_locks\staging-f2cc83a314e60f62.lock for C:\Users\austi\AppData\Roaming\npm\node_modules\.staging
+134 silly doParallel extract 2
+135 silly extract nan@2.6.2
+136 silly extract sleep@5.1.1
+137 verbose unbuild node_modules\.staging\nan-740114c0
+138 verbose unbuild node_modules\.staging\sleep-563cf7bd
+139 silly gentlyRm C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0 is being purged from base C:\Users\austi\AppData\Roaming\npm
+140 verbose gentlyRm don't care about contents; nuking C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0
+141 silly gentlyRm C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd is being purged from base C:\Users\austi\AppData\Roaming\npm
+142 verbose gentlyRm don't care about contents; nuking C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd
+143 verbose tar unpack C:\Users\austi\AppData\Roaming\npm-cache\nan\2.6.2\package.tgz
+144 verbose tar unpacking to C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0
+145 silly gentlyRm C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0 is being purged
+146 verbose gentlyRm don't care about contents; nuking C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0
+147 verbose tar unpack C:\Users\austi\AppData\Roaming\npm-cache\sleep\5.1.1\package.tgz
+148 verbose tar unpacking to C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd
+149 silly gentlyRm C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd is being purged
+150 verbose gentlyRm don't care about contents; nuking C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd
+151 silly gunzTarPerm modes [ '777', '666' ]
+152 silly gunzTarPerm modes [ '777', '666' ]
+153 silly gunzTarPerm extractEntry package.json
+154 silly gunzTarPerm modified mode [ 'package.json', 436, 438 ]
+155 silly gunzTarPerm extractEntry package.json
+156 silly gunzTarPerm modified mode [ 'package.json', 436, 438 ]
+157 silly gunzTarPerm extractEntry .npmignore
+158 silly gunzTarPerm modified mode [ '.npmignore', 436, 438 ]
+159 silly gunzTarPerm extractEntry README.md
+160 silly gunzTarPerm modified mode [ 'README.md', 436, 438 ]
+161 silly gunzTarPerm extractEntry README.md
+162 silly gunzTarPerm modified mode [ 'README.md', 436, 438 ]
+163 silly gunzTarPerm extractEntry include_dirs.js
+164 silly gunzTarPerm modified mode [ 'include_dirs.js', 436, 438 ]
+165 silly gunzTarPerm extractEntry test.js
+166 silly gunzTarPerm modified mode [ 'test.js', 436, 438 ]
+167 silly gunzTarPerm extractEntry index.js
+168 silly gunzTarPerm modified mode [ 'index.js', 436, 438 ]
+169 silly gunzTarPerm extractEntry nan_converters_43_inl.h
+170 silly gunzTarPerm modified mode [ 'nan_converters_43_inl.h', 436, 438 ]
+171 silly gunzTarPerm extractEntry LICENSE.md
+172 silly gunzTarPerm modified mode [ 'LICENSE.md', 436, 438 ]
+173 silly gunzTarPerm extractEntry doc/new.md
+174 silly gunzTarPerm modified mode [ 'doc/new.md', 436, 438 ]
+175 silly gunzTarPerm extractEntry doc/asyncworker.md
+176 silly gunzTarPerm modified mode [ 'doc/asyncworker.md', 436, 438 ]
+177 silly gunzTarPerm extractEntry LICENSE.txt
+178 silly gunzTarPerm modified mode [ 'LICENSE.txt', 436, 438 ]
+179 silly gunzTarPerm extractEntry sleep.cc
+180 silly gunzTarPerm modified mode [ 'sleep.cc', 436, 438 ]
+181 silly gunzTarPerm extractEntry doc/callback.md
+182 silly gunzTarPerm modified mode [ 'doc/callback.md', 436, 438 ]
+183 silly gunzTarPerm extractEntry doc/converters.md
+184 silly gunzTarPerm modified mode [ 'doc/converters.md', 436, 438 ]
+185 silly gunzTarPerm extractEntry binding.gyp
+186 silly gunzTarPerm modified mode [ 'binding.gyp', 436, 438 ]
+187 silly gunzTarPerm extractEntry doc/errors.md
+188 silly gunzTarPerm modified mode [ 'doc/errors.md', 436, 438 ]
+189 silly gunzTarPerm extractEntry doc/json.md
+190 silly gunzTarPerm modified mode [ 'doc/json.md', 436, 438 ]
+191 silly gunzTarPerm extractEntry doc/maybe_types.md
+192 silly gunzTarPerm modified mode [ 'doc/maybe_types.md', 436, 438 ]
+193 silly gunzTarPerm extractEntry doc/methods.md
+194 silly gunzTarPerm modified mode [ 'doc/methods.md', 436, 438 ]
+195 silly gunzTarPerm extractEntry doc/buffers.md
+196 silly gunzTarPerm modified mode [ 'doc/buffers.md', 436, 438 ]
+197 silly gunzTarPerm extractEntry doc/node_misc.md
+198 silly gunzTarPerm modified mode [ 'doc/node_misc.md', 436, 438 ]
+199 silly gunzTarPerm extractEntry doc/object_wrappers.md
+200 silly gunzTarPerm modified mode [ 'doc/object_wrappers.md', 436, 438 ]
+201 silly gunzTarPerm extractEntry doc/persistent.md
+202 silly gunzTarPerm modified mode [ 'doc/persistent.md', 436, 438 ]
+203 silly gunzTarPerm extractEntry doc/scopes.md
+204 silly gunzTarPerm modified mode [ 'doc/scopes.md', 436, 438 ]
+205 silly gunzTarPerm extractEntry doc/script.md
+206 silly gunzTarPerm modified mode [ 'doc/script.md', 436, 438 ]
+207 silly gunzTarPerm extractEntry doc/string_bytes.md
+208 silly gunzTarPerm modified mode [ 'doc/string_bytes.md', 436, 438 ]
+209 silly gunzTarPerm extractEntry doc/v8_internals.md
+210 silly gunzTarPerm modified mode [ 'doc/v8_internals.md', 436, 438 ]
+211 silly gentlyRm C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd\node_modules is being purged
+212 verbose gentlyRm don't care about contents; nuking C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd\node_modules
+213 silly gunzTarPerm extractEntry doc/v8_misc.md
+214 silly gunzTarPerm modified mode [ 'doc/v8_misc.md', 436, 438 ]
+215 silly gunzTarPerm extractEntry nan.h
+216 silly gunzTarPerm modified mode [ 'nan.h', 436, 438 ]
+217 silly gunzTarPerm extractEntry nan_callbacks.h
+218 silly gunzTarPerm modified mode [ 'nan_callbacks.h', 436, 438 ]
+219 silly gunzTarPerm extractEntry nan_callbacks_12_inl.h
+220 silly gunzTarPerm modified mode [ 'nan_callbacks_12_inl.h', 436, 438 ]
+221 silly gunzTarPerm extractEntry nan_callbacks_pre_12_inl.h
+222 silly gunzTarPerm modified mode [ 'nan_callbacks_pre_12_inl.h', 436, 438 ]
+223 silly gunzTarPerm extractEntry nan_converters.h
+224 silly gunzTarPerm modified mode [ 'nan_converters.h', 436, 438 ]
+225 silly gunzTarPerm extractEntry nan_converters_pre_43_inl.h
+226 silly gunzTarPerm modified mode [ 'nan_converters_pre_43_inl.h', 436, 438 ]
+227 silly gunzTarPerm extractEntry nan_implementation_12_inl.h
+228 silly gunzTarPerm modified mode [ 'nan_implementation_12_inl.h', 436, 438 ]
+229 silly gunzTarPerm extractEntry nan_implementation_pre_12_inl.h
+230 silly gunzTarPerm modified mode [ 'nan_implementation_pre_12_inl.h', 436, 438 ]
+231 silly gunzTarPerm extractEntry nan_json.h
+232 silly gunzTarPerm modified mode [ 'nan_json.h', 436, 438 ]
+233 silly gunzTarPerm extractEntry nan_maybe_43_inl.h
+234 silly gunzTarPerm modified mode [ 'nan_maybe_43_inl.h', 436, 438 ]
+235 silly gunzTarPerm extractEntry nan_maybe_pre_43_inl.h
+236 silly gunzTarPerm modified mode [ 'nan_maybe_pre_43_inl.h', 436, 438 ]
+237 silly gunzTarPerm extractEntry nan_new.h
+238 silly gunzTarPerm modified mode [ 'nan_new.h', 436, 438 ]
+239 silly gunzTarPerm extractEntry nan_object_wrap.h
+240 silly gunzTarPerm modified mode [ 'nan_object_wrap.h', 436, 438 ]
+241 silly gunzTarPerm extractEntry nan_persistent_12_inl.h
+242 silly gunzTarPerm modified mode [ 'nan_persistent_12_inl.h', 436, 438 ]
+243 silly gunzTarPerm extractEntry nan_persistent_pre_12_inl.h
+244 silly gunzTarPerm modified mode [ 'nan_persistent_pre_12_inl.h', 436, 438 ]
+245 silly gunzTarPerm extractEntry nan_private.h
+246 silly gunzTarPerm modified mode [ 'nan_private.h', 436, 438 ]
+247 silly gunzTarPerm extractEntry nan_string_bytes.h
+248 silly gunzTarPerm modified mode [ 'nan_string_bytes.h', 436, 438 ]
+249 silly gunzTarPerm extractEntry nan_typedarray_contents.h
+250 silly gunzTarPerm modified mode [ 'nan_typedarray_contents.h', 436, 438 ]
+251 silly gunzTarPerm extractEntry nan_weak.h
+252 silly gunzTarPerm modified mode [ 'nan_weak.h', 436, 438 ]
+253 silly gunzTarPerm extractEntry CHANGELOG.md
+254 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 436, 438 ]
+255 silly gunzTarPerm extractEntry tools/package.json
+256 silly gunzTarPerm modified mode [ 'tools/package.json', 436, 438 ]
+257 silly gunzTarPerm extractEntry tools/README.md
+258 silly gunzTarPerm modified mode [ 'tools/README.md', 436, 438 ]
+259 silly gunzTarPerm extractEntry tools/1to2.js
+260 silly gunzTarPerm modified mode [ 'tools/1to2.js', 509, 511 ]
+261 silly gentlyRm C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0\node_modules is being purged
+262 verbose gentlyRm don't care about contents; nuking C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0\node_modules
+263 silly doParallel preinstall 2
+264 silly preinstall nan@2.6.2 C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0
+265 info lifecycle nan@2.6.2~preinstall: nan@2.6.2
+266 silly preinstall sleep@5.1.1 C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd
+267 info lifecycle sleep@5.1.1~preinstall: sleep@5.1.1
+268 silly lifecycle nan@2.6.2~preinstall: no script for preinstall, continuing
+269 silly lifecycle sleep@5.1.1~preinstall: no script for preinstall, continuing
+270 silly doReverseSerial remove 0
+271 silly doSerial move 0
+272 silly doSerial finalize 2
+273 silly finalize C:\Users\austi\AppData\Roaming\npm\node_modules\sleep\node_modules\nan
+274 silly finalize C:\Users\austi\AppData\Roaming\npm\node_modules\sleep
+275 silly doSerial build 2
+276 silly build nan@2.6.2
+277 info linkStuff nan@2.6.2
+278 silly linkStuff nan@2.6.2 has C:\Users\austi\AppData\Roaming\npm\node_modules\sleep\node_modules as its parent node_modules
+279 silly linkStuff nan@2.6.2 is part of a global install
+280 silly linkStuff nan@2.6.2 is installed into a global node_modules
+281 verbose linkBins nan@2.6.2
+282 verbose linkMans nan@2.6.2
+283 silly build sleep@5.1.1
+284 info linkStuff sleep@5.1.1
+285 silly linkStuff sleep@5.1.1 has C:\Users\austi\AppData\Roaming\npm\node_modules as its parent node_modules
+286 silly linkStuff sleep@5.1.1 is part of a global install
+287 silly linkStuff sleep@5.1.1 is installed into a global node_modules
+288 silly linkStuff sleep@5.1.1 is installed into the top-level global node_modules
+289 verbose linkBins sleep@5.1.1
+290 verbose linkMans sleep@5.1.1
+291 silly doSerial global-link 0
+292 silly doParallel update-linked 0
+293 silly doSerial install 2
+294 silly install nan@2.6.2 C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\nan-740114c0
+295 info lifecycle nan@2.6.2~install: nan@2.6.2
+296 silly lifecycle nan@2.6.2~install: no script for install, continuing
+297 silly install sleep@5.1.1 C:\Users\austi\AppData\Roaming\npm\node_modules\.staging\sleep-563cf7bd
+298 info lifecycle sleep@5.1.1~install: sleep@5.1.1
+299 verbose lifecycle sleep@5.1.1~install: unsafe-perm in lifecycle true
+300 verbose lifecycle sleep@5.1.1~install: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\austi\AppData\Roaming\npm\node_modules\sleep\node_modules\.bin;C:\Users\austi\AppData\Roaming\npm\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Chez Scheme Version 8.4\bin\a6nt;C:\Program Files (x86)\Chez Scheme Version 8.4\bin\i3nt;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\MongoDB\Server\3.4\bin\;C:\Program Files (x86)\Brackets\command;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files\Java\jdk1.8.0_112\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\austi\AppData\Local\Microsoft\WindowsApps;C:\Users\austi\AppData\Roaming\npm
+301 verbose lifecycle sleep@5.1.1~install: CWD: C:\Users\austi\AppData\Roaming\npm\node_modules\sleep
+302 silly lifecycle sleep@5.1.1~install: Args: [ '/d /s /c', 'node-gyp rebuild' ]
+303 silly lifecycle sleep@5.1.1~install: Returned: code: 1  signal: null
+304 info lifecycle sleep@5.1.1~install: Failed to exec install script
+305 verbose unlock done using C:\Users\austi\AppData\Roaming\npm-cache\_locks\staging-f2cc83a314e60f62.lock for C:\Users\austi\AppData\Roaming\npm\node_modules\.staging
+306 silly rollbackFailedOptional Starting
+307 silly rollbackFailedOptional Finishing
+308 silly runTopLevelLifecycles Finishing
+309 silly install printInstalled
+310 verbose stack Error: sleep@5.1.1 install: `node-gyp rebuild`
+310 verbose stack Exit status 1
+310 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:255:16)
+310 verbose stack     at emitTwo (events.js:106:13)
+310 verbose stack     at EventEmitter.emit (events.js:191:7)
+310 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:40:14)
+310 verbose stack     at emitTwo (events.js:106:13)
+310 verbose stack     at ChildProcess.emit (events.js:191:7)
+310 verbose stack     at maybeClose (internal/child_process.js:877:16)
+310 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+311 verbose pkgid sleep@5.1.1
+312 verbose cwd C:\Users\austi\Documents\study_files_SP17\CS_3365_002\Project\GitHub_Project\HealthCareSystem
+313 error Windows_NT 10.0.14393
+314 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "sleep" "-g"
+315 error node v6.10.0
+316 error npm  v3.10.10
+317 error code ELIFECYCLE
+318 error sleep@5.1.1 install: `node-gyp rebuild`
+318 error Exit status 1
+319 error Failed at the sleep@5.1.1 install script 'node-gyp rebuild'.
+319 error Make sure you have the latest version of node.js and npm installed.
+319 error If you do, this is most likely a problem with the sleep package,
+319 error not with npm itself.
+319 error Tell the author that this fails on your system:
+319 error     node-gyp rebuild
+319 error You can get information on how to open an issue for this project with:
+319 error     npm bugs sleep
+319 error Or if that isn't available, you can get their info via:
+319 error     npm owner ls sleep
+319 error There is likely additional logging output above.
+320 verbose exit [ 1, true ]

@@ -10,7 +10,7 @@ router.get("/:id", function(req,res){
 
       console.log("find by: " + Oid);
 
-      Records.findById(Oid)
+      Records.findById(Oid).populate('patientID')
           .then(function(patientRecord){
               //When patientRecord is null send the user to a error page or text popup
               if(!patientRecord){
@@ -29,8 +29,8 @@ router.get("/:id", function(req,res){
               else{
                   if(patientRecord.status === 'Finalized'){
                       return res.render('OnlinePayment', {
-                          firstname: patientRecord.firstname,
-                          lastname: patientRecord.lastname,
+                          firstname: patientRecord.patientID.firstname,
+                          lastname: patientRecord.patientID.lastname,
                           patientCopay: patientRecord.patientCopay,
                           date: patientRecord.date,
                           _id: Oid,
@@ -39,10 +39,10 @@ router.get("/:id", function(req,res){
                   }
                   else{
                       return res.render('OnlinePayment', {
-                          firstname: patientRecord.firstname,
-                          lastname: patientRecord.lastname,
+                          firstname: patientRecord.patientID.firstname,
+                          lastname: patientRecord.patientID.lastname,
                           patientCopay: patientRecord.patientCopay,
-                          date: patientRecord.date,
+                          date: moment(patientRecord.date.toISOString()).add(300,'m').format('h:mma, ddd, MMM, Do, YYYY'),
                           _id: Oid,
                           onlineError: " "
                       });
@@ -63,11 +63,11 @@ router.post("/Query", function(req, res){
     var cardNumber = req.body.cardNumber;
     var cardHolder = req.body.cardHolder;
     var cvn = req.body.cardSecurityCode;
-    console.log("Oh baby!");
+    console.log("Payment Sent");
     var creditReference;
     var timeStamp;
 
-    Records.findById(Oid)
+    Records.findById(Oid).populate('patientID')
         .then(function(patientRecord){
           if(!patientRecord){
 
@@ -89,12 +89,14 @@ router.post("/Query", function(req, res){
                   cvn: cvn
               }, true);
               if(creditReference === '0000000000'){
+                  
+                  console.log(moment(patientRecord.date.toISOString()).add(300,'m').format('h:mma, ddd, MMM, Do, YYYY'));
 
                   return res.render('OnlinePayment', {
-                    firstname: patientRecord.firstname,
-                    lastname: patientRecord.lastname,
+                    firstname: patientRecord.patientID.firstname,
+                    lastname: patientRecord.patientID.lastname,
                     patientCopay: patientRecord.patientCopay,
-                    date: patientRecord.date,
+                    date: moment(patientRecord.date.toISOString()).add(300,'m').format('h:mma, ddd, MMM, Do, YYYY'),
                     _id: Oid,
                     onlineError: "Payment not accepted. Please try again."
                   });
@@ -104,10 +106,10 @@ router.post("/Query", function(req, res){
                   Records.findByIdAndUpdate(Oid, {
                       status: 'Finalized',
                       reference: creditReference
-                  }).then(function(patient){
+                  }).populate('patientID').then(function(patient){
                       return res.render('OnlinePayment_Receipt', {
-                          firstname: patientRecord.firstname,
-                          lastname: patientRecord.lastname,
+                          firstname: patientRecord.patientID.firstname,
+                          lastname: patientRecord.patientID.lastname,
                           patientCopay: patientRecord.patientCopay,
                           timeStamp: moment().format('h:mma, ddd, MMM, Do, YYYY'),
                           creditReference: creditReference,

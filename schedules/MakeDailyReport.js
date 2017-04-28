@@ -33,7 +33,8 @@ module.exports = function(hour, minute){
             });
         }).then(function(){
             // Get today's list of records
-            Records.find({date: { $gte: new Date(Year,Month,Day,0,0,0,0)}},function(err,recordsList){
+            Records.find({date: { $gte: new Date(Year,Month,Day,0,0,0,0)}}).populate('patientID').then(function(recordsList){
+                console.log(recordsList);
                 var newDRep = new DailyReport();
                 newDRep.dateOfReport = new Date(Year,Month,Day,Hour,0-offset,0,0);
                 newDRep.totalPatientsToday = 0;
@@ -44,7 +45,7 @@ module.exports = function(hour, minute){
                 // Update the entries with figures from the records
                 recordsList.forEach(function(eachRecord){
                     newDRep.doctorStats.forEach(function(thisEntry){
-                        if(eachRecord.doctor === thisEntry.doctorName){
+                        if(eachRecord.patientID.doctor === thisEntry.doctorName){
                             thisEntry.numPatientsToday += 1;
                             thisEntry.totalIncome = thisEntry.totalIncome + eachRecord.billingAmount;
                         }

@@ -18,7 +18,7 @@ module.exports = function(hour, minute){
     
     var j = schedule.scheduleJob(rule,function(){
         console.log("ClearAppointmentsDaily firing...");
-        Records.find({date: { $gte: new Date(Year,Month,Day,0,0,0,0)}},function(err,recordsList){
+        Records.find({date: { $gte: new Date(Year,Month,Day,0,0,0,0)}}).populate('patientID').then(function(recordsList){
             recordsList.forEach(function(eachRecord){
                 if(eachRecord.status === "Scheduled"){
                     console.log("Run No Show Charge...");

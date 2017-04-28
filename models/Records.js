@@ -3,24 +3,12 @@ var Schema = mongoose.Schema;
 
 
 var ATRecordSchema = new Schema({
-    firstname: {
-        type: String,
-        required: true
-    },
-    lastname: {
-      type: String,
-      required: true
-    },
+    patientID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'patients'
+    },    
     date: {
         type: Date,
-        required: true
-    },
-    PatientSSN: {
-        type: String,
-        required: true
-    },
-    doctor: {
-        type: String,
         required: true
     },
     age: {
