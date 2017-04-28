@@ -11,23 +11,23 @@
       <% include ./resources/navHeader.ejs %>
         <form action=<%=goTo%> method="post">
 
-          First Name: <input type="text"  name="firstname" id="firstname" value= <%=record.firstname%>> <br>
-          Last Name: <input type="text"  name="lastname" id="lastname" value= <%=record.lastname%>> <br>
-          Date: <%=record.date%> <br>
-          Change Date To: <input type="datetime-local"  name="date" id="date" value= <%=record.date%>> <br>
-          SSN: <input type="text"  name="SSN" id="SSN" value= <%=record.PatientSSN%>> <br>
-          Doctor: <input type="text"  name="doctor" id="doctor" value= <%=record.doctor%>> <br>
-          Billing Information: <input type="text"  name="billingInfo" id="billingInfo" value= <%=record.billingInfo%>> <br>
-          Billing Amount: <input type="text"  name="billingAmount" id="billingAmount" value= <%=record.billingAmount%>> <br>
-          Reference Number: <input type="text"  name="reference" id="reference" value= <%=record.reference%>> <br>
-          Invoice Number: <input type="text"  name="_id" value= <%=record._id%> style="width: 300px;"> <br>
-          Age: <input type="text"  name="age" id="age" value= <%=record.age%>> <br>
-          Weight: <input type="text"  name="weight" id="weight" value= <%=record.weight%>> <br>
-          Height: <input type="text"  name="height" id="height" value= <%=record.height%>> <br>
-          Blood Pressure: <input type="text"  name="bloodPressure" id="bloodPressure" value= <%=record.bloodPressure%>> <br>
-          Reason For Visit: <input type="text"  name="reasonForVisit" id="reasonForVisit" value= <%=record.reasonForVisit%>> <br>
-          Treatment Info: <input type="text"  name="treatmentInfo" id="treatmentInfo" value= <%=record.treatmentInfo%>> <br>
-          Status: <input type="text"  name="status" id="status" value= <%=record.status%>> <br>
+          First Name: <input type="text"  name="firstname" id="firstname" value= <%=fullRecord.patient.firstname%>> <br>
+          Last Name: <input type="text"  name="lastname" id="lastname" value= <%=fullRecord.patient.lastname%>> <br>
+          Date: <%=fullRecord.appointment.date%> <br>
+          Change Date To: <input type="datetime-local"  name="date" id="date" value= <%=fullRecord.appointment.date%>> <br>
+          SSN: <input type="text"  name="SSN" id="SSN" value= <%=fullRecord.patient.SSN%>> <br>
+          Doctor: <input type="text"  name="doctor" id="doctor" value= <%=fullRecord.patient.doctor%>> <br>
+          Billing Information: <input type="text"  name="billingInfo" id="billingInfo" value= <%=fullRecord.patient.onFilePaymentInfo%>> <br>
+          Billing Amount: <input type="text"  name="billingAmount" id="billingAmount" value= <%=fullRecord.appointment.billingAmount%>> <br>
+          Reference Number: <input type="text"  name="reference" id="reference" value= <%=fullRecord.appointment.reference%>> <br> <!--WHAT???!-->
+          Invoice Number: <input type="text"  name="_id" value= <%=fullRecord.appointment._id%> style="width: 300px;"> <br>
+          Age: <input type="text"  name="age" id="age" value= <%=fullRecord.appointment.age%>> <br>
+          Weight: <input type="text"  name="weight" id="weight" value= <%=fullRecord.appointment.weight%>> <br>
+          Height: <input type="text"  name="height" id="height" value= <%=fullRecord.appointment.height%>> <br>
+          Blood Pressure: <input type="text"  name="bloodPressure" id="bloodPressure" value= <%=fullRecord.appointment.bloodPressure%>> <br>
+          Reason For Visit: <input type="text"  name="reasonForVisit" id="reasonForVisit" value= <%=fullRecord.appointment.reasonForVisit%>> <br>
+          Treatment Info: <input type="text"  name="treatmentInfo" id="treatmentInfo" value= <%=fullRecord.appointment.treatmentInfo%>> <br>
+          Status: <input type="text"  name="status" id="status" value= <%=fullRecord.appointment.status%>> <br>
 
           <input type="submit" value='<%=button%>'>
         <br>
