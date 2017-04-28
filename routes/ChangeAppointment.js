@@ -62,23 +62,34 @@ router.post('/select_appointment', function(req, res){
 var patientRecord;
 
 router.post('/edit_appointment', function(req, res){
-  Record.find({patientID: patient._id, date: req.body.records}).then(function(ans){
-    patientRecord = ans[0];
-    fullRecord = {patient: patient, appointment: ans[0]};
-    return res.render('ViewAppointmentTreatmentRecord', { record: fullRecord, button: "Update", goTo: URL + "/update_appointment"});
+  var prevDay = new Date((new Date).valueOf() - 86350989);
+
+  Record.find({patientID: patient._id, date: req.body.records}).then(function(ans1){
+    patientRecord = ans1[0];
+  });
+
+  Record.find({doctor: patient.doctor, date: {$gte: prevDay}}).then(function(ans2){
+    return res.render('ViewSchedule', {appointments: ans2, error: "", goTo: URL + "/update_appointment"});
   });
 });
 
 router.post('/update_appointment', function(req, res){
-  if(req.body.date != ""){
-    patientRecord.date = req.body.date;
-  }
-  
-  Record.findByIdAndUpdate(patientRecord._id, { $set: patientRecord}, function(err, numAffected){});
+  Record.find({doctor: patient.doctor, date: new Date(req.body.appointmentTime)}).then(function(ans){
+    if(ans.length == 0)
+    {
+      patientRecord.date = new Date(req.body.appointmentTime);
+      patientRecord.update();
 
-  patient = null;
-  patientRecord = null;
-  return res.redirect('/users');
+      patient = null;
+      patientRecord = null;
+
+      return res.redirect('/users');
+    }
+    else
+    {
+      return res.render('ViewSchedule', {appointments: ans, error: "Invalid Appointment Time", goTo: URL + "/update_appointment"});
+    }
+  });
 });
 
 

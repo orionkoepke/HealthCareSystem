@@ -46,29 +46,27 @@ var appointments;
 var patient;
 
 router.post('/view_schedule', function(req, res){
-  Patient.find({SSN: req.body.patients}).then(function(ans){
+  Patient.find({SSN: req.body.patients}).then(function(ans1){
     // This gets the previous day.
     var prevDay = new Date((new Date).valueOf() - 86350989);
 
-    patient = ans[0];
+    patient = ans1[0];
 
-    Record.find({doctor: ans[0].doctor, date: {$gte: prevDay}}).then(function(ans){
-      appointments = ans;
-      return res.render('ViewSchedule', {appointments: ans, error: "", goTo: URL + "/add_appointment"});
+    Record.find({doctor: ans1[0].doctor, date: {$gte: prevDay}}).then(function(ans2){
+      appointments = ans2;
+      return res.render('ViewSchedule', {appointments: ans2, error: "", goTo: URL + "/add_appointment"});
     });
   });
 });
 
 router.post('/add_appointment', function(req, res){
-  Record.find({date: new Date(req.body.appointmentTime)}).then(function(ans){
+  Record.find({doctor: patient.doctor, date: new Date(req.body.appointmentTime)}).then(function(ans){
     if(ans.length == 0)
     {
       newRecord = new Record();
-      newRecord.firstname = patient.firstname;
-      newRecord.lastname = patient.lastname;
+      newRecord.patientID = patient._id;
       newRecord.date = new Date(req.body.appointmentTime);
       newRecord.PatientSSN = patient.SSN;
-      newRecord.doctor = patient.doctor;
       newRecord.status = "scheduled";
       newRecord.save();
 

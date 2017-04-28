@@ -25,14 +25,16 @@ router.get('/',function(req,res){
 var patientRecord;
 
 router.post('/edit_status', function(req, res){
-  patient = JSON.parse(req.body.records);
-  Record.find({PatientSSN: patient.SSN, date: patient.date}).then(function(ans){
-    patientRecord = ans[0];
+  record = JSON.parse(req.body.records);
+  Patient.find({_id: record.patientID}).then(function(ans1){
+    Record.find({patientID: ans1[0]._id, date: record.date}).then(function(ans2){
+      patientRecord = ans2[0];
+      patientRecord.status = "Cleared";
+      patientRecord.update();
 
-    patientRecord.status = "Cleared";
-    Record.findByIdAndUpdate(patientRecord._id, { $set: patientRecord}, function(err, numAffected){});
-
-    return res.render('ViewAppointmentTreatmentRecord', { record: ans[0], button:"Go To Main", goTo: URL + "/go_to_main"});
+      fullRecord = {patient: ans1[0], appointment: ans2[0]};
+      return res.render('ViewAppointmentTreatmentRecord', { record: fullRecord, button: "Go To Main Page", goTo: URL + "/go_to_main"});
+    });
   });
 });
 
