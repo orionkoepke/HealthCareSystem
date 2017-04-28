@@ -10,22 +10,24 @@
     </head>
     <body>
       <% include ./resources/navHeader.ejs %>
-        <form action="http://localhost:3003/view_patient_record" method="post">
-            First Name: <input type="text" name="firstName" required/><br>
-            Last Name: <input type="text" name="lastName" required/><br>
-            Address: <input type="text" name="address"/><br>
-            Phone: <input type="text" name="phone"/><br>
-            Email: <input type="email" name="email"/><br>
-            SSN: <input type="text" name="SSN" required/><br>
-            Insurance: <input type="text" name="insurance"/><br>
-            On File Payment Info: <input type="text" name="onFilePaymentInfo"/><br>
-            Doctor: <input type="text" name="doctor" required/><br>
-            Medical Notes: <input type="text" name="medicalNotes"/><br>
+        <form action=<%=goTo%> method="post">
+
+            First Name: <input type="text"  name="firstName" id="firstName" value= <%=patient.firstname%>> <br>
+            Last Name: <input type="text"  name="lastName" id="lastName" value= <%=patient.lastname%>> <br>
+            Address: <input type="text"  name="address" id="address" value= '<%=patient.address%>' style="width: 300px;"> <br>
+            Phone: <input type="text"  name="phone" id="phone" value= <%=patient.phone%>> <br>
+            Email: <input type="email"  name="email" id="email" value= <%=patient.email%>> <br>
+            SSN: <input type="text"  name="PatientSSN" id="PatientSSN" value= <%=patient.SSN%>> <br>
+            Insurance: <input type="text"  name="insurance" id="insurance" value= '<%=patient.insurance%>'> <br>
+            On File Payment Info: <input type="text"  name="onFilePaymentInfo" id="onFilePaymentInfo" value= <%=patient.onFilePaymentInfo%>> <br>
+            Doctor: <input type="text"  name="doctor" id="doctor" value= <%=patient.doctor%>> <br>
+            Medical Notes: <input type="text"  name="medicalNotes" id="medicalNotes" value= <%=patient.medicalNotes%>> <br>
+            <input type="submit"  value='<%=button%>'>
+
 
         <br>
-            <button type="button">Submit</button>
         </form>
         <br/>
-        
+
     </body>
 </html>
