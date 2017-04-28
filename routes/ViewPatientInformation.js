@@ -22,10 +22,10 @@ router.get('/', function(req, res){
         for(var i = 0; i < ans.length; i++)
         {
           var name = "Dr. " + ans[i].lastname;
-          var doctorID = ans[i].doctor;
-          doctors[i] = {name: name, doctorID: doctorID};
+          var doctorId = ans[i].doctor;
+          doctors[i] = {name: name, doctorId: doctorId};
         }
-        return res.render('CreateNewPatient', {doctors: doctors, goTo: URL + "/view_patient_information"});
+        return res.render('SelectDoctor', {doctors: doctors, goTo: URL + "/select_patient"});
       });
     }
     else{
@@ -41,6 +41,20 @@ router.get('/', function(req, res){
       });
     }
   }
+});
+
+router.post('/select_patient', function(req, res){
+  console.log(req.body.doctors);
+  Patient.find({doctor: req.body.doctors}).then(function(ans){
+    var patients = [];
+    for(var i = 0; i < ans.length; i++){
+      var patient = {name: "", ssn: ""};
+      patient.name = ans[i].firstname + " " + ans[i].lastname;
+      patient.SSN = ans[i].SSN;
+      patients[i] = patient;
+    }
+    return res.render('SelectPatient', { patients: patients, goTo: URL + "/view_patient_information" });
+  });
 });
 
 router.post('/view_patient_information', function(req, res){
