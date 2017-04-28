@@ -44,7 +44,7 @@ router.get('/', function(req, res){
 });
 
 router.post('/select_patient', function(req, res){
-  Patient.find({doctor: req.session.user.doctor}).then(function(ans){
+  Patient.find({doctor: req.body.doctors}).then(function(ans){
     var patients = [];
     for(var i = 0; i < ans.length; i++){
       var patient = {name: "", ssn: ""};
