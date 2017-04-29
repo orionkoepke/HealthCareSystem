@@ -1,4 +1,4 @@
-module.exports = function(hour, minute){
+module.exports = function(testing, hour, minute){
     
   var schedule = require('node-schedule');
     var Records = require('../models/Records');
@@ -8,7 +8,11 @@ module.exports = function(hour, minute){
     moment().format();
     
     var rule = new schedule.RecurrenceRule();
-    rule.dayOfWeek = [new schedule.Range(1,5)];
+    if(testing){
+        rule.dayOfWeek = [new schedule.Range(0,6)];        
+    }else{
+        rule.dayOfWeek = [new schedule.Range(1,5)]; 
+    }
     rule.hour = hour;
     rule.minute = minute;
     
@@ -16,9 +20,6 @@ module.exports = function(hour, minute){
     var Month = moment().month();
     var Day = moment().date();
     var Hour = moment().hour();
-    var Minutes = moment().minute();
-    var Seconds = moment().second();
-    var Milliseconds = moment().millisecond();
     var offset = new Date().getTimezoneOffset();
     
     var listOfDoctors = [];        

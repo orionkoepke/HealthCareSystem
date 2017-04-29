@@ -1,4 +1,4 @@
-module.exports = function(hour, minute){
+module.exports = function(testing, hour, minute){
     
   const schedule = require('node-schedule');
   const mongoose = require('mongoose');
@@ -7,6 +7,11 @@ module.exports = function(hour, minute){
   const SendPayOnlineEmail = require('./RecordHandlers/SendPayOnlineEmail');
     
     var rule = new schedule.RecurrenceRule();
+    if(testing){
+        rule.dayOfWeek = [new schedule.Range(0,6)];        
+    }else{
+        rule.dayOfWeek = [new schedule.Range(1,5)]; 
+    }
     rule.dayOfWeek = [new schedule.Range(1,5)];
     rule.hour = hour;
     rule.minute = minute;

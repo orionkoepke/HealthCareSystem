@@ -9,8 +9,12 @@ module.exports = function(testing, date, hour, minute){
     var rule = new schedule.RecurrenceRule();
     var currentDate = new Date();
     var currentMonth = currentDate.getMonth();
+       
     
-    switch (currentMonth) {
+    if(testing === true){
+        rule.date = date;
+    }else{
+        switch (currentMonth) {
                 
         case 0:  
             rule.date = 31;
@@ -48,10 +52,7 @@ module.exports = function(testing, date, hour, minute){
         case 11: 
             rule.date = 31;     
             break;
-    }
-    
-    if(testing === true){
-        rule.date = date;
+        }
     }
     rule.hour = hour;
     rule.minute = minute;
@@ -60,9 +61,6 @@ module.exports = function(testing, date, hour, minute){
     var Month = moment().month();
     var Day = moment().date();
     var Hour = moment().hour();
-    var Minutes = moment().minute();
-    var Seconds = moment().second();
-    var Milliseconds = moment().millisecond();
     var offset = new Date().getTimezoneOffset();
     
     var j = schedule.scheduleJob(rule,function(){
