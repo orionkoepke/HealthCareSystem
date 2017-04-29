@@ -181,4 +181,5 @@ dummyRecords.forEach(function(eachRecord){
     });
 });
 
-console.log("Program running...  Type Ctrl+C to exit.");
+console.log("Program running...");
+console.log("Ctrl+C to exit.");
