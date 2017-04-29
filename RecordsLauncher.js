@@ -172,6 +172,7 @@ dummyRecords.forEach(function(eachRecord){
         newRecord.reference = eachRecord.reference;
         newRecord.treatmentInfo = eachRecord.treatmentInfo;
         newRecord.status = eachRecord.status;
+        newRecord.doctor = eachRecord.doctor;
         newRecord.patientCopay = Math.round(eachRecord.billingAmount * Math.random());
         newRecord.save();
     }).catch(function(e2){

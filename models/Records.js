@@ -27,6 +27,9 @@ var ATRecordSchema = new Schema({
     reasonForVisit: {
         type: String
     },
+    doctor: {
+        type: String
+    },
     billingAmount: {
         type: Number
     },
