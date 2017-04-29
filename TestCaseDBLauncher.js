@@ -23,7 +23,6 @@ var Month = CurrentDate.month();
 var Day = CurrentDate.date();
 var offset = new Date().getTimezoneOffset();
 
-
 // Add new patients.
 var dummyPatients = [
     {
@@ -148,7 +147,6 @@ var dummyPatients = [
 } 
 ];
 
-
 dummyPatients.forEach(function(patientRec){
     var newPatient = new Patient();
     newPatient.firstname = patientRec.firstname;
@@ -163,7 +161,6 @@ dummyPatients.forEach(function(patientRec){
     newPatient.medicalNotes = patientRec.medicalNotes;
     newPatient.save();
 });
-
 
 // Add new daily reports.  Note: There will not be corresponding atrecords for these reports.
 var dummyReports = [
@@ -423,3 +420,4 @@ dummyMReports.forEach(function(eachReport){
 
 
 console.log("Program running...");
+console.log("Ctrl+C to exit.")
