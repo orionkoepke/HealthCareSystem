@@ -13,7 +13,7 @@ var Record = require('../models/Records.js');
 var URL = "http://localhost:3003/create_new_patient_record";
 
 // Gather the patient's information.
-router.get('/', function selectDoctor(req, res){
+router.get('/', function getPatientInformation(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -50,7 +50,5 @@ router.post('/create_new_patient', function createNewPatient(req, res){
   newPatient.save();
   return res.redirect('/users');
 });
-
-
 
 module.exports = router;

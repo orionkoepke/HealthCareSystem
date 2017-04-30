@@ -21,7 +21,7 @@ router.get('/',function selectDoctor(req,res){
     return res.render('MainPage',{ permissionError: "You do not have permission to do this."});
   }
   else{
-    Record.find({status: "Scheduled"}).populate('patientID').then(function(ans){
+    Record.find({status: {$ne: "Finalized"}, reference: {$ne: ""}}).populate('patientID').then(function(ans){
       return res.render('UnclearedAppointments', {unclearedAppointments: ans, goTo: URL + "/edit_status"});
     });
   }
@@ -35,7 +35,7 @@ router.post('/edit_status', function editStatus(req, res){
   Patient.find({_id: record.patientID}).then(function(ans1){
     Record.find({patientID: ans1[0]._id, date: record.date}).then(function(ans2){
       patientRecord = ans2[0];
-      patientRecord.status = "Cleared";
+      patientRecord.status = "Finalized";
       patientRecord.save();
 
       fullRecord = {patient: ans1[0], appointment: ans2[0]};
@@ -49,7 +49,5 @@ router.post('/go_to_main', function goToMain(req, res){
   patientRecord = null;
   return res.redirect('/users');
 });
-
-
 
 module.exports = router;

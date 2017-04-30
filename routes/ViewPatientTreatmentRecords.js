@@ -96,6 +96,4 @@ router.post('/change_to_main', function goToMain(req, res){
   return res.redirect('/users');
 });
 
-
-
 module.exports = router;

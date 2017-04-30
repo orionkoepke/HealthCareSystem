@@ -33,6 +33,10 @@
           <input type="submit" value='<%=button%>'>
         <br>
         </form>
+		<form action="http://localhost:3003/pay" method="post">
+			<input name="id" id="id" type="hidden" value=<%=_id%>>
+			<input type="submit" value="Process Payment">
+		</form>
     <script>
 
     </script>

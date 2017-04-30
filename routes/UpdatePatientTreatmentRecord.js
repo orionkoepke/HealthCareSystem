@@ -68,7 +68,7 @@ var patient; // The patient selected.
 router.post('/select_appointment', function selectAppointment(req, res){
   Patient.find({SSN: req.body.patients}).then(function(ans1){
     patient = ans1[0];
-    Record.find({patientID: ans1[0]._id}).then(function(ans2){
+    Record.find({patientID: ans1[0]._id, status: {$ne: "Finalized"}}).then(function(ans2){
       var records = [];
       for(var i = 0; i < ans2.length; i++){
         var record = {date: ""};
@@ -87,7 +87,7 @@ router.post('/edit_appointment', function editAppointment(req, res){
   Record.find({patientID: patient._id, date: req.body.records}).then(function(ans){
     patientRecord = ans[0];
     fullRecord = {patient: patient, appointment: ans[0]};
-    return res.render('ViewAppointmentTreatmentRecord', { record: fullRecord, button: "Update", goTo: URL + "/update_appointment"});
+    return res.render('ViewAppointmentTreatmentRecord', { record: fullRecord, button: "Update", goTo: URL + "/update_appointment", _id: patientRecord._id});
   });
 });
 
@@ -124,7 +124,5 @@ router.post('/update_appointment', function update(req, res){
 
   return res.redirect('/users');
 });
-
-
 
 module.exports = router;
