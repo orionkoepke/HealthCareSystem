@@ -13,7 +13,7 @@ var Record = require('../models/Records.js');
 var URL = "http://localhost:3003/change_appointment";
 
 // Select a doctor.
-router.get('/', function(req, res){
+router.get('/', function selectDoctor(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -35,8 +35,8 @@ router.get('/', function(req, res){
 });
 
 // Select a patient.
-router.post('/select_patient', function(req, res){
-  Patient.find({doctor: req.body.doctors}).then(function(ans){
+router.post('/select_patient', function selectPatient(req, res){
+  Patient.find({doctor: req.body.doctors}).then(function getPatients(ans){
     var patients = [];
     for(var i = 0; i < ans.length; i++){
       var patient = {name: "", ssn: ""};
@@ -51,10 +51,10 @@ router.post('/select_patient', function(req, res){
 var patient;  // The patient chosen.
 
 // Select an appointment the patient has made to change.
-router.post('/select_appointment', function(req, res){
-  Patient.find({SSN: req.body.patients}).then(function(ans1){
+router.post('/select_appointment', function selectAppointment(req, res){
+  Patient.find({SSN: req.body.patients}).then(function getPatient(ans1){
     patient = ans1[0];
-    Record.find({patientID: ans1[0]._id}).then(function(ans2){
+    Record.find({patientID: ans1[0]._id}).then(function getAppointments(ans2){
       var records = [];
       for(var i = 0; i < ans2.length; i++){
         var record = {date: ""};
@@ -69,7 +69,7 @@ router.post('/select_appointment', function(req, res){
 var patientRecord;  // The appointment record that was chosen to be changed.
 
 // Get the day the appointment should be changed to.
-router.post('/edit_appointment', function(req, res){
+router.post('/edit_appointment', function editAppointment(req, res){
   var prevDay = new Date((new Date).valueOf() - 86350989);
 
   Record.find({patientID: patient._id, date: req.body.records}).then(function(ans1){
@@ -82,7 +82,7 @@ router.post('/edit_appointment', function(req, res){
 });
 
 // Change the date of the appointment in the database.
-router.post('/update_appointment', function(req, res){
+router.post('/update_appointment', function updateAppointment(req, res){
   Record.find({doctor: patient.doctor, date: new Date(req.body.appointmentTime)}).then(function(ans){
     var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
 

@@ -13,7 +13,7 @@ var Record = require('../models/Records.js');
 var URL = "http://localhost:3003/cancel_appointment";
 
 // Select a doctor.
-router.get('/', function(req, res){
+router.get('/', function selectDoctor(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -35,7 +35,7 @@ router.get('/', function(req, res){
 });
 
 // Select a patient.
-router.post('/select_patient', function(req, res){
+router.post('/select_patient', function selectPatient(req, res){
   Patient.find({doctor: req.body.doctors}).then(function(ans){
     var patients = [];
     for(var i = 0; i < ans.length; i++){
@@ -51,7 +51,7 @@ router.post('/select_patient', function(req, res){
 var patient;  // The patient selected.
 
 // Select an appointment that the patient has scheduled.
-router.post('/select_appointment', function(req, res){
+router.post('/select_appointment', function selectAppointment(req, res){
   Patient.find({SSN: req.body.patients}).then(function(ans1){
     patient = ans1[0];
     Record.find({patientID: ans1[0]._id}).then(function(ans2){
@@ -67,7 +67,7 @@ router.post('/select_appointment', function(req, res){
 });
 
 // Delete the selected appointment form the database.
-router.post('/delete_appointment', function(req, res){
+router.post('/delete_appointment', function deleteAppointment(req, res){
   Record.find({patientID: patient._id, date: req.body.records}).then(function(ans){
     ans[0].remove();
   });

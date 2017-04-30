@@ -13,7 +13,7 @@ var Record = require('../models/Records.js');
 var URL = "http://localhost:3003/view_patient_treatment_records";
 
 // Get the doctor or select the patient if the doctor is already known.
-router.get('/', function(req, res){
+router.get('/', function selectDoctor(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -51,7 +51,7 @@ router.get('/', function(req, res){
 });
 
 // Select a patient.
-router.post('/select_patient', function(req, res){
+router.post('/select_patient', function selectPatient(req, res){
   Patient.find({doctor: req.body.doctors}).then(function(ans){
     var patients = [];
     for(var i = 0; i < ans.length; i++){
@@ -67,7 +67,7 @@ router.post('/select_patient', function(req, res){
 var patient; // The patient selected.
 
 // Select an appointment treatment record to view.
-router.post('/select_appointment', function(req, res){
+router.post('/select_appointment', function selectAppointment(req, res){
   Patient.find({SSN: req.body.patients}).then(function(ans1){
     patient = ans1[0];
     Record.find({patientID: ans1[0]._id}).then(function(ans2){
@@ -83,7 +83,7 @@ router.post('/select_appointment', function(req, res){
 });
 
 // Display the appointment.
-router.post('/view_appointment', function(req, res){
+router.post('/view_appointment', function display(req, res){
   Record.find({patientID: patient._id, date: req.body.records}).then(function(ans){
     fullRecord = {patient: patient, appointment: ans[0]};
     return res.render('ViewAppointmentTreatmentRecord', { record: fullRecord, button: "Go To Main Page", goTo: URL + "/change_to_main"});
@@ -91,7 +91,7 @@ router.post('/view_appointment', function(req, res){
 });
 
 // Redirect to main page.
-router.post('/change_to_main', function(req, res){
+router.post('/change_to_main', function goToMain(req, res){
   patient = null;
   return res.redirect('/users');
 });

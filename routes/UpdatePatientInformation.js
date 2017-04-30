@@ -13,7 +13,7 @@ var Record = require('../models/Records.js');
 var URL = "http://localhost:3003/update_patient_information";
 
 // Select a doctor or select a patient if the doctor is already known.
-router.get('/', function(req, res){
+router.get('/', function selectDoctor(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -49,7 +49,7 @@ router.get('/', function(req, res){
 });
 
 // Select a patient.
-router.post('/select_patient', function(req, res){
+router.post('/select_patient', function selectPatient(req, res){
   Patient.find({doctor: req.body.doctors}).then(function(ans){
     var patients = [];
     for(var i = 0; i < ans.length; i++){
@@ -65,7 +65,7 @@ router.post('/select_patient', function(req, res){
 var patientRecord;  // The patient record selected.
 
 // Edit patient record.
-router.post('/edit_patient_information', function(req, res){
+router.post('/edit_patient_information', function editInformation(req, res){
   Patient.find({SSN: req.body.patients}).then(function(ans){
     patientRecord = ans[0];
     return res.render('ViewPatientRecord', { patient: ans[0], button: "Update" , goTo: URL + "/update" });
@@ -73,7 +73,7 @@ router.post('/edit_patient_information', function(req, res){
 });
 
 // Update selected patient record.
-router.post('/update', function(req, res){
+router.post('/update', function update(req, res){
   patientRecord.firstname = req.body.firstname;
   patientRecord.lastname = req.body.lastname;
   patientRecord.address = req.body.address;

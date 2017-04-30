@@ -13,7 +13,7 @@ var Record = require('../models/Records.js');
 var URL = "http://localhost:3003/clear_appointment";
 
 // Select an Uncleared appointment.
-router.get('/',function(req,res){
+router.get('/',function selectDoctor(req,res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -30,7 +30,7 @@ router.get('/',function(req,res){
 var patientRecord; // The selected uncleared appointment.
 
 // Clear the appointment and send the user to view the updated appointment.
-router.post('/edit_status', function(req, res){
+router.post('/edit_status', function editStatus(req, res){
   record = JSON.parse(req.body.records);
   Patient.find({_id: record.patientID}).then(function(ans1){
     Record.find({patientID: ans1[0]._id, date: record.date}).then(function(ans2){
@@ -45,7 +45,7 @@ router.post('/edit_status', function(req, res){
 });
 
 // Redirect the user to the main page.
-router.post('/go_to_main', function(req, res){
+router.post('/go_to_main', function goToMain(req, res){
   patientRecord = null;
   return res.redirect('/users');
 });

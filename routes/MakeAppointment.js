@@ -13,7 +13,7 @@ var Record = require('../models/Records.js');
 var URL = "http://localhost:3003/make_appointment";
 
 // Get the doctor to make the appointment with.
-router.get('/', function(req, res){
+router.get('/', function selectDoctor(req, res){
   // If the user is not loged in.
   if(!req.session.user){
     // Redirect the user to the login page.
@@ -43,7 +43,7 @@ router.get('/', function(req, res){
 });
 
 // Select the patient to make the appointment for.
-router.post('/select_patient', function(req, res){
+router.post('/select_patient', function selectPatient(req, res){
   // Find all the patients of the selected doctor.
   Patient.find({doctor: req.body.doctors}).then(function(ans){
     // Create a list of patients to display on the page.
@@ -64,7 +64,7 @@ var appointments; // All the apointments the selected doctor has from this day u
 var patient;      // The patient selected.
 
 // Show the doctor's schedule and select a date and time for the appointment.
-router.post('/view_schedule', function(req, res){
+router.post('/view_schedule', function makeAppointment(req, res){
   // Find the patient that was selected and store it in ans1[0].
   Patient.find({SSN: req.body.patients}).then(function(ans1){
     // Calculate the prvious day and store it in prevDay.
@@ -74,7 +74,7 @@ router.post('/view_schedule', function(req, res){
     patient = ans1[0];
 
     // Find all the appointments scheduled for the doctor of the patient after the previous day.
-    Record.find({doctor: ans1[0].doctor, date: {$gte: prevDay}}).then(function(ans2){
+    Record.find({doctor: ans1[0].doctor, date: {$gte: prevDay}}).then(function getSchedule(ans2){
       // Store all the appointments for the patient's doctor in the global variable appointments.
       appointments = ans2;
 
@@ -85,7 +85,7 @@ router.post('/view_schedule', function(req, res){
 });
 
 // Add the chosen appointment if there isn't a conflicting appointment already scheduled.
-router.post('/add_appointment', function(req, res){
+router.post('/add_appointment', function addAppointment(req, res){
   Record.find({doctor: patient.doctor, date: new Date(req.body.appointmentTime)}).then(function(ans){
 
     var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
