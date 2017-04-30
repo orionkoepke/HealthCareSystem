@@ -65,7 +65,7 @@ module.exports = function(testing, date, hour, minute){
     var j = schedule.scheduleJob(rule,function job(){
         console.log("MakeMonthlyReport firing...");
 
-        DailyReport.find({ dateOfReport: { $gte: new Date(year,month,0,0,0,0,0) }}).then handleDailyReports(function(reportList){
+        DailyReport.find({ dateOfReport: { $gte: new Date(year,month,0,0,0,0,0) }}).then(function handleDailyReports(reportList){
 
             if(reportList.length === 0){
                 console.log("There were no daily reports to collate.");
