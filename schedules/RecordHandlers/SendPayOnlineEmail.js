@@ -5,7 +5,7 @@ module.exports = function(thisRecord){
     const nodemailer = require('nodemailer');
     
     // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
+    let emailHandler = nodemailer.createTransport({
         service: 'gmail',
         auth: {
             user: 'HospitalComm.NOREPLY@gmail.com',
@@ -20,7 +20,7 @@ module.exports = function(thisRecord){
     
         
     // setup email data with unicode symbols
-    let mailOptions = {
+    let clientBillingEmail = {
         from: '"Austin Eubank" <HospitalComm.NOREPLY@gmail.com>', // sender address
         to: targetEmail, // list of receivers
         subject: 'Your medical bill for today\'s appointment', // Subject line
@@ -29,7 +29,7 @@ module.exports = function(thisRecord){
     };
 
     // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
+    emailHandler.sendMail(clientBillingEmail, (error, info) => {
         if (error) {
             return console.log(error);
         }
