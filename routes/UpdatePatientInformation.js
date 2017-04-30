@@ -1,3 +1,7 @@
+// Author : Orion Koepke
+// Date   : 4/29/2017
+// Title  : UpdatePatientInformation.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
@@ -8,6 +12,7 @@ var Record = require('../models/Records.js');
 
 var URL = "http://localhost:3003/update_patient_information";
 
+// Select a doctor or select a patient if the doctor is already known.
 router.get('/', function(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
@@ -43,6 +48,7 @@ router.get('/', function(req, res){
   }
 });
 
+// Select a patient.
 router.post('/select_patient', function(req, res){
   Patient.find({doctor: req.body.doctors}).then(function(ans){
     var patients = [];
@@ -52,21 +58,22 @@ router.post('/select_patient', function(req, res){
       patient.SSN = ans[i].SSN;
       patients[i] = patient;
     }
-    return res.render('SelectPatient', { patients: patients, goTo: URL + "/view_patient_information" });
+    return res.render('SelectPatient', { patients: patients, goTo: URL + "/edit_patient_information" });
   });
 });
 
-var patientRecord;
+var patientRecord;  // The patient record selected.
 
-router.post('/view_patient_information', function(req, res){
+// Edit patient record.
+router.post('/edit_patient_information', function(req, res){
   Patient.find({SSN: req.body.patients}).then(function(ans){
     patientRecord = ans[0];
     return res.render('ViewPatientRecord', { patient: ans[0], button: "Update" , goTo: URL + "/update" });
   });
 });
 
+// Update selected patient record.
 router.post('/update', function(req, res){
-
   patientRecord.firstname = req.body.firstname;
   patientRecord.lastname = req.body.lastname;
   patientRecord.address = req.body.address;
@@ -78,7 +85,7 @@ router.post('/update', function(req, res){
   patientRecord.doctor = req.body.doctor;
   patientRecord.medicalNotes = req.body.medicalNotes;
 
-  Patient.findByIdAndUpdate(patientRecord._id, { $set: patientRecord}, function(err, numAffected){});
+  patientRecord.save();
 
   patientRecord = null;
   return res.redirect('/users');

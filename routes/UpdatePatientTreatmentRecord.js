@@ -1,3 +1,7 @@
+// Author : Orion Koepke
+// Date   : 4/29/2017
+// Title  : UpdatePatientTreatmentRecords.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
@@ -8,6 +12,7 @@ var Record = require('../models/Records.js');
 
 var URL = "http://localhost:3003/update_patient_treatment_record";
 
+// Select a doctor or Select a patient if the doctor is already known.
 router.get('/', function(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
@@ -43,6 +48,7 @@ router.get('/', function(req, res){
   }
 });
 
+// Select a patient.
 router.post('/select_patient', function(req, res){
   Patient.find({doctor: req.body.doctors}).then(function(ans){
     var patients = [];
@@ -56,8 +62,9 @@ router.post('/select_patient', function(req, res){
   });
 });
 
-var patient;
+var patient; // The patient selected.
 
+// Select an appointment to update for the selected patient.
 router.post('/select_appointment', function(req, res){
   Patient.find({SSN: req.body.patients}).then(function(ans1){
     patient = ans1[0];
@@ -73,8 +80,9 @@ router.post('/select_appointment', function(req, res){
   });
 });
 
-var patientRecord;
+var patientRecord; // The appointment record selected.
 
+// Editing the selected record.
 router.post('/edit_appointment', function(req, res){
   Record.find({patientID: patient._id, date: req.body.records}).then(function(ans){
     patientRecord = ans[0];
@@ -83,26 +91,37 @@ router.post('/edit_appointment', function(req, res){
   });
 });
 
+// Changing the edited record in the database.
 router.post('/update_appointment', function(req, res){
-  if(req.body.date != ""){
-    patientRecord.date = req.body.date;
-  }
-  patientRecord.age = req.body.age;
-  patientRecord.weight = req.body.weight;
-  patientRecord.height = req.body.height;
-  patientRecord.bloodPressure = req.body.bloodPressure;
-  patientRecord.reasonForVisit = req.body.reasonForVisit;
   patientRecord.billingAmount = req.body.billingAmount;
   patientRecord.patientCopay = req.body.patientCopay;
   patientRecord.reference = req.body.reference;
-  patientRecord.treatmentInfo = req.body.treatmentInfo;
+  console.log(patientRecord.payOnline);
+  if(patientRecord.payOnline == "True" || patientRecord.payOnline == "true"){
+    patientRecord.payOnline = true;
+  }
+  else if(patientRecord.payOnline == "False" || patientRecord.payOnline == "false"){
+    patientRecord.payOnline = false;
+  }
   patientRecord.status = req.body.status;
-  patientRecord.payOnline = req.body.payOnline;
+  if(req.session.user.userType == "nurse" || req.session.user.userType == "doctor")
+  {
+    patientRecord.age = req.body.age;
+    patientRecord.weight = req.body.weight;
+    patientRecord.height = req.body.height;
+    patientRecord.bloodPressure = req.body.bloodPressure;
+    patientRecord.reasonForVisit = req.body.reasonForVisit;
+    if(req.session.user.userType == "doctor")
+    {
+      patientRecord.treatmentInfo = req.body.treatmentInfo;
+    }
+  }
 
-  Record.findByIdAndUpdate(patientRecord._id, { $set: patientRecord}, function(err, numAffected){});
+  patientRecord.save();
 
   patient = null;
   patientRecord = null;
+
   return res.redirect('/users');
 });
 

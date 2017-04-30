@@ -1,3 +1,7 @@
+// Author : Orion Koepke
+// Date   : 4/29/2017
+// Title  : ChangeAppointment.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
@@ -8,6 +12,7 @@ var Record = require('../models/Records.js');
 
 var URL = "http://localhost:3003/change_appointment";
 
+// Select a doctor.
 router.get('/', function(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
@@ -29,6 +34,7 @@ router.get('/', function(req, res){
   }
 });
 
+// Select a patient.
 router.post('/select_patient', function(req, res){
   Patient.find({doctor: req.body.doctors}).then(function(ans){
     var patients = [];
@@ -42,8 +48,9 @@ router.post('/select_patient', function(req, res){
   });
 });
 
-var patient;
+var patient;  // The patient chosen.
 
+// Select an appointment the patient has made to change.
 router.post('/select_appointment', function(req, res){
   Patient.find({SSN: req.body.patients}).then(function(ans1){
     patient = ans1[0];
@@ -59,8 +66,9 @@ router.post('/select_appointment', function(req, res){
   });
 });
 
-var patientRecord;
+var patientRecord;  // The appointment record that was chosen to be changed.
 
+// Get the day the appointment should be changed to.
 router.post('/edit_appointment', function(req, res){
   var prevDay = new Date((new Date).valueOf() - 86350989);
 
@@ -73,12 +81,31 @@ router.post('/edit_appointment', function(req, res){
   });
 });
 
+// Change the date of the appointment in the database.
 router.post('/update_appointment', function(req, res){
   Record.find({doctor: patient.doctor, date: new Date(req.body.appointmentTime)}).then(function(ans){
-    if(ans.length == 0)
+    var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
+
+    //Convert to Central Time.
+    appointmentTime.setHours(appointmentTime.getHours() + 5);
+
+    // Round the appointment time to the nearest half hour.
+    if(appointmentTime.getMinutes() < 15){
+      appointmentTime.setMinutes(0);
+    }
+    else if(appointmentTime.getMinutes() < 45){
+      appointmentTime.setMinutes(30);
+    }
+    else{
+      appointmentTime.setHours(appointmentTime.getHours() + 1);
+      appointmentTime.setMinutes(0);
+    }
+
+    // If there isn't a conflicting appointment already scheduled or it's not between 9am and 5pm.
+    if(ans.length == 0 && appointmentTime.getHours() >= 9 && appointmentTime.getHours() <= 17)
     {
-      patientRecord.date = new Date(req.body.appointmentTime);
-      patientRecord.update();
+      patientRecord.date = appointmentTime;
+      patientRecord.save();
 
       patient = null;
       patientRecord = null;
