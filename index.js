@@ -31,10 +31,10 @@ app.use(session({secret:"lwqfhaodhgkskj173iegkj_",resave:false, saveUninitialize
 // initialize routes here
 
 var loginAccess = require('./routes/LoginAccess');
-var viewDReports = require('./routes/ViewDailyReports.js');
-var viewMReports = require('./routes/ViewMonthlyReports.js');
-var payOn = require('./routes/PayOnline.js');
-var ProcessPayment = require('./routes/ProcessPayment');
+var viewDailyReports = require('./routes/ViewDailyReports.js');
+var viewMonthlyReports = require('./routes/ViewMonthlyReports.js');
+var payOnline = require('./routes/PayOnline.js');
+var processPayment = require('./routes/ProcessPayment');
 var makeAppointment = require('./routes/MakeAppointment');
 var changeAppointment = require('./routes/ChangeAppointment');
 var cancelAppointment = require('./routes/CancelAppointment');
@@ -47,10 +47,10 @@ var updatePatientInformation = require('./routes/UpdatePatientInformation');
 
 
 app.use('/users',loginAccess);
-app.use('/dailyreports', viewDReports);
-app.use('/monthlyreports', viewMReports);
-app.use('/payMyBill', payOn);
-app.use('/pay',ProcessPayment);
+app.use('/dailyreports', viewDailyReports);
+app.use('/monthlyreports', viewMonthlyReports);
+app.use('/payMyBill', payOnline);
+app.use('/pay',processPayment);
 app.use('/make_appointment', makeAppointment);
 app.use('/change_appointment', changeAppointment);
 app.use('/cancel_appointment', cancelAppointment);
@@ -63,14 +63,15 @@ app.use('/update_patient_information', updatePatientInformation);
 
 // call scheduled task functions here
 
-var ClearAppointmentsDaily = require('./schedules/ClearAppointmentsDaily');
-var MakeDailyReport = require('./schedules/MakeDailyReport');
-var MakeMonthlyReport = require('./schedules/MakeMonthlyReport');
+var clearAppointmentsDaily = require('./schedules/ClearAppointmentsDaily');
+var makeDailyReport = require('./schedules/MakeDailyReport');
+var makeMonthlyReport = require('./schedules/MakeMonthlyReport');
 
-
-//ClearAppointmentsDaily(20,46);
-//MakeDailyReport(21,12);
-//MakeMonthlyReport(true,18,21,14);
+//(bool value for built in switch statement, hh, mm) Time is in Military Time
+//clearAppointmentsDaily(true,14,13);
+//makeDailyReport(true,14,22);
+//(bool value, dd, hh, mm)
+//makeMonthlyReport(true,29,14,24);
 
 
 app.listen(port,function(req,res){

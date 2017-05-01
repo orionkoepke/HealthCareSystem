@@ -6,7 +6,7 @@ const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
 const moment = require('moment');
 
 /*http://localhost:3003/monthlyreports/date*/
-router.get('/date',function(req, res){
+router.get('/date',function date(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -18,7 +18,7 @@ router.get('/date',function(req, res){
   }
 });
 
-router.post('/getReport',function(req,res){
+router.post('/getReport',function getReport(req,res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
