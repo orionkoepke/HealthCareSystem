@@ -5,7 +5,7 @@ var router = express.Router();
 var Records = require('../models/Records.js');
 const creditCompany = require('../modules/CCCInteraction.js');
 
-router.get("/:id", function(req,res){
+router.get("/:id", function getRecord(req,res){
       var Oid = req.params.id
 
       console.log("find by: " + Oid);
@@ -58,7 +58,7 @@ router.get("/:id", function(req,res){
         });
 });
 
-router.post("/Query", function(req, res){
+router.post("/Query", function update(req, res){
     var Oid = req.body.ObjectId;
     var cardNumber = req.body.cardNumber;
     var cardHolder = req.body.cardHolder;

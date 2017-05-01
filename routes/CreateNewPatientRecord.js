@@ -1,3 +1,7 @@
+// Author : Orion Koepke
+// Date   : 4/29/2017
+// Title  : CreateNewPatientRecord.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
@@ -8,7 +12,8 @@ var Record = require('../models/Records.js');
 
 var URL = "http://localhost:3003/create_new_patient_record";
 
-router.get('/', function(req, res){
+// Gather the patient's information.
+router.get('/', function getPatientInformation(req, res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -29,7 +34,8 @@ router.get('/', function(req, res){
   }
 });
 
-router.post('/create_new_patient', function(req, res){
+// Enter the patients information into the database.
+router.post('/create_new_patient', function createNewPatient(req, res){
   newPatient = new Patient();
   newPatient.firstname = req.body.firstname;
   newPatient.lastname = req.body.lastname;
@@ -44,7 +50,5 @@ router.post('/create_new_patient', function(req, res){
   newPatient.save();
   return res.redirect('/users');
 });
-
-
 
 module.exports = router;

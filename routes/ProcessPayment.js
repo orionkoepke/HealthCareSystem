@@ -6,7 +6,7 @@ const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
 const CCCInteraction = require('../modules/CCCInteraction');
 var moment = require('moment');
 
-router.post('/',function(req,res){
+router.post('/',function getRecord(req,res){
     if(!req.session.user){
         return res.status(400).render('LoginPage');
     }else if(!CheckUserAuthorization(req.session.user.userType,"PP")){
@@ -41,7 +41,7 @@ router.post('/',function(req,res){
     }
 });
 
-router.post('/pay_attempt',function(req,res){
+router.post('/pay_attempt',function update(req,res){
     if(!req.session.user){
         return res.status(400).render('LoginPage');
     }else if(!CheckUserAuthorization(req.session.user.userType,"PP")){
