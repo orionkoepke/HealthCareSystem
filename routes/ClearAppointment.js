@@ -1,3 +1,7 @@
+// Author : Orion Koepke
+// Date   : 4/29/2017
+// Title  : ClearAppointment.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
@@ -8,7 +12,8 @@ var Record = require('../models/Records.js');
 
 var URL = "http://localhost:3003/clear_appointment";
 
-router.get('/',function(req,res){
+// Select an Uncleared appointment.
+router.get('/',function selectDoctor(req,res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
@@ -16,50 +21,33 @@ router.get('/',function(req,res){
     return res.render('MainPage',{ permissionError: "You do not have permission to do this."});
   }
   else{
-    Record.find({status: "Scheduled"}).then(function(ans){
+    Record.find({status: {$ne: "Finalized"}, reference: {$ne: ""}}).populate('patientID').then(function(ans){
       return res.render('UnclearedAppointments', {unclearedAppointments: ans, goTo: URL + "/edit_status"});
     });
   }
 });
 
-var patientRecord;
+var patientRecord; // The selected uncleared appointment.
 
-router.post('/edit_status', function(req, res){
-  patient = JSON.parse(req.body.records);
-  Record.find({PatientSSN: patient.SSN, date: patient.date}).then(function(ans){
-    patientRecord = ans[0];
-    return res.render('ViewAppointmentTreatmentRecord', { record: ans[0], button:
-      "Update", goTo: URL + "/update_status"});
+// Clear the appointment and send the user to view the updated appointment.
+router.post('/edit_status', function editStatus(req, res){
+  record = JSON.parse(req.body.records);
+  Patient.find({_id: record.patientID}).then(function(ans1){
+    Record.find({patientID: ans1[0]._id, date: record.date}).then(function(ans2){
+      patientRecord = ans2[0];
+      patientRecord.status = "Finalized";
+      patientRecord.save();
+
+      fullRecord = {patient: ans1[0], appointment: ans2[0]};
+      return res.render('ViewAppointmentTreatmentRecord', { record: fullRecord, button: "Go To Main Page", goTo: URL + "/go_to_main"});
+    });
   });
 });
 
-router.post('/update_status', function(req, res){
-
-  patientRecord.firstname = req.body.firstname;
-  patientRecord.lastname = req.body.lastname;
-  if(req.body.date != ""){
-    patientRecord.date = req.body.date;
-  }
-  patientRecord.PatientSSN = req.body.PatientSSN;
-  patientRecord.doctor = req.body.doctor;
-  patientRecord.age = req.body.age;
-  patientRecord.weight = req.body.weight;
-  patientRecord.height = req.body.height;
-  patientRecord.bloodPressure = req.body.bloodPressure;
-  patientRecord.reasonForVisit = req.body.reasonForVisit;
-  patientRecord.billingAmount = req.body.billingAmount;
-  patientRecord.patientCopay = req.body.patientCopay;
-  patientRecord.reference = req.body.reference;
-  patientRecord.treatmentInfo = req.body.treatmentInfo;
-  patientRecord.status = req.body.status;
-  patientRecord.payOnline = req.body.payOnline;
-
-  Record.findByIdAndUpdate(patientRecord._id, { $set: patientRecord}, function(err, numAffected){});
-
+// Redirect the user to the main page.
+router.post('/go_to_main', function goToMain(req, res){
   patientRecord = null;
   return res.redirect('/users');
 });
-
-
 
 module.exports = router;

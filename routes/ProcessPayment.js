@@ -6,7 +6,7 @@ const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
 const CCCInteraction = require('../modules/CCCInteraction');
 var moment = require('moment');
 
-router.post('/',function(req,res){
+router.post('/',function getRecord(req,res){
     if(!req.session.user){
         return res.status(400).render('LoginPage');
     }else if(!CheckUserAuthorization(req.session.user.userType,"PP")){
@@ -14,7 +14,7 @@ router.post('/',function(req,res){
     }else{
         var invoice = req.body.id;
         
-        Records.findById(invoice).then(function(theRecord){
+        Records.findById(invoice).populate('patientID').then(function(theRecord){
             if(!theRecord){
                 res.render('MainPage',{ permissionError: "Record not found."});
             }else{
@@ -27,8 +27,8 @@ router.post('/',function(req,res){
                 
                 var returnDate = new Date(Year,Month,Day,Hour,Minutes-offset,0,0);
                 
-                return res.status(200).render('ProcessPayment',{ firstname: theRecord.firstname, 
-                                                                lastname: theRecord.lastname,
+                return res.status(200).render('ProcessPayment',{ firstname: theRecord.patientID.firstname, 
+                                                                lastname: theRecord.patientID.lastname,
                                                                 patientCopay: theRecord.patientCopay,
                                                                 _id: theRecord._id,
                                                                 date: moment(returnDate.toISOString()).format('h:mma, ddd, MMM, Do, YYYY'),
@@ -41,7 +41,7 @@ router.post('/',function(req,res){
     }
 });
 
-router.post('/pay_attempt',function(req,res){
+router.post('/pay_attempt',function update(req,res){
     if(!req.session.user){
         return res.status(400).render('LoginPage');
     }else if(!CheckUserAuthorization(req.session.user.userType,"PP")){
@@ -50,9 +50,9 @@ router.post('/pay_attempt',function(req,res){
         var Oid = req.body.ObjectId;
         var ref = CCCInteraction({cardNumber: req.body.cardNumber,cvn: req.body.cardSecurityCode},true);
         if(ref === "0000000000"){
-            Records.findById(Oid).then(function(theRecord){                
-                return res.render('ProcessPayment',{ firstname: theRecord.firstname, 
-                                                 lastname: theRecord.lastname,
+            Records.findById(Oid).populate('patientID').then(function(theRecord){                
+                return res.render('ProcessPayment',{ firstname: theRecord.patientID.firstname, 
+                                                 lastname: theRecord.patientID.lastname,
                                                  patientCopay: theRecord.patientCopay,
                                                  _id: theRecord._id,
                                                  date: theRecord.date,
@@ -64,8 +64,8 @@ router.post('/pay_attempt',function(req,res){
         }else{
             
             Records.findByIdAndUpdate(Oid,{ status:"Finalized", reference: ref }).then(function(theRecord){
-                return res.status(200).render('ProcessPayment_Receipt',{ firstname: theRecord.firstname, 
-                                                 lastname: theRecord.lastname,
+                return res.status(200).render('ProcessPayment_Receipt',{ firstname: theRecord.patientID.firstname, 
+                                                 lastname: theRecord.patientID.lastname,
                                                  patientCopay: theRecord.patientCopay,
                                                  _id: theRecord._id,
                                                  creditReference: ref,
