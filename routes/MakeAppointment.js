@@ -69,7 +69,7 @@ router.post('/add_appointment', function(req, res){
       newRecord.date = new Date(req.body.appointmentTime);
       newRecord.PatientSSN = patient.SSN;
       newRecord.doctor = patient.doctor;
-      newRecord.status = "scheduled";
+      newRecord.status = "Scheduled";
       newRecord.save();
 
       appointments = null;
