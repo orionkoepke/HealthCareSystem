@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 var router = express.Router();
 var User = require('../models/Users.js');
 
-
-router.get('/',function(req,res){
+router.get('/',function choosePage(req,res){
     if(!req.session.user){
         return res.render('LoginPage',{ loginerror: "" });
     }else {
@@ -12,7 +11,7 @@ router.get('/',function(req,res){
     }
 });
 
-router.get('/home',function(req,res){
+router.get('/home',function home(req,res){
     if(!req.session.user){
         return res.render('LoginPage',{ loginerror: "" });
     }else {
@@ -20,7 +19,7 @@ router.get('/home',function(req,res){
     }
 });
 
-router.post('/login',function(req,res){
+router.post('/login',function login(req,res){
     var username = req.body.username;
     var password = req.body.password;
 
@@ -40,13 +39,9 @@ router.post('/login',function(req,res){
     });
 });
 
-router.get('/logout', function(req,res){
+router.get('/logout', function logout(req,res){
     req.session.destroy();
     return res.status(200).render('LogoutPage');
 });
-
-
-
-
 
 module.exports = router;

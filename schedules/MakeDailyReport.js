@@ -1,41 +1,42 @@
-module.exports = function(hour, minute){
-    
-  var schedule = require('node-schedule');
+module.exports = function(testing, hour, minute){
+
+    const schedule = require('node-schedule');
     var Records = require('../models/Records');
     var Users = require('../models/Users');
     var DailyReport = require('../models/DailyReports');
     const moment = require('moment');
-    moment().format();
-    
+
     var rule = new schedule.RecurrenceRule();
-    rule.dayOfWeek = [new schedule.Range(1,5)];
+    if(testing){
+        rule.dayOfWeek = [new schedule.Range(0,6)];
+    }else{
+        rule.dayOfWeek = [new schedule.Range(1,5)];
+    }
     rule.hour = hour;
     rule.minute = minute;
-    
-    var Year = moment().year();
-    var Month = moment().month();
-    var Day = moment().date();
-    var Hour = moment().hour();
-    var Minutes = moment().minute();
-    var Seconds = moment().second();
-    var Milliseconds = moment().millisecond();
+
+    var year = moment().year();
+    var month = moment().month();
+    var day = moment().date();
+    var hour = moment().hour();
     var offset = new Date().getTimezoneOffset();
-    
-    var listOfDoctors = [];        
-    
-    var j = schedule.scheduleJob(rule,function(){
+
+    var listOfDoctors = [];
+
+    var j = schedule.scheduleJob(rule,function job(){
         console.log("MakeDailyReport firing...");
-        
+
         // Get list of doctors
-        Users.find({userType: "doctor"}).then(function(theList){
+        Users.find({userType: "doctor"}).then(function getDoctorList(theList){
             theList.forEach(function(user){
                 listOfDoctors.push(user.doctor);
             });
-        }).then(function(){
+        }).then(function collateData(){
             // Get today's list of records
-            Records.find({date: { $gte: new Date(Year,Month,Day,0,0,0,0)}},function(err,recordsList){
+            Records.find({date: { $gte: new Date(year,month,day,0,0,0,0)}}).populate('patientID').then(function handleRecords(recordsList){
+                console.log(recordsList);
                 var newDRep = new DailyReport();
-                newDRep.dateOfReport = new Date(Year,Month,Day,Hour,0-offset,0,0);
+                newDRep.dateOfReport = new Date(year,month,day,hour,0-offset,0,0);
                 newDRep.totalPatientsToday = 0;
                 // Initialize each entry under doctorStats
                 listOfDoctors.forEach(function(eachDoctor){
@@ -44,7 +45,7 @@ module.exports = function(hour, minute){
                 // Update the entries with figures from the records
                 recordsList.forEach(function(eachRecord){
                     newDRep.doctorStats.forEach(function(thisEntry){
-                        if(eachRecord.doctor === thisEntry.doctorName){
+                        if(eachRecord.patientID.doctor === thisEntry.doctorName){
                             thisEntry.numPatientsToday += 1;
                             thisEntry.totalIncome = thisEntry.totalIncome + eachRecord.billingAmount;
                         }

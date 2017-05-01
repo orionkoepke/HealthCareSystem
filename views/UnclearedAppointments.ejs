@@ -13,8 +13,7 @@
         <form action=<%=goTo%> method="post">
 
           <% unclearedAppointments.forEach(function (ans) { %>
-              <% var record = {SSN: ans.PatientSSN, date: ans.date}; %>
-              <input type="radio"  name="records" id="records" value= <%=JSON.stringify(record)%>> <%=ans.firstname + " " + ans.lastname + " " + ans.date%></br>
+              <input type="radio"  name="records" id="records" value= <%=JSON.stringify(ans)%>> <%=ans.patientID.firstname + " " + ans.patientID.lastname + " | " + ans.date%></br>
           <% }); %>
 
             <button type="submit">Submit</button>
