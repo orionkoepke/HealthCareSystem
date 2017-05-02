@@ -96,14 +96,11 @@ router.post('/update_appointment', function update(req, res){
   patientRecord.billingAmount = req.body.billingAmount;
   patientRecord.patientCopay = req.body.patientCopay;
   patientRecord.reference = req.body.reference;
-  console.log(patientRecord.payOnline);
-  if(patientRecord.payOnline == "True" || patientRecord.payOnline == "true"){
-    patientRecord.payOnline = true;
+  patientRecord.payOnline = req.body.payOnline;
+  if(req.body.status != "Finalized")
+  {
+    patientRecord.status = req.body.status;
   }
-  else if(patientRecord.payOnline == "False" || patientRecord.payOnline == "false"){
-    patientRecord.payOnline = false;
-  }
-  patientRecord.status = req.body.status;
   if(req.session.user.userType == "nurse" || req.session.user.userType == "doctor")
   {
     patientRecord.age = req.body.age;

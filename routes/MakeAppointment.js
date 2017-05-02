@@ -113,7 +113,7 @@ router.post('/add_appointment', function addAppointment(req, res){
       newRecord.patientID = patient._id;
       newRecord.date = appointmentTime;
       newRecord.doctor = patient.doctor;
-      newRecord.status = "scheduled";
+      newRecord.status = "Scheduled";
       newRecord.save();
 
       // Reset appointments and patient to null for next time.
