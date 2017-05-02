@@ -96,7 +96,6 @@ router.post('/update_appointment', function update(req, res){
   patientRecord.billingAmount = req.body.billingAmount;
   patientRecord.patientCopay = req.body.patientCopay;
   patientRecord.reference = req.body.reference;
-  console.log(patientRecord.payOnline);
   patientRecord.payOnline = req.body.payOnline;
   if(req.body.status != "Finalized")
   {
