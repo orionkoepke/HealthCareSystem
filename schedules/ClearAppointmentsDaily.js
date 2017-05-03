@@ -27,7 +27,7 @@ module.exports = function(testing, hour, minute){
         Records.find({date: { $gte: new Date(year,month,day,0,0,0,0), $lt: new Date(year,month,day+1,0,0-offset,0,0) }}).populate('patientID').then(function handleRecords(recordsList){
             console.log(recordsList);
             recordsList.forEach(function(eachRecord){
-                if(eachRecord.status === "Scheduled"){
+                if(eachRecord.status === "Scheduled" || eachRecord.status === "NoShow"){
                     console.log("Run No Show Charge...");
                     chargeNoShow(eachRecord);
                 }else if(eachRecord.status === "InProgress" && eachRecord.payOnline === true && eachRecord.patientCopay > 0){
