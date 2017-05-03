@@ -67,6 +67,7 @@ router.post('/select_appointment', function selectAppointment(req, res){
 });
 
 var patientRecord;  // The appointment record that was chosen to be changed.
+var scheduledAppointments;  // The appointments that doctor has.
 
 // Get the day the appointment should be changed to.
 router.post('/edit_appointment', function editAppointment(req, res){
@@ -77,6 +78,7 @@ router.post('/edit_appointment', function editAppointment(req, res){
   });
 
   Record.find({doctor: patient.doctor, date: {$gte: prevDay}}).then(function(ans2){
+    scheuledAppointments = ans2;
     return res.render('ViewSchedule', {appointments: ans2, error: "", goTo: URL + "/update_appointment"});
   });
 });
@@ -114,7 +116,7 @@ router.post('/update_appointment', function updateAppointment(req, res){
     }
     else
     {
-      return res.render('ViewSchedule', {appointments: ans, error: "Invalid Appointment Time", goTo: URL + "/update_appointment"});
+      return res.render('ViewSchedule', {appointments: scheuledAppointments, error: "Invalid Appointment Time", goTo: URL + "/update_appointment"});
     }
   });
 });

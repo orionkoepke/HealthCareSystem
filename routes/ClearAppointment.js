@@ -31,6 +31,7 @@ var patientRecord; // The selected uncleared appointment.
 
 // Clear the appointment and send the user to view the updated appointment.
 router.post('/edit_status', function editStatus(req, res){
+  console.log(req.body.records);
   record = JSON.parse(req.body.records);
   Patient.find({_id: record.patientID}).then(function(ans1){
     Record.find({patientID: ans1[0]._id, date: record.date}).then(function(ans2){
