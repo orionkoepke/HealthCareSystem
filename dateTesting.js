@@ -26,8 +26,12 @@ var offset = Now.getTimezoneOffset();
 var thisMoment = new Date(year,month,day,hour,minutes-offset,seconds,milliseconds);
 var offset = new Date().getTimezoneOffset();
 
-console.log(offset);
-
+var aYear = 2001;
+if(moment(aYear).isLeapYear()){
+    console.log("" + aYear + " is a leap year.");
+}else{
+    console.log("" + aYear + " is not a leap year.");
+}
 
 
 /*console.log(Math.random());

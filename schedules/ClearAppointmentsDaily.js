@@ -20,10 +20,11 @@ module.exports = function(testing, hour, minute){
     var year = today.getFullYear();
     var month = today.getMonth();
     var day = today.getDate();
+    var offset = today.getTimezoneOffset();
 
     var j = schedule.scheduleJob(rule,function job(){
         console.log("ClearAppointmentsDaily firing...");
-        Records.find({date: { $gte: new Date(year,month,day,0,0,0,0)}}).populate('patientID').then(function handleRecords(recordsList){
+        Records.find({date: { $gte: new Date(year,month,day,0,0,0,0), $lt: new Date(year,month,day+1,0,0-offset,0,0) }}).populate('patientID').then(function handleRecords(recordsList){
             console.log(recordsList);
             recordsList.forEach(function(eachRecord){
                 if(eachRecord.status === "Scheduled"){

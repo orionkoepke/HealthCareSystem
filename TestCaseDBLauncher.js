@@ -167,6 +167,61 @@ dummyPatients.forEach(function(patientRec){
 var dummyReports = [
     {
   dailyTotal: 0,
+    dateOfReport: new Date(Year,Month,1,21,0-offset,0,0),
+    totalPatientsToday: 0,
+    doctorStats: [{
+        doctorName: "WatsonR",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },
+    {
+        doctorName: "LopezN",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "GelfondM",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "ShinM",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "MengelS",
+        numPatientsToday: 0,
+        totalIncome: 0
+    }]
+},
+    {
+  dailyTotal: 0,
+    dateOfReport: new Date(Year,Month,2,21,0-offset,0,0),
+    totalPatientsToday: 0,
+    doctorStats: [{
+        doctorName: "WatsonR",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },
+    {
+        doctorName: "LopezN",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "GelfondM",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "ShinM",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "MengelS",
+        numPatientsToday: 0,
+        totalIncome: 0
+    }]
+}
+    /*,
+    {
+  dailyTotal: 0,
     dateOfReport: new Date(Year,Month,3,21,0-offset,0,0),
     totalPatientsToday: 0,
     doctorStats: [{
@@ -245,61 +300,7 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-},
-    {
-  dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,6,21,0-offset,0,0),
-    totalPatientsToday: 0,
-    doctorStats: [{
-        doctorName: "WatsonR",
-        numPatientsToday: 0,
-        totalIncome: 0
-    },
-    {
-        doctorName: "LopezN",
-        numPatientsToday: 0,
-        totalIncome: 0
-    },{
-        doctorName: "GelfondM",
-        numPatientsToday: 0,
-        totalIncome: 0
-    },{
-        doctorName: "ShinM",
-        numPatientsToday: 0,
-        totalIncome: 0
-    },{
-        doctorName: "MengelS",
-        numPatientsToday: 0,
-        totalIncome: 0
-    }]
-},
-    {
-  dailyTotal: 0,
-    dateOfReport: new Date(Year,Month,7,21,0-offset,0,0),
-    totalPatientsToday: 0,
-    doctorStats: [{
-        doctorName: "WatsonR",
-        numPatientsToday: 0,
-        totalIncome: 0
-    },
-    {
-        doctorName: "LopezN",
-        numPatientsToday: 0,
-        totalIncome: 0
-    },{
-        doctorName: "GelfondM",
-        numPatientsToday: 0,
-        totalIncome: 0
-    },{
-        doctorName: "ShinM",
-        numPatientsToday: 0,
-        totalIncome: 0
-    },{
-        doctorName: "MengelS",
-        numPatientsToday: 0,
-        totalIncome: 0
-    }]
-}  
+}  */
 ];
 
 dummyReports.forEach(function(eachReport){
@@ -322,7 +323,7 @@ dummyReports.forEach(function(eachReport){
 var dummyMReports = [
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-1,31,0,0,0,0),
+    dateOfReport: new Date(Year,Month-1,30,0,0,0,0),
     totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -349,7 +350,7 @@ var dummyMReports = [
 },
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-2,28,0,0,0,0),
+    dateOfReport: new Date(Year,Month-2,31,0,0,0,0),
     totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -376,7 +377,34 @@ var dummyMReports = [
 },
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-3,31,0,0,0,0),
+    dateOfReport: new Date(Year,Month-3,28,0,0,0,0),
+    totalPatientsThisMonth: 0,
+    doctorStats: [{
+        doctorName: "WatsonR",
+        numPatientsThisMonth: 0,
+        totalIncome: 0
+    },
+    {
+        doctorName: "LopezN",
+        numPatientsThisMonth: 0,
+        totalIncome: 0
+    },{
+        doctorName: "GelfondM",
+        numPatientsThisMonth: 0,
+        totalIncome: 0
+    },{
+        doctorName: "ShinM",
+        numPatientsThisMonth: 0,
+        totalIncome: 0
+    },{
+        doctorName: "MengelS",
+        numPatientsThisMonth: 0,
+        totalIncome: 0
+    }]
+},
+    {
+  monthlyTotal: 0,
+    dateOfReport: new Date(Year,Month-4,31,0,0,0,0),
     totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
