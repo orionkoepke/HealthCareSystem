@@ -68,7 +68,7 @@ module.exports = function(testing, date, hour, minute){
     var j = schedule.scheduleJob(rule,function job(){
         console.log("MakeMonthlyReport firing...");
         
-        Users.find({ userType: "doctor" }).then(function(listOfDoctors){
+        Users.find({ userType: "doctor" }).then(function getDoctorList(listOfDoctors){
 
             DailyReport.find({ dateOfReport: { $gte: new Date(year,month,1,0,0,0,0), $lt: new Date(year,month,day+1,0,0-offset,0,0) }}).then(function handleDailyReports(reportList){
 
