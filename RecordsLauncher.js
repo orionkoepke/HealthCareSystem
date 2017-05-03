@@ -19,6 +19,7 @@ var Year = CurrentDate.getFullYear();
 var Month = CurrentDate.getMonth();
 var Day = CurrentDate.getDate();
 var offset = CurrentDate.getTimezoneOffset();
+//Day = Day - 1;
 
 
 // Add new ATRecords

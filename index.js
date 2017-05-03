@@ -68,10 +68,10 @@ var makeDailyReport = require('./schedules/MakeDailyReport');
 var makeMonthlyReport = require('./schedules/MakeMonthlyReport');
 
 //(bool value for built in switch statement, hh, mm) Time is in Military Time
-//clearAppointmentsDaily(true,21,57);
-makeDailyReport(true,22,12);
+//clearAppointmentsDaily(true,15,54);
+//makeDailyReport(true,15,59);
 //(bool value, dd, hh, mm)
-//makeMonthlyReport(true,2,21,38);
+//makeMonthlyReport(true,3,16,2);
 
 
 app.listen(port,function(req,res){

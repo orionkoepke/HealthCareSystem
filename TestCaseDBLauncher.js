@@ -218,8 +218,7 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-}
-    /*,
+},
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,3,21,0-offset,0,0),
@@ -246,7 +245,8 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-},
+}
+    /*,
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,4,21,0-offset,0,0),
