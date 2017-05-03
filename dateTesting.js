@@ -1,3 +1,7 @@
+/*
+      Launch dataTesting to set up dummy data objects in to the Database
+*/
+
 const moment = require('moment');
 moment().format();
 

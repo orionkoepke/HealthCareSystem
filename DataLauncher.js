@@ -1,3 +1,6 @@
+/*
+	Launch DataLauncher to update database User table
+*/
 const mongoose = require('mongoose');
 
 // connect to mongodb

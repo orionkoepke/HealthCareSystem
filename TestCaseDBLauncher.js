@@ -1,3 +1,9 @@
+/*
+	Dummy Data for testing
+		-Sets up Patients, Monhtly Reports, and Daily Reports
+*/
+
+
 const mongoose = require('mongoose');
 const moment = require('moment');
 
@@ -61,7 +67,7 @@ var dummyPatients = [
     "address" : "4719 101st St. Milwaukee, MN 88448",
     "lastname" : "Smith",
     "firstname" : "Joe"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "LopezN",
@@ -73,7 +79,7 @@ var dummyPatients = [
     "address" : "4719 101st St. Milwaukee, MN 88448",
     "lastname" : "de la Vega",
     "firstname" : "Maria de la Santa Cruz Rosalina Agnelia Rodriguez Cuellar Rene"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "GelfondM",
@@ -85,7 +91,7 @@ var dummyPatients = [
     "address" : "",
     "lastname" : "Jones",
     "firstname" : "Mike"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "GelfondM",
@@ -97,7 +103,7 @@ var dummyPatients = [
     "address" : "",
     "lastname" : "Karkov",
     "firstname" : "Dmitry"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "ShinM",
@@ -109,7 +115,7 @@ var dummyPatients = [
     "address" : "",
     "lastname" : "Rogers",
     "firstname" : "Jessica"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "MengelS",
@@ -133,7 +139,7 @@ var dummyPatients = [
     "address" : "",
     "lastname" : "Corvin",
     "firstname" : "Kyle"
-},  
+},
     {
     "medicalNotes" : "",
     "doctor" : "ShinM",
@@ -145,7 +151,7 @@ var dummyPatients = [
     "address" : "",
     "lastname" : "Chun",
     "firstname" : "Gracy"
-} 
+}
 ];
 
 dummyPatients.forEach(function(patientRec){
@@ -299,7 +305,7 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-}  
+}
 ];
 
 dummyReports.forEach(function(eachReport){
@@ -400,7 +406,7 @@ var dummyMReports = [
         numPatientsThisMonth: 0,
         totalIncome: 0
     }]
-}   
+}
 ];
 
 dummyMReports.forEach(function(eachReport){

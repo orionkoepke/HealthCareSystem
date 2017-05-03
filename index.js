@@ -45,7 +45,7 @@ var updatePatientTreatmentRecord = require('./routes/UpdatePatientTreatmentRecor
 var viewPatientInformation = require('./routes/ViewPatientInformation');
 var updatePatientInformation = require('./routes/UpdatePatientInformation');
 
-
+//Using router to connect to browser endpoint
 app.use('/users',loginAccess);
 app.use('/dailyreports', viewDailyReports);
 app.use('/monthlyreports', viewMonthlyReports);

@@ -1,3 +1,7 @@
+/*
+		Launch RecordsLauncher to set up Appointment Treatment Records
+*/
+
 const mongoose = require('mongoose');
 
 // connect to mongodb
@@ -29,7 +33,7 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 80,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "WatsonR",
     "PatientSSN" : "987678242",
     "date" : new Date(Year,Month,Day,9,0-offset,0,0),
@@ -42,7 +46,7 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 80,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "WatsonR",
     "PatientSSN" : "987678234",
     "date" : new Date(Year,Month,Day,9,30-offset,0,0),
@@ -56,7 +60,7 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 90,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "LopezN",
     "PatientSSN" : "987678235",
     "date" : new Date(Year,Month,Day,10,0-offset,0,0),
@@ -69,7 +73,7 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 90,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "LopezN",
     "PatientSSN" : "987678243",
     "date" : new Date(Year,Month,Day,11,0-offset,0,0),
@@ -83,61 +87,61 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 110,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "GelfondM",
     "PatientSSN" : "987678236",
     "date" : new Date(Year,Month,Day,11,0-offset,0,0),
     "lastname" : "Jones",
     "firstname" : "Mike",
     "payOnline" : true
-},  
+},
     {
     "status" : "InProgress",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 110,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "GelfondM",
     "PatientSSN" : "987678241",
     "date" : new Date(Year,Month,Day,13,0-offset,0,0),
     "lastname" : "Karkov",
     "firstname" : "Dmitry",
     "payOnline" : true
-},  
+},
     ///////////////////////////////////////ShinM///////////////////////////////////////////
     {
     "status" : "InProgress",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 120,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "ShinM",
     "PatientSSN" : "987678237",
     "date" : new Date(Year,Month,Day,12,0-offset,0,0),
     "lastname" : "Rogers",
     "firstname" : "Jessica",
     "payOnline" : false
-},  
+},
     {
     "status" : "Scheduled",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 120,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "ShinM",
     "PatientSSN" : "987678240",
     "date" : new Date(Year,Month,Day,15,0-offset,0,0),
     "lastname" : "Chun",
     "firstname" : "Gracy",
     "payOnline" : false
-},  
+},
     //////////////////////////////////////////////MengelS////////////////////////////////////////
     {
     "status" : "NoShow",
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 130,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "MengelS",
     "PatientSSN" : "987678238",
     "date" : new Date(Year,Month,Day,13,0-offset,0,0),
@@ -150,7 +154,7 @@ var dummyRecords = [
     "treatmentInfo" : "",
     "reference" : "",
     "billingAmount" : 130,
-    "reasonForVisit" : "",    
+    "reasonForVisit" : "",
     "doctor" : "MengelS",
     "PatientSSN" : "987678239",
     "date" : new Date(Year,Month,Day,13,30-offset,0,0),

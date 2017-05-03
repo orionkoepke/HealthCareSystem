@@ -1,3 +1,4 @@
+//Sets up module for scheduled task to create monthly report
 module.exports = function(testing, date, hour, minute){
 
     const schedule = require('node-schedule');
@@ -5,6 +6,7 @@ module.exports = function(testing, date, hour, minute){
     var MonthlyReport = require('../models/MonthlyReports');
     const moment = require('moment');
 
+    //Create rule for schedule task
     var rule = new schedule.RecurrenceRule();
     var currentDate = new Date();
     var currentMonth = currentDate.getMonth();
@@ -62,9 +64,10 @@ module.exports = function(testing, date, hour, minute){
     var hour = moment().hour();
     var offset = new Date().getTimezoneOffset();
 
+    //schedule Task Implementation
     var j = schedule.scheduleJob(rule,function job(){
         console.log("MakeMonthlyReport firing...");
-
+        //Get daily reports for this month
         DailyReport.find({ dateOfReport: { $gte: new Date(year,month,0,0,0,0,0) }}).then(function handleDailyReports(reportList){
 
             if(reportList.length === 0){
@@ -72,6 +75,7 @@ module.exports = function(testing, date, hour, minute){
             }else {
                 console.log("There were daily reports to collate");
 
+                //Create new Monthly Report
                 var newMRep = new MonthlyReport();
                 newMRep.dateOfReport = new Date(year,month,day,hour,0-offset,0,0);
                 newMRep.totalPatientsThisMonth = 0;

@@ -1,3 +1,7 @@
+/*
+    Key for Users shorthand for CheckAuthorization 
+*/
+
 Make Appointment = MA
 Change Appointment = CA
 Cancel Appointment = XA
