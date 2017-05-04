@@ -22,6 +22,7 @@ var Year = CurrentDate.year();
 var Month = CurrentDate.month();
 var Day = CurrentDate.date();
 var offset = new Date().getTimezoneOffset();
+offset = 0;
 var email = "seprojectreceiver@gmail.com";
 
 // Add new patients.
