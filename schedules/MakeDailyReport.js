@@ -33,7 +33,7 @@ module.exports = function(testing, hour, minute){
             });
         }).then(function collateData(){
             // Get today's list of records
-            Records.find({date: { $gte: new Date(year,month,day,0,0,0,0), $lt: new Date(year,month,day,21,0,0,0) }}).populate('patientID').then(function handleRecords(recordsList){
+            Records.find({date: { $gte: new Date(year,month,day,9,0,0,0), $lt: new Date(year,month,day,18,0,0,0) }}).populate('patientID').then(function handleRecords(recordsList){
                 
                 console.log(recordsList);
                 
