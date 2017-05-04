@@ -1,3 +1,4 @@
+// Initalize needed connections
 const express = require('express');
 const mongoose = require('mongoose');
 var router = express.Router();
@@ -6,6 +7,7 @@ const CheckUserAuthorization = require('../modules/CheckUserAuthorization');
 const CCCInteraction = require('../modules/CCCInteraction');
 var moment = require('moment');
 
+//GET router: Renders web pages based on cookies and user authorization
 router.post('/',function getRecord(req,res){
     if(!req.session.user){
         return res.status(400).render('LoginPage');
@@ -13,7 +15,7 @@ router.post('/',function getRecord(req,res){
         return res.status(400).render('MainPage',{ permissionError: "You do not have permission to do that." });
     }else{
         var invoice = req.body.id;
-        
+
         Records.findById(invoice).populate('patientID').then(function(theRecord){
             if(!theRecord){
                 res.render('MainPage',{ permissionError: "Record not found."});
@@ -24,10 +26,12 @@ router.post('/',function getRecord(req,res){
                 var Hour = theRecord.date.getHours();
                 var Minutes = theRecord.date.getMinutes();
                 var offset = theRecord.date.getTimezoneOffset();
+
                 
                 var returnDate = new Date(Year,Month,Day,Hour,Minutes,0,0);
                 
                 return res.status(200).render('ProcessPayment',{ firstname: theRecord.patientID.firstname, 
+
                                                                 lastname: theRecord.patientID.lastname,
                                                                 patientCopay: theRecord.patientCopay,
                                                                 _id: theRecord._id,
@@ -41,6 +45,7 @@ router.post('/',function getRecord(req,res){
     }
 });
 
+//POST router: Request access to pseduo Credit Card Company
 router.post('/pay_attempt',function update(req,res){
     if(!req.session.user){
         return res.status(400).render('LoginPage');
@@ -50,8 +55,8 @@ router.post('/pay_attempt',function update(req,res){
         var Oid = req.body.ObjectId;
         var ref = CCCInteraction({cardNumber: req.body.cardNumber,cvn: req.body.cardSecurityCode},true);
         if(ref === "0000000000"){
-            Records.findById(Oid).populate('patientID').then(function(theRecord){                
-                return res.render('ProcessPayment',{ firstname: theRecord.patientID.firstname, 
+            Records.findById(Oid).populate('patientID').then(function(theRecord){
+                return res.render('ProcessPayment',{ firstname: theRecord.patientID.firstname,
                                                  lastname: theRecord.patientID.lastname,
                                                  patientCopay: theRecord.patientCopay,
                                                  _id: theRecord._id,
@@ -62,9 +67,9 @@ router.post('/pay_attempt',function update(req,res){
                 console.log(e);
             });
         }else{
-            
+
             Records.findByIdAndUpdate(Oid,{ status:"Finalized", reference: ref }).then(function(theRecord){
-                return res.status(200).render('ProcessPayment_Receipt',{ firstname: theRecord.patientID.firstname, 
+                return res.status(200).render('ProcessPayment_Receipt',{ firstname: theRecord.patientID.firstname,
                                                  lastname: theRecord.patientID.lastname,
                                                  patientCopay: theRecord.patientCopay,
                                                  _id: theRecord._id,
