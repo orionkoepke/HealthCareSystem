@@ -29,14 +29,14 @@ router.post('/getReport',function getReport(req,res){
   else{
       
     var dateOfRequestedReport = new Date(req.body.rdate);
-      console.log(dateOfRequestedReport);
+      //console.log(dateOfRequestedReport);
     var Year = dateOfRequestedReport.getFullYear();
     var Month = dateOfRequestedReport.getMonth();
     var theDay = dateOfRequestedReport.getDate();
       theDay++
     var nextDay = theDay+1;
-      console.log(new Date(Year,Month,theDay,-5,0,0,0));
-      console.log(new Date(Year,Month,nextDay,-5,0,0,0));
+      //console.log((new Date(Year,Month,theDay,0,0,0,0)).toLocaleString());
+      //console.log((new Date(Year,Month,nextDay,0,0,0,0)).toLocaleString());
     
     DReports.findOne({dateOfReport: { $gt: new Date(Year,Month,theDay,0,0,0,0), $lt: new Date(Year,Month,nextDay,0,0,0,0) } }).then(function(DReport){
         if(DReport === null){

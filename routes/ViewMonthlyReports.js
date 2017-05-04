@@ -27,11 +27,15 @@ router.post('/getReport',function getReport(req,res){
   }
   else{
     var dateOfRequestedReport = new Date(req.body.rdate);
+      //console.log(dateOfRequestedReport);
     var Year = dateOfRequestedReport.getFullYear();
     var Month = dateOfRequestedReport.getMonth();
-    Month++;Month++;
+    Month++;
+    var nextMonth = Month+1;
+      //console.log((new Date(Year,Month,1,0,0,0)).toLocaleString());
+      //console.log((new Date(Year,nextMonth,1,0,0,0)).toLocaleString());
     
-    MReports.findOne({dateOfReport: { $gte: dateOfRequestedReport, $lt: new Date(Year,Month,1,0,0,0,0) } }).then(function(MReport){
+    MReports.findOne({dateOfReport: { $gte: new Date(Year,Month,1,0,0,0), $lt: new Date(Year,nextMonth,1,0,0,0,0) } }).then(function(MReport){
         if(MReport === null){
             return res.status(200).render('MonthlyReportViewer',{Report: MReport, ReportDate: null });
         }else {
