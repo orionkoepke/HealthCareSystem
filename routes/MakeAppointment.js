@@ -90,13 +90,8 @@ router.post('/add_appointment', function addAppointment(req, res){
 
     var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
 
-    var year = appointmentTime.getFullYear();
-    var month = appointmentTime.getMonth();
-    var day = appointmentTime.getDate();
-    var hours = appointmentTime.getHours();
-    var minutes = appointmentTime.getMinutes();
-
-    appointmentTime = new Date(year, month, day, hours, minutes, 0, 0);
+    //Convert to Central Time.
+    appointmentTime.setHours(appointmentTime.getHours() + 5);
 
     // Round the appointment time to the nearest half hour.
     if(appointmentTime.getMinutes() < 15){
@@ -111,7 +106,7 @@ router.post('/add_appointment', function addAppointment(req, res){
     }
 
     // If there isn't a conflicting appointment already scheduled or it's not between 9am and 5pm.
-    if(ans.length == 0 && appointmentTime.getHours() >= 4 && appointmentTime.getHours() <= 12)
+    if(ans.length == 0 && appointmentTime.getHours() >= 9 && appointmentTime.getHours() <= 17)
     {
       // Create the record.
       newRecord = new Record();
