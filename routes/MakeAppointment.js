@@ -100,7 +100,7 @@ router.post('/add_appointment', function addAppointment(req, res){
     else if(appointmentTime.getMinutes() < 45){
       appointmentTime.setMinutes(30);
     }
-    else{
+    else if(appointmentTime.getMinutes() <= 59){
       appointmentTime.setHours(appointmentTime.getHours() + 1);
       appointmentTime.setMinutes(0);
     }
