@@ -73,7 +73,7 @@ module.exports = function(testing, date, hour, minute){
         // Find all Doctors in Database to create listOfDoctors
         Users.find({ userType: "doctor" }).then(function makeMonthlyReport(listOfDoctors){
 
-            DailyReport.find({ dateOfReport: { $gte: new Date(year,month,1,0,0,0,0), $lt: new Date(year,month,day+1,0,0-offset,0,0) }}).then(function handleDailyReports(reportList){
+            DailyReport.find({ dateOfReport: { $gte: new Date(year,month,1,0,0,0,0), $lt: new Date(year,month,day+1,0,0,0,0) }}).then(function handleDailyReports(reportList){
 
                 if(reportList.length === 0){
                     console.log("There were no daily reports to collate.");
@@ -83,7 +83,7 @@ module.exports = function(testing, date, hour, minute){
 
                     // Initalize a new Monthly Report
                     var newMRep = new MonthlyReport();
-                    newMRep.dateOfReport = new Date(year,month,day,hour,0-offset,0,0);
+                    newMRep.dateOfReport = new Date(year,month,day,hour,0,0,0);
                     newMRep.totalPatientsThisMonth = 0;
 
                     // Initalize array for eachDoctor based on the listOfDoctors

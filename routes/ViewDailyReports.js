@@ -29,13 +29,20 @@ router.post('/getReport',function getReport(req,res){
     return res.render('MainPage',{ permissionError: "You do not have permission to do this."});
   }
   else{
+      
     var dateOfRequestedReport = new Date(req.body.rdate);
+      //console.log(dateOfRequestedReport);
     var Year = dateOfRequestedReport.getFullYear();
     var Month = dateOfRequestedReport.getMonth();
     var theDay = dateOfRequestedReport.getDate();
-    theDay++;theDay++;
 
-    DReports.findOne({dateOfReport: { $gte: dateOfRequestedReport, $lte: new Date(Year,Month,theDay,-5,0,0,0) } }).then(function(DReport){
+      theDay++
+    var nextDay = theDay+1;
+      //console.log((new Date(Year,Month,theDay,0,0,0,0)).toLocaleString());
+      //console.log((new Date(Year,Month,nextDay,0,0,0,0)).toLocaleString());
+    
+    DReports.findOne({dateOfReport: { $gt: new Date(Year,Month,theDay,0,0,0,0), $lt: new Date(Year,Month,nextDay,0,0,0,0) } }).then(function(DReport){
+ 
         if(DReport === null){
             return res.status(200).render('DailyReportViewer',{Report: DReport, ReportDate: null });
         }else {

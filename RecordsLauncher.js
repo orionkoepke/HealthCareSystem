@@ -19,6 +19,7 @@ var Year = CurrentDate.getFullYear();
 var Month = CurrentDate.getMonth();
 var Day = CurrentDate.getDate();
 var offset = CurrentDate.getTimezoneOffset();
+offset = 0;
 //Day = Day - 1;
 
 
@@ -46,7 +47,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "WatsonR",
     "PatientSSN" : "987678234",
-    "date" : new Date(Year,Month,Day,9,30-offset,0,0),
+    "date" : new Date(Year,Month,Day,17,30-offset,0,0),
     "lastname" : "Crocker",
     "firstname" : "Betty",
     "payOnline" : false

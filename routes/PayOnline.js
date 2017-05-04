@@ -46,7 +46,7 @@ router.get("/:id", function getRecord(req,res){
                           firstname: patientRecord.patientID.firstname,
                           lastname: patientRecord.patientID.lastname,
                           patientCopay: patientRecord.patientCopay,
-                          date: moment(patientRecord.date.toISOString()).add(300,'m').format('h:mma, ddd, MMM, Do, YYYY'),
+                          date: moment(patientRecord.date.toISOString()).format('h:mma, ddd, MMM, Do, YYYY'),
                           _id: Oid,
                           onlineError: " "
                       });
@@ -95,13 +95,15 @@ router.post("/Query", function update(req, res){
               }, true);
               if(creditReference === '0000000000'){
 
-                  console.log(moment(patientRecord.date.toISOString()).add(300,'m').format('h:mma, ddd, MMM, Do, YYYY'));
+                  
+                  console.log(moment(patientRecord.date.toISOString()).format('h:mma, ddd, MMM, Do, YYYY'));
+
 
                   return res.render('OnlinePayment', {
                     firstname: patientRecord.patientID.firstname,
                     lastname: patientRecord.patientID.lastname,
                     patientCopay: patientRecord.patientCopay,
-                    date: moment(patientRecord.date.toISOString()).add(300,'m').format('h:mma, ddd, MMM, Do, YYYY'),
+                    date: moment(patientRecord.date.toISOString()).format('h:mma, ddd, MMM, Do, YYYY'),
                     _id: Oid,
                     onlineError: "Payment not accepted. Please try again."
                   });
