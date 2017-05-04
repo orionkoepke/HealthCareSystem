@@ -88,8 +88,13 @@ router.post('/update_appointment', function updateAppointment(req, res){
   Record.find({doctor: patient.doctor, date: new Date(req.body.appointmentTime)}).then(function(ans){
     var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
 
-    //Convert to Central Time.
-    appointmentTime.setHours(appointmentTime.getHours() + 5);
+    var year = appointmentTime.getFullYear();
+    var month = appointmentTime.getMonth();
+    var day = appointmentTime.getDate();
+    var hours = appointmentTime.getHours();
+    var minutes = appointmentTime.getMinutes();
+
+    appointmentTime = new Date(year, month, day, hours, minutes, 0, 0);
 
     // Round the appointment time to the nearest half hour.
     if(appointmentTime.getMinutes() < 15){
@@ -98,13 +103,13 @@ router.post('/update_appointment', function updateAppointment(req, res){
     else if(appointmentTime.getMinutes() < 45){
       appointmentTime.setMinutes(30);
     }
-    else{
+    else if(appointmentTime.getMinutes() <= 59){
       appointmentTime.setHours(appointmentTime.getHours() + 1);
       appointmentTime.setMinutes(0);
     }
 
     // If there isn't a conflicting appointment already scheduled or it's not between 9am and 5pm.
-    if(ans.length == 0 && appointmentTime.getHours() >= 9 && appointmentTime.getHours() <= 17)
+    if(ans.length == 0 && appointmentTime.getHours() >= 4 && appointmentTime.getHours() <= 12)
     {
       patientRecord.date = appointmentTime;
       patientRecord.save();

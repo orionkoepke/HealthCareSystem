@@ -89,7 +89,7 @@ router.post("/Query", function update(req, res){
                   cvn: cvn
               }, true);
               if(creditReference === '0000000000'){
-                  
+
                   console.log(moment(patientRecord.date.toISOString()).add(300,'m').format('h:mma, ddd, MMM, Do, YYYY'));
 
                   return res.render('OnlinePayment', {
