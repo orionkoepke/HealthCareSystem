@@ -25,7 +25,7 @@ router.post('/',function getRecord(req,res){
                 var Minutes = theRecord.date.getMinutes();
                 var offset = theRecord.date.getTimezoneOffset();
                 
-                var returnDate = new Date(Year,Month,Day,Hour,Minutes-offset,0,0);
+                var returnDate = new Date(Year,Month,Day,Hour,Minutes,0,0);
                 
                 return res.status(200).render('ProcessPayment',{ firstname: theRecord.patientID.firstname, 
                                                                 lastname: theRecord.patientID.lastname,
