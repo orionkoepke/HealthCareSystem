@@ -1,3 +1,4 @@
+// Sets up Scheduled Task Module
 module.exports = function(testing, date, hour, minute){
 
     const schedule = require('node-schedule');
@@ -6,6 +7,7 @@ module.exports = function(testing, date, hour, minute){
     var MonthlyReport = require('../models/MonthlyReports');
     const moment = require('moment');
 
+    // Sets up rule for Scheduled Task
     var rule = new schedule.RecurrenceRule();
 
     var year = moment().year();
@@ -13,7 +15,7 @@ module.exports = function(testing, date, hour, minute){
     var day = moment().date();
     var hour = moment().hour();
     var offset = new Date().getTimezoneOffset();
-    
+
     if(testing === true){
         rule.date = date;
     }else{
@@ -64,10 +66,11 @@ module.exports = function(testing, date, hour, minute){
     rule.hour = hour;
     rule.minute = minute;
 
-    
+    // Implementation for Scheduled Task
     var j = schedule.scheduleJob(rule,function job(){
         console.log("MakeMonthlyReport firing...");
-        
+
+        // Find all Doctors in Database to create listOfDoctors
         Users.find({ userType: "doctor" }).then(function makeMonthlyReport(listOfDoctors){
 
             DailyReport.find({ dateOfReport: { $gte: new Date(year,month,1,0,0,0,0), $lt: new Date(year,month,day+1,0,0-offset,0,0) }}).then(function handleDailyReports(reportList){
@@ -78,15 +81,17 @@ module.exports = function(testing, date, hour, minute){
                     console.log("There were daily reports to collate");
                     console.log(reportList);
 
+                    // Initalize a new Monthly Report
                     var newMRep = new MonthlyReport();
                     newMRep.dateOfReport = new Date(year,month,day,hour,0-offset,0,0);
                     newMRep.totalPatientsThisMonth = 0;
 
+                    // Initalize array for eachDoctor based on the listOfDoctors
                     listOfDoctors.forEach(function(eachDoctor){
                         newMRep.doctorStats.push({ doctorName: eachDoctor.doctor, numPatientsThisMonth: 0, totalIncome: 0 });
                     });
 
-
+                    // Sums up doctor stats from Daily Reports to Monthly Report
                     reportList.forEach(function(eachReport){
                         eachReport.doctorStats.forEach(function(eachDoctor){
                             newMRep.doctorStats.forEach(function(eachDoctorInReport){

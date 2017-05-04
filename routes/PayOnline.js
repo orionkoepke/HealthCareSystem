@@ -1,3 +1,4 @@
+// Initalize needed connections
 const express = require('express');
 const mongoose = require('mongoose');
 const moment = require('moment');
@@ -5,13 +6,16 @@ var router = express.Router();
 var Records = require('../models/Records.js');
 const creditCompany = require('../modules/CCCInteraction.js');
 
+//GET router: Renders web pages based on user id
 router.get("/:id", function getRecord(req,res){
       var Oid = req.params.id
 
       console.log("find by: " + Oid);
 
+      //Find by the patient based on their _id
       Records.findById(Oid).populate('patientID')
           .then(function(patientRecord){
+
               //When patientRecord is null send the user to a error page or text popup
               if(!patientRecord){
 
@@ -58,6 +62,7 @@ router.get("/:id", function getRecord(req,res){
         });
 });
 
+//POST router: Requests information from the broweser to pull up patient information from Database to allow user to pay online.
 router.post("/Query", function update(req, res){
     var Oid = req.body.ObjectId;
     var cardNumber = req.body.cardNumber;
@@ -89,7 +94,7 @@ router.post("/Query", function update(req, res){
                   cvn: cvn
               }, true);
               if(creditReference === '0000000000'){
-                  
+
                   console.log(moment(patientRecord.date.toISOString()).add(300,'m').format('h:mma, ddd, MMM, Do, YYYY'));
 
                   return res.render('OnlinePayment', {
