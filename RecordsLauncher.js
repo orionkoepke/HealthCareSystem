@@ -56,7 +56,7 @@ var dummyRecords = [
     {
     "status" : "Finalized",
     "treatmentInfo" : "",
-    "reference" : "",
+    "reference" : "1111111111",
     "billingAmount" : 90,
     "reasonForVisit" : "",    
     "doctor" : "LopezN",
