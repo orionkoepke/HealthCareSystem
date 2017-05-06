@@ -76,7 +76,7 @@ var dummyRecords = [
     "PatientSSN" : "987678243",
     "date" : new Date(Year,Month,Day,11,0-offset,0,0),
     "lastname" : "de la Vega",
-    "firstname" : "Maria de la Santa Cruz Rosalina Agnelia Rodriguez Cuellar Alejandra",
+    "firstname" : "Maria",
     "payOnline" : true
 },
     //////////////////////////////////////////GelfondM/////////////////////////////////
@@ -129,7 +129,7 @@ var dummyRecords = [
     "doctor" : "ShinM",
     "PatientSSN" : "987678240",
     "date" : new Date(Year,Month,Day,15,0-offset,0,0),
-    "lastname" : "Chun",
+    "lastname" : "Thompson",
     "firstname" : "Gracy",
     "payOnline" : false
 },  
@@ -159,6 +159,32 @@ var dummyRecords = [
     "lastname" : "Corvin",
     "firstname" : "KYle",
     "payOnline" : false
+},
+    {
+    "status" : "InProgress",
+    "treatmentInfo" : "",
+    "reference" : "",
+    "billingAmount" : 130,
+    "reasonForVisit" : "",    
+    "doctor" : "MengelS",
+    "PatientSSN" : "987678239",
+    "date" : new Date(Year,Month,Day+1,13,30-offset,0,0),
+    "lastname" : "Corvin",
+    "firstname" : "KYle",
+    "payOnline" : false
+},
+    {
+    "status" : "InProgress",
+    "treatmentInfo" : "",
+    "reference" : "",
+    "billingAmount" : 110,
+    "reasonForVisit" : "",    
+    "doctor" : "GelfondM",
+    "PatientSSN" : "987678236",
+    "date" : new Date(Year,Month,Day-1,11,0-offset,0,0),
+    "lastname" : "Jones",
+    "firstname" : "Mike",
+    "payOnline" : true
 }
 ];
 
