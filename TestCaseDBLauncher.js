@@ -144,7 +144,7 @@ var dummyPatients = [
     "email" : email,
     "phone" : "",
     "address" : "",
-    "lastname" : "Chun",
+    "lastname" : "Cowan",
     "firstname" : "Gracy"
 } 
 ];
@@ -246,8 +246,7 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-}
-    /*,
+},
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,4,21,0-offset,0,0),
@@ -301,7 +300,7 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-}  */
+}
 ];
 
 dummyReports.forEach(function(eachReport){
