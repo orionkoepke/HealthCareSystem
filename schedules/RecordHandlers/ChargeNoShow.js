@@ -1,9 +1,10 @@
+// Send email automatically
 module.exports = function(thisRecord){
     const mongoose = require('mongoose');
     var Patients = require('../../models/Patients');
     var Records = require('../../models/Records');
     const nodemailer = require('nodemailer');
-    
+
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -12,12 +13,12 @@ module.exports = function(thisRecord){
             pass: 'SchmoogleMoogle43!'
         }
     });
-    
+
     // get the customer's email from the database
     var targetEmail = thisRecord.patientID.email;
     var clientName = thisRecord.patientID.firstname + " " + thisRecord.patientID.lastname;
     console.log(clientName);
-        
+
     // setup email data with unicode symbols
     let mailOptions = {
         from: '"Austin Eubank" <HospitalComm.NOREPLY@gmail.com>', // sender address
@@ -35,12 +36,12 @@ module.exports = function(thisRecord){
         console.log('Message %s sent: %s', info.messageId, info.response);
         console.log(clientName);
         console.log(info.pending);
-    });       
-        
-        
+    });
+
+    // Updates patient treatment records for NoShows    
     var recordUpdate = new Records(thisRecord);
     recordUpdate.billingAmount = 25;
-    recordUpdate.patientCopay = 25;    
+    recordUpdate.patientCopay = 25;
     recordUpdate.status = "NoShow";
     Records.findOneAndUpdate({_id: thisRecord._id},recordUpdate).catch(function(e){
         console.log(e);

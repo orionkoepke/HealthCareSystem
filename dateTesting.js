@@ -26,8 +26,12 @@ var offset = Now.getTimezoneOffset();
 var thisMoment = new Date(year,month,day,hour,minutes-offset,seconds,milliseconds);
 var offset = new Date().getTimezoneOffset();
 
-console.log(offset);
 
+
+console.log(new Date(year,month,day,0,0,0,0).toLocaleString());
+day++;
+console.log(new Date(year,month,day,0,0,0,0).toLocaleString());
+console.log(new Date().toLocaleString());
 
 
 /*console.log(Math.random());

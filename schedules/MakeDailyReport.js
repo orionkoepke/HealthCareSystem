@@ -1,3 +1,4 @@
+// Sets up Scheduled Task Module
 module.exports = function(testing, hour, minute){
 
     const schedule = require('node-schedule');
@@ -6,6 +7,7 @@ module.exports = function(testing, hour, minute){
     var DailyReport = require('../models/DailyReports');
     const moment = require('moment');
 
+    // Creates rule for Scheduled Task
     var rule = new schedule.RecurrenceRule();
     if(testing){
         rule.dayOfWeek = [new schedule.Range(0,6)];
@@ -23,6 +25,7 @@ module.exports = function(testing, hour, minute){
 
     var listOfDoctors = [];
 
+    // Implements the scheduled Task
     var j = schedule.scheduleJob(rule,function job(){
         console.log("MakeDailyReport firing...");
 
@@ -32,16 +35,23 @@ module.exports = function(testing, hour, minute){
                 listOfDoctors.push(user.doctor);
             });
         }).then(function collateData(){
+
             // Get today's list of records
-            Records.find({date: { $gte: new Date(year,month,day,0,0,0,0)}}).populate('patientID').then(function handleRecords(recordsList){
+
+            Records.find({date: { $gte: new Date(year,month,day,9,0,0,0), $lt: new Date(year,month,day,18,0,0,0) }}).populate('patientID').then(function handleRecords(recordsList){
+                
+
                 console.log(recordsList);
+
                 var newDRep = new DailyReport();
-                newDRep.dateOfReport = new Date(year,month,day,hour,0-offset,0,0);
+                newDRep.dateOfReport = new Date(year,month,day,hour,0,0,0);
                 newDRep.totalPatientsToday = 0;
+
                 // Initialize each entry under doctorStats
                 listOfDoctors.forEach(function(eachDoctor){
                     newDRep.doctorStats.push({ doctorName: eachDoctor, numPatientsToday: 0, totalIncome: 0 });
                 });
+
                 // Update the entries with figures from the records
                 recordsList.forEach(function(eachRecord){
                     newDRep.doctorStats.forEach(function(thisEntry){
