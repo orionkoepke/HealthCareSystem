@@ -42,7 +42,7 @@ router.get('/', function selectDoctor(req, res){
           patient.SSN = ans[i].SSN;
           patients[i] = patient;
         }
-        return res.render('SelectPatient', { patients: patients, goTo: URL + "/view_patient_information" });
+        return res.render('SelectPatient', { patients: patients, goTo: URL + "/edit_patient_information" });
       });
     }
   }
