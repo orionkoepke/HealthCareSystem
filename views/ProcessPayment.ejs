@@ -5,6 +5,12 @@
     </head>
     <body>
         <% include ./resources/navHeader.ejs %>
+        <% if (onlineError === 'You have already paid your bill.'){ %>
+          <p><%= onlineError %></p>
+        <% } else{ %>
+
+        <br>
+        <%= onlineError %>
         <div>
             <h3>Treatment Information</h3>
         </div>
@@ -27,5 +33,6 @@
             <input type="hidden" value="<%= _id %>" name= "ObjectId">
             <input type="submit" value="Finish Payment">
         </form>
+        <% } %>
     </body>
 </html>
