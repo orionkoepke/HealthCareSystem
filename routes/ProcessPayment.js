@@ -54,7 +54,7 @@ router.post('/pay_attempt',function update(req,res){
     }else{
         var Oid = req.body.ObjectId;
         var ref = CCCInteraction({cardNumber: req.body.cardNumber,cvn: req.body.cardSecurityCode},true);
-        if(ref === "0000000000"){
+        if(ref === "0000000000"){            
             Records.findById(Oid).populate('patientID').then(function(theRecord){
                 return res.render('ProcessPayment',{ firstname: theRecord.patientID.firstname,
                                                  lastname: theRecord.patientID.lastname,
@@ -68,7 +68,7 @@ router.post('/pay_attempt',function update(req,res){
             });
         }else{
 
-            Records.findByIdAndUpdate(Oid,{ status:"Finalized", reference: ref }).then(function(theRecord){
+            Records.findByIdAndUpdate(Oid,{ reference: ref }).populate('patientID').then(function(theRecord){
                 return res.status(200).render('ProcessPayment_Receipt',{ firstname: theRecord.patientID.firstname,
                                                  lastname: theRecord.patientID.lastname,
                                                  patientCopay: theRecord.patientCopay,
