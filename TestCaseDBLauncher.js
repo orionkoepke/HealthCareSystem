@@ -149,7 +149,7 @@ var dummyPatients = [
 } 
 ];
 
-/*dummyPatients.forEach(function(patientRec){
+dummyPatients.forEach(function(patientRec){
     var newPatient = new Patient();
     newPatient.firstname = patientRec.firstname;
     newPatient.lastname = patientRec.lastname;
@@ -162,7 +162,7 @@ var dummyPatients = [
     newPatient.doctor = patientRec.doctor;
     newPatient.medicalNotes = patientRec.medicalNotes;
     newPatient.save();
-});*/
+});
 
 // Add new daily reports.  Note: There will not be corresponding atrecords for these reports.
 var dummyReports = [
@@ -458,7 +458,7 @@ var dummyMReports = [
 }   
 ];
 
-/*dummyMReports.forEach(function(eachReport){
+dummyMReports.forEach(function(eachReport){
     var newMReport = new MReports();
     newMReport.dateOfReport = eachReport.dateOfReport;
     newMReport.doctorStats = [];
@@ -472,7 +472,7 @@ var dummyMReports = [
         newMReport.totalPatientsThisMonth += eachDoctorStat.numPatientsThisMonth;
     });
     newMReport.save();
-});*/
+});
 
 
 console.log("Program running...");
