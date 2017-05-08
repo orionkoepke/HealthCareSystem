@@ -85,11 +85,13 @@ router.post('/edit_appointment', function editAppointment(req, res){
 
 // Change the date of the appointment in the database.
 router.post('/update_appointment', function updateAppointment(req, res){
-  Record.find({doctor: patient.doctor, date: new Date(req.body.appointmentTime)}).then(function(ans){
-    var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
 
-    //Convert to Central Time.
-    appointmentTime.setHours(appointmentTime.getHours() + 5);
+  var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
+
+  //Convert to Central Time.
+  appointmentTime.setHours(appointmentTime.getHours() + 5);
+
+  Record.find({doctor: patient.doctor, date: appointmentTime}).then(function(ans){
 
     // Round the appointment time to the nearest half hour.
     if(appointmentTime.getMinutes() < 15){

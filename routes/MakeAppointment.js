@@ -86,12 +86,13 @@ router.post('/view_schedule', function makeAppointment(req, res){
 
 // Add the chosen appointment if there isn't a conflicting appointment already scheduled.
 router.post('/add_appointment', function addAppointment(req, res){
-  Record.find({doctor: patient.doctor, date: new Date(req.body.appointmentTime)}).then(function(ans){
 
-    var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
+  var appointmentTime = new Date(req.body.appointmentTime); // The chosen appointment time.
 
-    //Convert to Central Time.
-    appointmentTime.setHours(appointmentTime.getHours() + 5);
+  //Convert to Central Time.
+  appointmentTime.setHours(appointmentTime.getHours() + 5);
+
+  Record.find({doctor: patient.doctor, date: appointmentTime}).then(function(ans){
 
     // Round the appointment time to the nearest half hour.
     if(appointmentTime.getMinutes() < 15){
@@ -114,6 +115,10 @@ router.post('/add_appointment', function addAppointment(req, res){
       newRecord.date = appointmentTime;
       newRecord.doctor = patient.doctor;
       newRecord.status = "Scheduled";
+      newRecord.treatmentInfo = "";
+      newRecord.reference = "";
+      newRecord.billingAmount = 0;
+      newRecord.reasonForVisit = "";
       newRecord.save();
 
       // Reset appointments and patient to null for next time.
