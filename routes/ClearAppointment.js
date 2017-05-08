@@ -13,7 +13,7 @@ var Record = require('../models/Records.js');
 var URL = "http://localhost:3003/clear_appointment";
 
 // Select an Uncleared appointment.
-router.get('/',function selectDoctor(req,res){
+router.get('/',function selectAppointment(req,res){
   if(!req.session.user){
     return res.render('LoginPage');
   }
