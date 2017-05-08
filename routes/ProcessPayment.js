@@ -27,10 +27,10 @@ router.post('/',function getRecord(req,res){
                 var Minutes = theRecord.date.getMinutes();
                 var offset = theRecord.date.getTimezoneOffset();
 
-                
+
                 var returnDate = new Date(Year,Month,Day,Hour,Minutes,0,0);
-                
-                return res.status(200).render('ProcessPayment',{ firstname: theRecord.patientID.firstname, 
+
+                return res.status(200).render('ProcessPayment',{ firstname: theRecord.patientID.firstname,
 
                                                                 lastname: theRecord.patientID.lastname,
                                                                 patientCopay: theRecord.patientCopay,
@@ -68,7 +68,8 @@ router.post('/pay_attempt',function update(req,res){
             });
         }else{
 
-            Records.findByIdAndUpdate(Oid,{ status:"Finalized", reference: ref }).then(function(theRecord){
+            Records.findByIdAndUpdate(Oid,{ status:"Finalized", reference: ref }).populate('patientID').then(function(theRecord){
+                console.log(theRecord.patientID.firstname);
                 return res.status(200).render('ProcessPayment_Receipt',{ firstname: theRecord.patientID.firstname,
                                                  lastname: theRecord.patientID.lastname,
                                                  patientCopay: theRecord.patientCopay,
