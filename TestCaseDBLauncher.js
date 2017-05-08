@@ -30,55 +30,55 @@ var dummyPatients = [
     {
     "medicalNotes" : "",
     "doctor" : "WatsonR",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678234",
     "email" : email,
-    "phone" : "5671239543",
-    "address" : "4719 101st St. Milwaukee, MN 88448",
+    "phone" : "",
+    "address" : "",
     "lastname" : "Crocker",
     "firstname" : "Betty"
 },
     {
     "medicalNotes" : "",
     "doctor" : "WatsonR",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678242",
     "email" : email,
-    "phone" : "5671239543",
-    "address" : "4719 101st St. Milwaukee, MN 88448",
+    "phone" : "",
+    "address" : "",
     "lastname" : "Stewart",
     "firstname" : "Martha"
 },
   {
     "medicalNotes" : "",
     "doctor" : "LopezN",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678235",
     "email" : email,
-    "phone" : "5671239543",
-    "address" : "4719 101st St. Milwaukee, MN 88448",
+    "phone" : "",
+    "address" : "",
     "lastname" : "Smith",
     "firstname" : "Joe"
 },  
     {
     "medicalNotes" : "",
     "doctor" : "LopezN",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678243",
     "email" : email,
-    "phone" : "987678243",
-    "address" : "4719 101st St. Milwaukee, MN 88448",
+    "phone" : "",
+    "address" : "",
     "lastname" : "de la Vega",
-    "firstname" : "Maria de la Santa Cruz Rosalina Agnelia Rodriguez Cuellar Rene"
+    "firstname" : "Maria"
 },  
     {
     "medicalNotes" : "",
     "doctor" : "GelfondM",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678236",
     "email" : email,
@@ -90,7 +90,7 @@ var dummyPatients = [
     {
     "medicalNotes" : "",
     "doctor" : "GelfondM",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678241",
     "email" : email,
@@ -102,7 +102,7 @@ var dummyPatients = [
     {
     "medicalNotes" : "",
     "doctor" : "ShinM",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678237",
     "email" : email,
@@ -114,7 +114,7 @@ var dummyPatients = [
     {
     "medicalNotes" : "",
     "doctor" : "MengelS",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678238",
     "email" : email,
@@ -126,7 +126,7 @@ var dummyPatients = [
     {
     "medicalNotes" : "",
     "doctor" : "MengelS",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678239",
     "email" : email,
@@ -138,13 +138,13 @@ var dummyPatients = [
     {
     "medicalNotes" : "",
     "doctor" : "ShinM",
-    "onFilePaymentInfo" : "8900988900",
+    "onFilePaymentInfo" : "",
     "insurance" : "Borden Insurance",
     "SSN" : "987678240",
     "email" : email,
     "phone" : "",
     "address" : "",
-    "lastname" : "Chun",
+    "lastname" : "Cowan",
     "firstname" : "Gracy"
 } 
 ];
@@ -246,8 +246,7 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-}
-    /*,
+},
     {
   dailyTotal: 0,
     dateOfReport: new Date(Year,Month,4,21,0-offset,0,0),
@@ -301,7 +300,34 @@ var dummyReports = [
         numPatientsToday: 0,
         totalIncome: 0
     }]
-}  */
+},
+    {
+  dailyTotal: 0,
+    dateOfReport: new Date(Year,3,30,21,0-offset,0,0),
+    totalPatientsToday: 0,
+    doctorStats: [{
+        doctorName: "WatsonR",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },
+    {
+        doctorName: "LopezN",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "GelfondM",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "ShinM",
+        numPatientsToday: 0,
+        totalIncome: 0
+    },{
+        doctorName: "MengelS",
+        numPatientsToday: 0,
+        totalIncome: 0
+    }]
+}
 ];
 
 dummyReports.forEach(function(eachReport){

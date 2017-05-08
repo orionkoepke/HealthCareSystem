@@ -14,7 +14,6 @@ module.exports = function(testing, hour, minute){
     }else{
         rule.dayOfWeek = [new schedule.Range(1,5)];
     }
-    rule.dayOfWeek = [new schedule.Range(1,5)];
     rule.hour = hour;
     rule.minute = minute;
 
