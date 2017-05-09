@@ -10,11 +10,10 @@ module.exports = function(testing, date, hour, minute){
     // Sets up rule for Scheduled Task
     var rule = new schedule.RecurrenceRule();
 
-    var year = moment().year();
-    var month = moment().month();
-    var day = moment().date();
-    var hour = moment().hour();
-    var offset = new Date().getTimezoneOffset();
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var day = now.getDate();
 
     if(testing === true){
         rule.date = date;

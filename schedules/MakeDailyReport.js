@@ -5,7 +5,6 @@ module.exports = function(testing, hour, minute){
     var Records = require('../models/Records');
     var Users = require('../models/Users');
     var DailyReport = require('../models/DailyReports');
-    const moment = require('moment');
 
     // Creates rule for Scheduled Task
     var rule = new schedule.RecurrenceRule();
@@ -17,11 +16,11 @@ module.exports = function(testing, hour, minute){
     rule.hour = hour;
     rule.minute = minute;
 
-    var year = moment().year();
-    var month = moment().month();
-    var day = moment().date();
-    var hour = moment().hour();
-    var offset = new Date().getTimezoneOffset();
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var day = now.getDate();
+    var hour = now.getHours();
 
     var listOfDoctors = [];
 

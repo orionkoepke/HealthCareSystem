@@ -1,3 +1,5 @@
+//This is a list of use case codes which are passed to the Check User Authorization object to simplify that use case.
+
 Make Appointment = MA
 Change Appointment = CA
 Cancel Appointment = XA
