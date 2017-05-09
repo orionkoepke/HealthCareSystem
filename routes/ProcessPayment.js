@@ -25,7 +25,6 @@ router.post('/',function getRecord(req,res){
                 var Day = theRecord.date.getDate();
                 var Hour = theRecord.date.getHours();
                 var Minutes = theRecord.date.getMinutes();
-                var offset = theRecord.date.getTimezoneOffset();
 
                 
                 var returnDate = new Date(Year,Month,Day,Hour,Minutes,0,0);
