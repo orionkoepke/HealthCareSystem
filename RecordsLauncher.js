@@ -168,7 +168,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "MengelS",
     "PatientSSN" : "987678239",
-    "date" : new Date(Year,Month,Day+1,17,30-offset,0,0),
+    "date" : new Date(Year,Month,Day-1,17,30-offset,0,0),
     "lastname" : "Corvin",
     "firstname" : "KYle",
     "payOnline" : false
@@ -181,7 +181,7 @@ var dummyRecords = [
     "reasonForVisit" : "",    
     "doctor" : "GelfondM",
     "PatientSSN" : "987678236",
-    "date" : new Date(Year,Month,Day-1,9,0-offset,0,0),
+    "date" : new Date(Year,Month,Day+1,9,0-offset,0,0),
     "lastname" : "Jones",
     "firstname" : "Mike",
     "payOnline" : true

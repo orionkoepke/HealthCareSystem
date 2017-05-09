@@ -350,7 +350,7 @@ dummyReports.forEach(function(eachReport){
 var dummyMReports = [
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-1,30,0,0,0,0),
+    dateOfReport: new Date(Year,Month-1,30,22,0,0,0),
     totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -377,7 +377,7 @@ var dummyMReports = [
 },
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-2,31,0,0,0,0),
+    dateOfReport: new Date(Year,Month-2,31,22,0,0,0),
     totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -404,7 +404,7 @@ var dummyMReports = [
 },
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-3,28,0,0,0,0),
+    dateOfReport: new Date(Year,Month-3,28,22,0,0,0),
     totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
@@ -431,7 +431,7 @@ var dummyMReports = [
 },
     {
   monthlyTotal: 0,
-    dateOfReport: new Date(Year,Month-4,31,0,0,0,0),
+    dateOfReport: new Date(Year,Month-4,31,22,0,0,0),
     totalPatientsThisMonth: 0,
     doctorStats: [{
         doctorName: "WatsonR",
