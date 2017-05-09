@@ -32,11 +32,13 @@ router.get("/:id", function getRecord(req,res){
 
               else{
                   if(patientRecord.status === 'Finalized'){
-                      return res.render('OnlinePayment', {
+                      return res.render('OnlinePayment_Receipt', {
                           firstname: patientRecord.patientID.firstname,
                           lastname: patientRecord.patientID.lastname,
                           patientCopay: patientRecord.patientCopay,
                           date: patientRecord.date,
+                          creditReference: patientRecord.reference,
+                          timeStamp: " ",
                           _id: Oid,
                           onlineError: "You have already paid your bill."
                       });
